@@ -1,97 +1,43 @@
 <section>
-    <h1>Home</h1>
-
-    <h2 class="mb-4">Choose your theme</h2>
-
-    <div class="flex flex-wrap gap-3 mb-6">
-        <button
-            class="min-w-[150px] btn {{ currentTheme === 'system' ? 'btn-primary' : 'btn-secondary' }}"
-            (click)="handleThemeChange('system')"
-        >
-            <span class="icon-[carbon--screen] text-2xl mr-2"></span>
-
-            System
-        </button>
-        <button
-            data-cy="theme-light-button"
-            class="min-w-[150px] btn {{ currentTheme === 'light' ? 'btn-primary' : 'btn-secondary' }}"
-            (click)="handleThemeChange('light')"
-        >
-            <span class="icon-[carbon--sun] text-2xl mr-2"></span>
-
-            Light
-        </button>
-        <button
-            data-cy="theme-dark-button"
-            class="min-w-[150px] btn {{ currentTheme === 'dark' ? 'btn-primary' : 'btn-secondary' }}"
-            (click)="handleThemeChange('dark')"
-        >
-            <span class="icon-[carbon--moon] text-2xl mr-2"></span>
-
-            Dark
-        </button>
+    <div class="border-y border-base">
+        <span class="uppercase sm:text-[190px] text-4xl font-extrabold tracking-wide leading-none">artifacts</span>
     </div>
+    <div class="flex flex-wrap justify-center gap-3 my-6">
+        <div class="bg-white dark:bg-transparent">
+            <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6  lg:max-w-7xl lg:px-8">
+                <!-- <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-slate-100">Customers also purchased</h2> -->
 
-    <div class="mt-12">
-        <h3 class="h5">Settings</h3>
-        <ul>
-            <li>
-                <a
-                    class="text-sm link"
-                    [routerLink]="'/settings/accessibility'"
-                >
-                    Accessibility
-                </a>
-            </li>
-            <li>
-                <a
-                    class="text-sm link"
-                    [routerLink]="'/settings/account'"
-                >
-                    Account
-                </a>
-            </li>
-            <li>
-                <a
-                    class="text-sm link"
-                    [routerLink]="'/settings/appearance'"
-                >
-                    Appearance
-                </a>
-            </li>
-        </ul>
-    </div>
+                <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                    <div class="group relative">
+                        <div
+                            class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
+                                alt="Front of men&#039;s Basic Tee in black."
+                                class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <p class="mt-1 text-sm text-gray-500 dark:text-slate-50">
+                            seamless user experience across diverse platforms.
+                        </p>
+                        <div class="mt-4 flex justify-between">
+                            <div>
+                                <h5 class="text-lg font-bold text-gray-700 dark:text-slate-100">
+                                    <a href="#">
+                                        <span aria-hidden="true" class="absolute inset-0"></span>
+                                        Basic Tee
+                                    </a>
+                                </h5>
+                            </div>
+                            <!-- <p class="text-sm font-medium text-gray-900 dark:text-slate-200">$35</p> -->
+                        </div>
+                        <p class="mt-1 text-sm text-gray-500 dark:text-slate-50 break-words">
+                            Isomorphic design delivers a unified user experience across platforms, utilizing a shared codebase for consistent functionality and aesthetics. It optimizes development efficiency, ensuring seamless interactions on diverse devices.
+                        </p>
+                    </div>
 
-    <div class="mt-6">
-        <h3 class="h5">Profiles</h3>
-        <ul>
-            <li>
-                <a
-                    class="text-sm link"
-                    [routerLink]="'/users/maria'"
-                    text-sm
-                >
-                    Maria
-                </a>
-            </li>
-            <li>
-                <a
-                    class="text-sm link"
-                    [routerLink]="'/users/pedro'"
-                    text-sm
-                >
-                    Pedro
-                </a>
-            </li>
-            <li>
-                <a
-                    class="text-sm link"
-                    [routerLink]="'/users/sara'"
-                    text-sm
-                >
-                    Sara
-                </a>
-            </li>
-        </ul>
+                    <!-- More products... -->
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>

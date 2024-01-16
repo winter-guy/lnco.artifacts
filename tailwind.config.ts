@@ -17,6 +17,7 @@ export default {
         fontFamily: {
             display: ['Oswald', 'sans-serif'],
             body: ['Poppins', 'sans-serif'],
+            exclusive: ['cheltenham', 'sans-serif'],
         },
         container: {
             center: true,
