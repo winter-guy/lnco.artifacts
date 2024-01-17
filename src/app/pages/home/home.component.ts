@@ -30,4 +30,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     handleThemeChange(theme: AppTheme): void {
         this._themeService.setTheme(theme);
     }
+
+    get randomNum(): number {
+        return Math.floor(Math.random() * 200) + 1;
+    }
 }
