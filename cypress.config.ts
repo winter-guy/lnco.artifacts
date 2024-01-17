@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { defineConfig } from 'cypress';
 
 export default defineConfig({
@@ -15,5 +16,4 @@ export default defineConfig({
         },
         specPattern: '**/*.cy.ts',
     },
-
 });
