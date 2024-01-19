@@ -13,7 +13,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     currentTheme!: AppTheme | null;
 
     private readonly _themeService = inject(ThemeService);
-
     private readonly _destroy$ = new Subject();
 
     ngOnInit(): void {

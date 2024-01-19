@@ -9,6 +9,6 @@ body {
 }
 
 body.dark {
-    @apply bg-zinc-900;
+    @apply bg-[#000000];
     @apply text-zinc-50;
 }
