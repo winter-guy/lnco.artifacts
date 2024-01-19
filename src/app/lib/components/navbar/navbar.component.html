@@ -9,8 +9,9 @@
                     <span>Contribute</span>
                 </button>
 
-                <button data-cy="logout-button"
-                    class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:z-10 shrink-0 saturate-[110%] border-base focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 p-1.5 text-sm font-medium rounded-full dark:bg-transparent dark:text-slate-50"
+                <button data-cy="light-button"
+                    class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:z-10 shrink-0 saturate-[110%] focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 p-1.5 text-sm font-medium rounded-full dark:bg-transparent dark:text-slate-50"
+                    [ngClass]="{'border border-base': currentTheme === 'light'}"
                     (click)="handleThemeChange('light')" title="light">
                     <span>
                         <svg data-testid="geist-icon" height="16" stroke-linejoin="round" viewBox="0 0 16 16" width="16"
@@ -22,8 +23,9 @@
                     </span>
                 </button>
 
-                <button data-cy="logout-button"
-                    class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:z-10 shrink-0 saturate-[110%] border-base focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 p-1.5 text-sm font-medium rounded-full dark:bg-transparent dark:text-slate-50"
+                <button data-cy="dark-button"
+                    class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:z-10 shrink-0 saturate-[110%] focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 p-1.5 text-sm font-medium rounded-full dark:bg-transparent dark:text-slate-50"
+                    [ngClass]="{'dark:border border-base': currentTheme === 'dark'}"
                     (click)="handleThemeChange('dark')" title="dark">
                     <span>
                         <svg data-testid="geist-icon" height="16" stroke-linejoin="round" viewBox="0 0 16 16" width="16"

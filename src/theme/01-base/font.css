@@ -4,7 +4,7 @@ html {
 }
 
 .text-head {
-    @apply text-[slate-900] dark:text-[#EDEDED];
+    @apply text-slate-900 dark:text-[#EDEDED];
 }
 
 .text-body {
@@ -12,5 +12,5 @@ html {
 }
 
 .text-block {
-    @apply text-slate-500 dark:text-[#dfdfdf] font-light;
+    @apply text-slate-500 dark:text-[#c7c7c7] font-light;
 }
