@@ -2,3 +2,15 @@ html {
     @apply font-body;
     @apply font-light;
 }
+
+.text-head {
+    @apply text-slate-900 dark:text-[#EDEDED];
+}
+
+.text-body {
+    @apply text-slate-700 dark:text-[#EDEDED];
+}
+
+.text-block {
+    @apply text-slate-500 dark:text-[#c7c7c7] font-light;
+}
