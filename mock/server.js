@@ -25,6 +25,32 @@ app.get('/api/v1/articles', async (req, res) => {
   }
 });
 
+app.get('/api/v1/artifacts', async (req, res) => {
+  try {
+    const { id } = req.query; // Extract the 'id' parameter from the query string
+
+    if (!id) {
+      return res.status(400).json({ error: 'Missing id parameter' });
+    }
+
+    const articlesData = await fs.readFile(path.join(__dirname, './home/artifact.json'), 'utf-8');
+    const parsedData = JSON.parse(articlesData);
+    
+    // Assuming there's an 'artifact' property in the parsed data
+    const artifact = parsedData;
+
+    if (artifact.id === id) {
+      res.json(artifact);
+    } else {
+      res.status(404).json({ error: 'Artifact not found' });
+    }
+  } catch (error) {
+    console.error('Error reading or parsing artifact.json', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
 app.listen(port, () => {
   console.log(`Mock server is running at http://localhost:${port}`);
 });
