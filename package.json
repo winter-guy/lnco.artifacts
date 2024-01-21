@@ -54,7 +54,7 @@
     "@angular-eslint/eslint-plugin-template": "16.0.1",
     "@angular-eslint/schematics": "^17.2.0",
     "@angular-eslint/template-parser": "16.0.1",
-    "@angular/cli": "~17.0.10",
+    "@angular/cli": "^17.0.9",
     "@angular/compiler-cli": "^17.0.9",
     "@culur/stylelint-config": "^1.2.0",
     "@iconify/json": "^2.2.64",
