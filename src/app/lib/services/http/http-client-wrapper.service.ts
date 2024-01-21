@@ -11,7 +11,7 @@ export class HttpService {
     private _baseUrl: string = environment.apiUrl;
 
     constructor(private _httpClient: HttpClient) {
-        this._headers = new HttpHeaders().set('Contetent-Type', 'application/json');
+        this._headers = new HttpHeaders().set('Content-Type', 'application/json');
     }
 
     get<T>(url: string, httpParams?: HttpParams): Observable<T> {
