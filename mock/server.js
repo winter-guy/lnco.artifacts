@@ -1,5 +1,6 @@
 express = require('express');
 data = require('./home/data');
+cors = require('cors');
 
 fs = require('fs').promises;
 path = require('path');
@@ -8,12 +9,13 @@ app = express();
 port = 3000;
 
 app.use(express.json());
+app.use(cors());
 
 app.get('/api/users', (req, res) => {
   res.json(data.users);
 });
 
-app.get('/api/articles', async (req, res) => {
+app.get('/api/v1/articles', async (req, res) => {
   try {
     const articlesData = await fs.readFile(path.join(__dirname, './home/article.json'), 'utf-8');
     res.json(JSON.parse(articlesData));

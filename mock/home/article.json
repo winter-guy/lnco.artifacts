@@ -1,7 +1,7 @@
 [
     {
       "id": 0,
-      "created_date": "20/02/2014",
+      "createdDate": "20/02/2014",
       "img": "https://picsum.photos/id/85/250",
       "background": "https://fastly.picsum.photos/id/85/250/250.jpg?hmac=KAncLpjCcta8mc1ul_3CQMg_G0t4gE6RoBaS-nWjvoM",
       "head": "Revolutionizing Urban Agriculture: How Vertical Farming is Reshaping the Future of Food Production.",
@@ -10,7 +10,7 @@
     },
     {
       "id": 1,
-      "created_date": "20/02/2014",
+      "createdDate": "20/02/2014",
       "img": "https://picsum.photos/id/88/250",
       "background": "https://picsum.photos/id/152/250",
       "head": "Exploring the Deep Sea: Uncovering the Mysteries of Earth's Final Frontier.",
@@ -19,7 +19,7 @@
     },
     {
       "id": 2,
-      "created_date": "20/02/2014",
+      "createdDate": "20/02/2014",
       "img": "https://picsum.photos/id/68/250",
       "background": "https://picsum.photos/id/80/250",
       "head": "Random Article 1",
@@ -28,7 +28,7 @@
     },
     {
       "id": 3,
-      "created_date": "20/02/2014",
+      "createdDate": "20/02/2014",
       "img": "https://picsum.photos/id/98/250",
       "background": "https://picsum.photos/id/7/250",
       "head": "Random Article 2",
@@ -37,7 +37,7 @@
     },
     {
       "id": 4,
-      "created_date": "20/02/2014",
+      "createdDate": "20/02/2014",
       "img": "https://picsum.photos/id/101/250",
       "background": "https://picsum.photos/id/56/250",
       "head": "New Horizons in Space Exploration: Unveiling the Wonders Beyond Our Solar System.",
@@ -46,7 +46,7 @@
     },
     {
       "id": 5,
-      "created_date": "20/02/2014",
+      "createdDate": "20/02/2014",
       "img": "https://picsum.photos/id/123/250",
       "background": "https://picsum.photos/id/72/250",
       "head": "The Art of Mindfulness: Nurturing Mental Well-being in the Modern Age.",
@@ -55,7 +55,7 @@
     },
     {
       "id": 6,
-      "created_date": "20/02/2014",
+      "createdDate": "20/02/2014",
       "img": "https://picsum.photos/id/202/250",
       "background": "https://picsum.photos/id/169/250",
       "head": "Beyond Robotics: Artificial Intelligence's Impact on Everyday Life.",
@@ -64,7 +64,7 @@
     },
     {
       "id": 7,
-      "created_date": "20/02/2014",
+      "createdDate": "20/02/2014",
       "img": "https://picsum.photos/id/215/250",
       "background": "https://picsum.photos/id/185/250",
       "head": "Culinary Fusion: Exploring the Intersection of Global Flavors in Modern Cuisine.",
@@ -73,7 +73,7 @@
     },
     {
       "id": 8,
-      "created_date": "20/02/2014",
+      "createdDate": "20/02/2014",
       "img": "https://picsum.photos/id/180/250",
       "background": "https://picsum.photos/id/233/250",
       "head": "The Power of Sustainable Fashion: Redefining Style with Environmental Consciousness.",
@@ -82,7 +82,7 @@
     },
     {
       "id": 9,
-      "created_date": "20/02/2014",
+      "createdDate": "20/02/2014",
       "img": "https://picsum.photos/id/210/250",
       "background": "https://picsum.photos/id/233/250",
       "head": "Urban Wildlife Adventures: Exploring Nature in the Heart of the City.",
