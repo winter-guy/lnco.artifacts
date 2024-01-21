@@ -1,0 +1,21 @@
+<section class="container lg:px-8 px-0">
+    <div class="text-center overflow-auto overflow-y-hidden mt-5">
+        <span class="uppercase sm:text-[190px] text-4xl font-extrabold tracking-wide leading-none">     
+        </span>
+        <nav aria-label="breadcrumb">
+          <ul class="flex flex-wrap space-x-2 text-xs font-base text-[#929392] dark:text-slate-100">
+            <li class="flex items-center space-x-2 uppercase font-normal">
+              <a routerLink="/">l&co</a>
+            </li>
+            <li class="flex items-center space-x-2" *ngFor="let path of navigation; let i = index">
+              <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 shrink-0">
+                <path d="m9 18 6-6-6-6">
+                </path>
+              </svg>
+              <a [routerLink]="path">{{path}}</a>
+            </li>
+          </ul>
+        </nav>
+    </div>
+</section>
+<router-outlet></router-outlet>

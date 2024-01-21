@@ -1,5 +1,5 @@
 export interface Artifact {
-    id: number;
+    id: string;
     createdDate: string;
     img: string;
     background: string;

@@ -9,7 +9,7 @@ export const routes: Routes = [
     },
     {
         path: '',
-        loadChildren: async () => (await import('@pages/home')).routes,
+        loadChildren: async () => (await import('@pages/layout')).routes,
         canMatch: [authGuard()],
     },
     {
