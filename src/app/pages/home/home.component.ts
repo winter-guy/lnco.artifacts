@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { Artifact } from '@lib/interfaces/artifact';
 import { ArtifactService } from '@lib/services/artifacts/artifacts.service';
 import { AppTheme, ThemeService } from '@lib/services/theme';
-import { map, Subject, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
     standalone: true,
@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     getArtifacts(): void {
         this.artifactService.getArtifacts().subscribe((response) => {
-            console.log(response);
+            this.artifacts = response;
         });
     }
 }

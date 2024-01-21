@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class ArtifactService {
     constructor(protected httpService: HttpService) {}
 
-    public getArtifacts(): Observable<Artifact> {
-        return this.httpService.get<Artifact>('/articles');
+    public getArtifacts(): Observable<Artifact[]> {
+        return this.httpService.get<Artifact[]>('/articles');
     }
 }
