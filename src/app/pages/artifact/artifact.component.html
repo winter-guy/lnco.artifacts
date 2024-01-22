@@ -1,7 +1,7 @@
 
-<article class="max-w-2xl md:px-6 px-0 py-24 my-12 space-y-16 dark:bg-transparent dark:text-gray-50">
+<article class="max-w-2xl md:px-6 px-0 py-24 my-12 space-y-16 dark:bg-transparent dark:text-gray-50" *ngIf="artifact$ | async as data; else loading">
 	<div class="w-full mx-auto space-y-4">
-		<h1 class="text-5xl font-bold leading-none">Interdum et malesuada fames ac ante ipsum primis in faucibus?</h1>
+		<h1 class="text-5xl font-thin leading-none">{{data.highlight.header}}</h1>
 		<div class="flex flex-wrap md:space-x-2 text-sm dark:text-gray-400">
 			<a rel="noopener noreferrer" href="#" class="p-1 hover:underline">#MambaUI</a>
 			<a rel="noopener noreferrer" href="#" class="p-1 hover:underline">#TailwindCSS</a>
@@ -18,3 +18,8 @@
 		<p>Insert the actual text content here...</p>
 	</div>
 </article>
+
+<ng-template #loading>
+	<!-- Display a loading message or spinner while data is being fetched -->
+	Loading...
+</ng-template>
