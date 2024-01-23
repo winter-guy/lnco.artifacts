@@ -1,1 +1,15 @@
 @tailwind base;
+
+input:focus {
+    @apply ring-0;
+}
+
+.ce-toolbar__plus,
+.ce-toolbar__settings-btn {
+    @apply dark:text-white !important;
+}
+
+.ce-toolbar__plus:hover,
+.ce-toolbar__settings-btn:hover {
+    @apply dark:bg-indigo-500
+}
