@@ -11,26 +11,38 @@ import { Observable, debounceTime, skip } from 'rxjs';
 import { editorjsConfig, toolsConfig } from '@lib/editor/editor.config';
 import EditorJS from '@editorjs/editorjs';
 import { ThemeService } from '@lib/services';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '@lib/content/shared.module';
 
 @Component({
     standalone: true,
-    imports: [CommonModule, RouterModule],
+    imports: [CommonModule, RouterModule, ReactiveFormsModule, SharedModule],
     templateUrl: './compose.component.html',
 })
 export class ComposeComponent implements OnInit, OnDestroy {
     public artifact$!: Observable<Article>;
-    public localCached!: Article;
     public editor!: EditorJS;
     public editorObserver!: MutationObserver;
+
+    public editorForm!: FormGroup;
 
     constructor(
         protected artifactService: ArtifactService,
         private _router: ActivatedRoute,
         private themeService: ThemeService,
+        private _formBuilder: FormBuilder,
     ) {}
 
     ngOnInit(): void {
         this.themeService.setNavbarState(false);
+        this.editorForm = this._formBuilder.group({
+            headline: [
+                '',
+                {
+                    updateOn: 'change',
+                },
+            ],
+        });
 
         /* overrides theme for composer page, dark theme abstructs view and editing experiance. */
         this.themeService.setTheme('light');
