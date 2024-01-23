@@ -31,6 +31,10 @@ export class ComposeComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.themeService.setNavbarState(false);
+
+        /* overrides theme for composer page, dark theme abstructs view and editing experiance. */
+        this.themeService.setTheme('light');
+
         this.detectEditorChanges()
             .pipe(debounceTime(200), skip(1))
             .subscribe({
