@@ -19,19 +19,12 @@ export class LayoutComponent implements OnInit {
     constructor(protected router: ActivatedRoute) {}
 
     ngOnInit(): void {
-        // this.router.events.subscribe((urlSegments) => {
-        //     urlSegments;
+        this.router.data.subscribe((res) => {
+            console.log(res);
+        });
 
-        //     const navigations = this.router.url.replace(this.regex, '$1').split('/').filter(Boolean);
-        //     // navigations.shift();
-
-        //     this.navigation = navigations;
-        //     // this.activePath = urlSegments.map((segment) => segment.path).join('/');
-        //     console.log(urlSegments);
-        // });
-        const snapshot: ActivatedRouteSnapshot = this.router.snapshot;
-        console.log(snapshot);
-        this.activePath = this._createUrlFromSnapshot(snapshot);
+        // this.activePath = this._createUrlFromSnapshot(snapshot);
+        console.log(this.activePath);
     }
 
     private _createUrlFromSnapshot(snapshot: ActivatedRouteSnapshot): string {

@@ -12,10 +12,11 @@ import { AppTheme } from './theme.config';
 export class ThemeService implements OnDestroy {
     currentTheme$ = new BehaviorSubject<AppTheme | null>(this._storedTheme);
 
+    private _navbarState$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+    public navState = this._navbarState$.asObservable();
+
     private readonly _document = inject(DOCUMENT);
-
     private readonly _destroy$ = new Subject();
-
     private readonly _mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
     public get currentTheme(): AppTheme | null {
@@ -86,5 +87,14 @@ export class ThemeService implements OnDestroy {
      */
     private _clearThemes(): void {
         this._document.body.classList.remove('system', 'light', 'dark');
+    }
+
+    /**
+     * Manually changes navbar state
+     *
+     * @param bool applies to new navbar
+     */
+    public setNavbarState(state: boolean): void {
+        this._navbarState$.next(state);
     }
 }

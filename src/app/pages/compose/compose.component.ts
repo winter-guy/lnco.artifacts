@@ -2,28 +2,35 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/require-await */
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Article } from '@lib/interfaces/article';
 import { ArtifactService } from '@lib/services/artifacts/artifacts.service';
 import { Observable, debounceTime, skip } from 'rxjs';
 
 import { editorjsConfig, toolsConfig } from '@lib/editor/editor.config';
 import EditorJS from '@editorjs/editorjs';
+import { ThemeService } from '@lib/services';
 
 @Component({
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, RouterModule],
     templateUrl: './compose.component.html',
 })
-export class ComposeComponent implements OnInit {
+export class ComposeComponent implements OnInit, OnDestroy {
     public artifact$!: Observable<Article>;
     public localCached!: Article;
     public editor!: EditorJS;
     public editorObserver!: MutationObserver;
-    constructor(protected artifactService: ArtifactService, private _router: ActivatedRoute) {}
+
+    constructor(
+        protected artifactService: ArtifactService,
+        private _router: ActivatedRoute,
+        private themeService: ThemeService,
+    ) {}
 
     ngOnInit(): void {
+        this.themeService.setNavbarState(false);
         this.detectEditorChanges()
             .pipe(debounceTime(200), skip(1))
             .subscribe({
@@ -79,5 +86,9 @@ export class ComposeComponent implements OnInit {
 
     public buildEditorWithoutBlocks(): void {
         this.editor = new EditorJS(editorjsConfig);
+    }
+
+    ngOnDestroy(): void {
+        this.themeService.setNavbarState(true);
     }
 }
