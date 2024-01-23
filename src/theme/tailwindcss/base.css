@@ -35,3 +35,10 @@ input:focus {
 .editor-title:empty:before {
   content: attr(data-placeholder);
 }
+
+/* cdx-notify cdx-notify--error cdx-notify--bounce-in */
+
+.cdx-notify {
+  @apply hidden
+}
+
