@@ -1,5 +1,8 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/naming-convention */
+// import { HttpClient } from '@angular/common/http';
+// import { inject } from '@angular/core';
+
 import { environment } from '@env/environment';
 import axios from 'axios';
 import { BehaviorSubject, Observable, from, of } from 'rxjs';
@@ -8,6 +11,7 @@ import { switchMap } from 'rxjs/operators';
 const myValueSubject: BehaviorSubject<string> = new BehaviorSubject<string>('Bearer ');
 
 export function UploadBlobToS3BucketAndGetUrl(snapshot: Blob): Observable<{ success: number; file: { url: string } }> {
+    // httpClient = inject(HttpClient);
     const url = `${environment.storeApi}/stream/blob`;
 
     return myValueSubject.pipe(
