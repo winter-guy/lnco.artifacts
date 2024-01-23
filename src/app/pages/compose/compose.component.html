@@ -1,25 +1,32 @@
-<div class="flex justify-between  mt-10 mb-18">
+<div class="flex justify-between  mt-10 mb-18 flex-row-reverse md:flex-row">
+  <div class="flex flex-col md:flex-row">
     <button routerLink="/" type="button" title="close"
-    class="inline-flex items-center justify-center w-auto h-8 px-2 py-1 m-2 space-x-1 text-sm font-medium text-gray-800 transition bg-warm border border-gray-200 rounded appearance-none cursor-pointer select-none hover:border-gray-300 hover:bg-gray-100 focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-transparent">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
-      stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-    </svg>
-  </button>
-<div class="h-20 w-40 border-dashed border-base border rounded-lg p-4"> tap here for inkout</div>
+      class="inline-flex items-center justify-center h-8 w-8 px-2 py-1 m-2 space-x-1 text-sm font-medium text-gray-800 transition bg-warm border border-gray-200 rounded appearance-none cursor-pointer select-none hover:border-gray-300 hover:bg-gray-100 focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-transparent">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <button routerLink="/" type="button" title="close"
+      class="inline-flex items-center justify-center w-auto h-8 px-2 py-1 m-2 space-x-1 text-sm font-medium text-gray-800 transition bg-warm border border-gray-200 rounded appearance-none cursor-pointer select-none hover:border-gray-300 hover:bg-gray-100 focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-transparent">
+      publish
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+        class="w-6 h-6 ml-2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+      </svg>
+    </button>
+  </div>
+  <div class="h-20 w-40 border-dashed border-base border rounded-lg p-4 m-2"> tap here for ink-out</div>
 </div>
 <div class="my-16 mb-64">
-    <div class="max-w-2xl mx-auto px-2">
-        <div>
-          <div class="flex items-center justify-between w-full mb-10" [formGroup]="editorForm">
-            <div formControlName="headline" placeholder="Story head" title="set header"
-                  class="w-full text-5xl focus-visible:ring-0 focus-visible:outline-none editor-title customTitleControl-field u-minHeight20 u-width100pct u-hideOutline js-customTitleControlSubtitle editable inlineError inlineError--maxLength display-char-count inlineError--muted"
-                  id="editor" role="textbox" contenteditable striptags
-                  data-placeholder="title..."
-                  data-chars-remaining="0">
-            </div>
-          </div>
+  <div class="max-w-2xl mx-auto">
+    <div>
+      <div class="flex items-center justify-between w-full mb-10" [formGroup]="editorForm">
+        <div formControlName="headline" placeholder="Story head" title="set header"
+          class="w-full text-5xl focus-visible:ring-0 focus-visible:outline-none editor-title customTitleControl-field u-minHeight20 u-width100pct u-hideOutline js-customTitleControlSubtitle editable inlineError inlineError--maxLength display-char-count inlineError--muted"
+          id="editor" role="textbox" contenteditable striptags data-placeholder="title..." data-chars-remaining="0">
         </div>
       </div>
-    <div id="editorjs"></div>
+    </div>
+  </div>
+  <div id="editorjs"></div>
 </div>
