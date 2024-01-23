@@ -4,11 +4,11 @@ body {
 }
 
 body {
-    @apply bg-white;
+    @apply bg-white transition duration-500 ease-out;
     @apply text-slate-900;
 }
 
 body.dark {
-    @apply bg-[#000000];
+    @apply bg-[#000000] transition duration-0 ease-in-out;
     @apply text-zinc-50;
 }
