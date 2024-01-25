@@ -22,6 +22,7 @@ input:focus {
   min-height: 40px;
   overflow-wrap: anywhere;
   white-space: normal;
+  @apply cursor-text;
 }
 
 .u-hideOutline {
@@ -42,3 +43,10 @@ input:focus {
   @apply hidden
 }
 
+.ce-paragraph, .cdx-block {
+  @apply cursor-text;
+}
+
+.codex-editor__redactor {
+  @apply pb-0;
+}

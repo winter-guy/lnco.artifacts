@@ -11,6 +11,18 @@
 			</a> on
 			<time datetime="post.time">Feb 12th 2021</time>
 		</p>
+		<div class="relative z-0 flex -space-x-px" *ngIf="post">
+			<button (click)="onBtnActionClicked(post.id)" class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:z-10 shrink-0 saturate-[110%] border-btn hover:bg-slate-100 px-3 py-1.5 text-sm font-medium rounded-full rounded-r-none">
+				<span>edit</span>
+			  </button>
+			  <button title="drop" class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:z-10 shrink-0 saturate-[110%] border-btn hover:bg-slate-100 px-3 py-1.5 text-sm font-medium rounded-full rounded-l-none">
+				<span>
+				  <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 shrink-0 stroke-white">
+					  <path d="M20 4 4 20M4 4l16 16"></path>
+					</svg>
+				</span>
+			  </button>
+        </div>
 	</div>
 	<div class="dark:text-gray-100">
 		<div id="editorjs" class="text-sm"></div>
