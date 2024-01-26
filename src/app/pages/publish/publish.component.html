@@ -1,0 +1,225 @@
+<div class="bg-white container h-full overflow-y-auto md:overflow-y-hidden">
+    <div class="flex justify-between items-center my-10">
+        <div class="flex">
+            <button routerLink="/" type="button" title="close" (click)="close()"
+                class="inline-flex items-center justify-center h-8 w-8 px-2 py-1 md:m-2 space-x-1 text-sm font-medium text-gray-800 transition bg-warm border border-gray-200 rounded-full appearance-none cursor-pointer select-none hover:border-gray-300 hover:bg-gray-100 focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-transparent">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+        </div>
+        <div class="flex space-x-2 h-8">
+            <div class="relative z-0 flex -space-x-px">
+                <button
+                    class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:z-10 shrink-0 saturate-[110%] border-btn hover:bg-slate-100 px-3 py-1.5 text-sm font-medium rounded-full rounded-r-none">
+                    <span>schedule</span>
+                </button>
+                <button title="drop"
+                    class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:z-10 shrink-0 saturate-[110%] border-btn hover:bg-slate-100 px-3 py-1.5 text-sm font-medium rounded-full rounded-l-none">
+                    <span>
+                        post
+                    </span>
+                </button>
+            </div>
+            <div
+                class="relative flex shrink-0 select-none items-center justify-center bg-slate-200 font-semibold uppercase text-slate-800 h-8 w-8 text-xs rounded-full">
+                <span>M</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row md:space-x-2 space-y-4 md:space-y-0">
+        <a href="#" class="group block relative grow-3">
+            <span
+                class="flex absolute bg-white m-1 z-40 shrink-0 items-center space-x-1.5 text-xs font-medium px-3 py-1 rounded text-slate-800">
+                <span class="whitespace-nowrap">cover</span>
+            </span>
+            <div class="w-full absolute z-99 bottom-[60px] flex justify-center">
+                <div class="flex -space-x-px">
+                    <button title="previous"
+                        class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:z-10 shrink-0 saturate-[110%] border-slate-300 focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 px-3 py-1.5 text-sm font-medium rounded-md rounded-r-none">
+                        <span>
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
+                                xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+                                <path d="m15 6-6 6 6 6">
+                                </path>
+                            </svg>
+                        </span>
+                    </button>
+                    <button title="next"
+                        class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:z-10 shrink-0 saturate-[110%] border-slate-300 focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 px-3 py-1.5 text-sm font-medium rounded-md rounded-l-none">
+                        <span>
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
+                                xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+                                <path d="m9 18 6-6-6-6">
+                                </path>
+                            </svg>
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <img src="https://images.unsplash.com/photo-1592921870789-04563d55041c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+                alt="" class="h-[350px] w-full rounded object-cover sm:h-[450px]" />
+
+
+            <div class="mt-1.5">
+                <p class="text-xs text-gray-500">Space Grey</p>
+
+                <div class="mt-1.5 flex gap-1">
+                    <form>
+                        <fieldset>
+                            <legend class="sr-only">Color</legend>
+                        </fieldset>
+
+                        <div class="flex flex-wrap justify-center gap-1 [&:hover_label]:opacity-75">
+                            <div>
+                                <input type="checkbox" id="ColorSg" class="sr-only" />
+
+                                <label for="ColorSg"
+                                    class="block h-4 w-4 cursor-pointer rounded-full bg-[#595759] transition hover:!opacity-100">
+                                    <span class="sr-only"> Space Gray </span>
+                                </label>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="ColorS" class="sr-only" />
+
+                                <label for="ColorS"
+                                    class="block h-4 w-4 cursor-pointer rounded-full bg-[#d2d3d4] transition hover:!opacity-100">
+                                    <span class="sr-only"> Silver </span>
+                                </label>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="ColorP" class="sr-only" />
+
+                                <label for="ColorP"
+                                    class="block h-4 w-4 cursor-pointer rounded-full bg-[#d89f97] transition hover:!opacity-100">
+                                    <span class="sr-only"> Pink </span>
+                                </label>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="ColorG" class="sr-only" />
+
+                                <label for="ColorG"
+                                    class="block h-4 w-4 cursor-pointer rounded-full bg-[#afbfab] transition hover:!opacity-100">
+                                    <span class="sr-only"> Pink </span>
+                                </label>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" id="ColorSb" class="sr-only" />
+
+                                <label for="ColorSb"
+                                    class="block h-4 w-4 cursor-pointer rounded-full bg-[#91a5bb] transition hover:!opacity-100">
+                                    <span class="sr-only"> Pink </span>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </a>
+        <a href="#" class="group block rounded">
+            <div class="grid grid-cols-2 md:grid-cols-2 overflow-auto gap-2 md:max-w-sm h-[450px]">
+                <div>
+                    <img class="h-auto max-w-full rounded"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="">
+                </div>
+                <div>
+                    <img class="h-auto max-w-full rounded"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg" alt="">
+                </div>
+                <div>
+                    <img class="h-auto max-w-full rounded"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
+                </div>
+                <div>
+                    <img class="h-auto max-w-full rounded"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
+                </div>
+                <div>
+                    <img class="h-auto max-w-full rounded"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
+                </div>
+                <div>
+                    <img class="h-auto max-w-full rounded"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" alt="">
+                </div>
+                <div>
+                    <img class="h-auto max-w-full rounded"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-6.jpg" alt="">
+                </div>
+                <div>
+                    <img class="h-auto max-w-full rounded"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-7.jpg" alt="">
+                </div>
+                <div>
+                    <img class="h-auto max-w-full rounded"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-8.jpg" alt="">
+                </div>
+                <div>
+                    <img class="h-auto max-w-full rounded"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-9.jpg" alt="">
+                </div>
+                <div>
+                    <img class="h-auto max-w-full rounded"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-10.jpg" alt="">
+                </div>
+                <div>
+                    <img class="h-auto max-w-full rounded"
+                        src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-11.jpg" alt="">
+                </div>
+            </div>
+
+        </a>
+        <div class="grow-2">
+            <div class="md:mx-4">
+                <div class="mx-auto max-w-md py-16 sm:px-6">
+                    <div class="mx-auto max-w-lg text-left">
+                        <h1 class="text-2xl font-bold sm:text-3xl">Get started today!</h1>
+
+                        <p class="mt-4 text-gray-500">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et libero nulla eaque error neque
+                            ipsa culpa autem, at itaque nostrum!
+                        </p>
+                    </div>
+
+                    <form action="" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
+                        <div>
+                            <label for="email" class="sr-only">Email</label>
+
+                            <div class="relative">
+                                <input type="email" id="Title"
+                                    class="mt-2 w-full rounded border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                                    placeholder="title ..." />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="password" class="sr-only">Password</label>
+                            <div class="relative">
+                                <div>
+                                    <textarea id="Description"
+                                        class="mt-2 w-full rounded border-gray-200 align-top shadow-sm sm:text-sm"
+                                        rows="4"
+                                        placeholder="Provide a concise, professional description, if possible."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between">
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

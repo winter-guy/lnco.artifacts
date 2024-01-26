@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/require-await */
@@ -7,16 +9,18 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Article } from '@lib/interfaces/article';
 import { ArtifactService } from '@lib/services/artifacts/artifacts.service';
 import { Observable, debounceTime, skip } from 'rxjs';
+import { Dialog, DialogModule } from '@angular/cdk/dialog';
 
 import { editorjsConfig, toolsConfig } from '@lib/editor/editor.config';
 import EditorJS from '@editorjs/editorjs';
 import { ThemeService } from '@lib/services';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '@lib/content/shared.module';
+import { PublishComponent } from '@pages/publish/publish.component';
 
 @Component({
     standalone: true,
-    imports: [CommonModule, RouterModule, ReactiveFormsModule, SharedModule],
+    imports: [CommonModule, RouterModule, ReactiveFormsModule, SharedModule, DialogModule],
     templateUrl: './compose.component.html',
 })
 export class ComposeComponent implements OnInit, OnDestroy {
@@ -28,9 +32,10 @@ export class ComposeComponent implements OnInit, OnDestroy {
 
     constructor(
         protected artifactService: ArtifactService,
+        private _formBuilder: FormBuilder,
         private _router: ActivatedRoute,
         private themeService: ThemeService,
-        private _formBuilder: FormBuilder,
+        private cdkDialog: Dialog,
     ) {}
 
     ngOnInit(): void {
@@ -74,7 +79,7 @@ export class ComposeComponent implements OnInit, OnDestroy {
             this.postDataBlock = article;
             this.editor = new EditorJS({
                 holder: 'editorjs',
-                autofocus: false,
+                autofocus: true,
                 readOnly: false,
                 placeholder: 'Share your story ... ',
                 tools: toolsConfig,
@@ -102,6 +107,30 @@ export class ComposeComponent implements OnInit, OnDestroy {
 
     public buildEditorWithoutBlocks(): void {
         this.editor = new EditorJS(editorjsConfig);
+    }
+
+    public saveEditorData(): void {
+        this.editor.save().then((outputData) => {
+            // if ('username') (outputData as Article).author = this.user?.name;
+
+            const DialogConf = {
+                width: '100vw',
+                height: '100vh',
+                minHeight: '100vh',
+                maxWidth: 'unset',
+                panelClass: ['rounded-none', 'bg-white'],
+                data: {},
+                disableClose: false,
+            };
+            if (outputData.blocks.length > 0) {
+                const dialogRef = this.cdkDialog.open(PublishComponent, DialogConf);
+                dialogRef.closed.subscribe((result) => {
+                    console.log(`Dialog result: ${result}`);
+                });
+            } else {
+                // this._warningWithEmptyPublish()
+            }
+        });
     }
 
     ngOnDestroy(): void {

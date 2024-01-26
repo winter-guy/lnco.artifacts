@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @angular-eslint/component-selector */
@@ -20,7 +21,11 @@ export class ArtifactComponent implements OnInit {
     public post!: Article | undefined;
     public editor!: EditorJS;
 
-    constructor(protected artifactService: ArtifactService, private _router: ActivatedRoute, private router: Router) {}
+    constructor(
+        protected artifactService: ArtifactService, 
+        private _router: ActivatedRoute, 
+        private router: Router
+    ) {}
 
     ngOnInit(): void {
         const url = this._router.snapshot.queryParams['page'] as string;
