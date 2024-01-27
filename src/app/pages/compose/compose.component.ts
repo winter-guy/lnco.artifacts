@@ -18,6 +18,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '@lib/content/shared.module';
 import { PublishComponent } from '@pages/publish/publish.component';
 import { Compose } from '@lib/interfaces/compose';
+import { ShortenStringPipe } from '@lib/pipe/short.pipe';
 
 @Component({
     standalone: true,
@@ -130,7 +131,7 @@ export class ComposeComponent implements OnInit, OnDestroy {
                         ...DialogConf,
                         data: <Compose>{
                             header: this.editorForm.controls['headline'].value,
-                            description: _description,
+                            description: new ShortenStringPipe().transform(_description),
                             draftId: this.draftHashIdentifier,
                         },
                     });
