@@ -6,7 +6,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { Article } from '@lib/interfaces/article';
+import { Article, BlocksEntity } from '@lib/interfaces/article';
 import { ArtifactService } from '@lib/services/artifacts/artifacts.service';
 import { Observable, debounceTime, skip } from 'rxjs';
 import { Dialog, DialogModule } from '@angular/cdk/dialog';
@@ -17,6 +17,7 @@ import { ThemeService } from '@lib/services';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '@lib/content/shared.module';
 import { PublishComponent } from '@pages/publish/publish.component';
+import { Compose } from '@lib/interfaces/compose';
 
 @Component({
     standalone: true,
@@ -27,6 +28,7 @@ export class ComposeComponent implements OnInit, OnDestroy {
     public artifact$!: Observable<Article>;
     public editor!: EditorJS;
     public editorObserver!: MutationObserver;
+    public draftHashIdentifier!: string;
 
     public editorForm!: FormGroup;
 
@@ -47,6 +49,7 @@ export class ComposeComponent implements OnInit, OnDestroy {
                     updateOn: 'change',
                 },
             ],
+            article: [],
         });
 
         /* overrides theme for composer page, dark theme abstructs view and editing experiance. */
@@ -65,9 +68,9 @@ export class ComposeComponent implements OnInit, OnDestroy {
                 },
             });
 
-        const IdFromUrl = this._router.snapshot.queryParams['page'] as string;
-        if (IdFromUrl) {
-            this.buildEditorWithBlocks(IdFromUrl);
+        this.draftHashIdentifier = this._router.snapshot.queryParams['page'] as string;
+        if (this.draftHashIdentifier) {
+            this.buildEditorWithBlocks(this.draftHashIdentifier);
         } else {
             this.buildEditorWithoutBlocks();
         }
@@ -86,7 +89,7 @@ export class ComposeComponent implements OnInit, OnDestroy {
                 data: article,
             });
 
-            // this.editorForm.get('headline')?.patchValue(article.highlight.header);
+            this.editorForm.get('headline')?.patchValue(article.highlight.header);
         });
     }
 
@@ -111,25 +114,47 @@ export class ComposeComponent implements OnInit, OnDestroy {
 
     public saveEditorData(): void {
         this.editor.save().then((outputData) => {
-            // if ('username') (outputData as Article).author = this.user?.name;
-
             const DialogConf = {
                 width: '100vw',
                 height: '100vh',
                 minHeight: '100vh',
                 maxWidth: 'unset',
                 panelClass: ['rounded-none', 'bg-white'],
-                data: {},
+
                 disableClose: false,
             };
-            if (outputData.blocks.length > 0) {
-                const dialogRef = this.cdkDialog.open(PublishComponent, DialogConf);
-                dialogRef.closed.subscribe((result) => {
-                    console.log(`Dialog result: ${result}`);
+
+            this.getContentFromPublication(outputData.blocks as BlocksEntity[]).then((_description) => {
+                if (outputData.blocks.length > 0) {
+                    const dialogRef = this.cdkDialog.open(PublishComponent, {
+                        ...DialogConf,
+                        data: <Compose>{
+                            header: this.editorForm.controls['headline'].value,
+                            description: _description,
+                            draftId: this.draftHashIdentifier,
+                        },
+                    });
+                    dialogRef.closed.subscribe((result) => {
+                        console.log(`Dialog result: ${result}`);
+                    });
+                } else {
+                    // this._warningWithEmptyPublish()
+                }
+            });
+        });
+    }
+
+    private getContentFromPublication(blocks: BlocksEntity[]): Promise<string> {
+        return new Promise((resolve) => {
+            if (blocks) {
+                blocks.forEach((element) => {
+                    if (element.type == 'paragraph') {
+                        const head = element.data.text ? element.data.text : '';
+                        resolve(new DOMParser().parseFromString(head, 'text/html').body.innerText);
+                    }
                 });
-            } else {
-                // this._warningWithEmptyPublish()
             }
+            resolve('');
         });
     }
 

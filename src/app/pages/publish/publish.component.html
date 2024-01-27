@@ -32,39 +32,41 @@
 
     <div class="flex flex-col md:flex-row md:space-x-2 space-y-4 md:space-y-0">
         <a href="#" class="group block relative grow-3">
-            <span
-                class="flex absolute bg-white m-1 z-40 shrink-0 items-center space-x-1.5 text-xs font-medium px-3 py-1 rounded text-slate-800">
-                <span class="whitespace-nowrap">cover</span>
-            </span>
-            <div class="w-full absolute z-99 bottom-[60px] flex justify-center">
-                <div class="flex -space-x-px">
-                    <button title="previous"
-                        class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:z-10 shrink-0 saturate-[110%] border-slate-300 focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 px-3 py-1.5 text-sm font-medium rounded-md rounded-r-none">
-                        <span>
-                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
-                                xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
-                                <path d="m15 6-6 6 6 6">
-                                </path>
-                            </svg>
-                        </span>
-                    </button>
-                    <button title="next"
-                        class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:z-10 shrink-0 saturate-[110%] border-slate-300 focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 px-3 py-1.5 text-sm font-medium rounded-md rounded-l-none">
-                        <span>
-                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
-                                xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
-                                <path d="m9 18 6-6-6-6">
-                                </path>
-                            </svg>
-                        </span>
-                    </button>
+            <div class="h-[350px] sm:h-[450px] relative">
+                <span
+                    class="flex absolute bg-white m-1 z-40 shrink-0 items-center space-x-1.5 text-xs font-medium px-3 py-1 rounded text-slate-800">
+                    <span class="whitespace-nowrap">cover</span>
+                </span>
+                <img src="https://images.unsplash.com/photo-1592921870789-04563d55041c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+                    alt="" class="h-[350px] w-full rounded object-cover sm:h-[450px]" />
+                <div class="w-full absolute z-99 bottom-2 flex justify-center">
+                    <div class="flex -space-x-px">
+                        <button title="previous"
+                            class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:z-10 shrink-0 saturate-[110%] border-slate-300 focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 px-3 py-1.5 text-sm font-medium rounded-md rounded-r-none">
+                            <span>
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
+                                    xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+                                    <path d="m15 6-6 6 6 6">
+                                    </path>
+                                </svg>
+                            </span>
+                        </button>
+                        <button title="next"
+                            class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:z-10 shrink-0 saturate-[110%] border-slate-300 focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 px-3 py-1.5 text-sm font-medium rounded-md rounded-l-none">
+                            <span>
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
+                                    xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+                                    <path d="m9 18 6-6-6-6">
+                                    </path>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
                 </div>
-            </div>
 
-            <img src="https://images.unsplash.com/photo-1592921870789-04563d55041c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-                alt="" class="h-[350px] w-full rounded object-cover sm:h-[450px]" />
+            </div>
 
 
             <div class="mt-1.5">
@@ -129,7 +131,9 @@
         <div class="group block rounded">
             <div class="grid grid-cols-2 md:grid-cols-2 overflow-auto gap-2 md:max-w-sm h-[450px]">
                 <div class="relative">
-                    <input aria-label="select" id="Basic" class="cursor-pointer rounded m-1.5 absolute text-blue-600 transition disabled:cursor-not-allowed disabled:bg-slate-200 disabled:opacity-75 border-slate-300" type="checkbox">
+                    <input aria-label="select" id="Basic"
+                        class="cursor-pointer rounded m-1.5 absolute text-blue-600 transition disabled:cursor-not-allowed disabled:bg-slate-200 disabled:opacity-75 border-slate-300"
+                        type="checkbox">
                     <img class="h-auto max-w-full rounded"
                         src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg" alt="">
                 </div>
@@ -184,20 +188,19 @@
             <div class="md:mx-4">
                 <div class="mx-auto max-w-md py-16 sm:px-6">
                     <div class="mx-auto max-w-lg text-left">
-                        <h1 class="text-2xl font-bold sm:text-3xl">Get started today!</h1>
+                        <h1 class="text-2xl font-bold sm:text-3xl">{{this.editorForm.controls['headline'].value}}</h1>
 
                         <p class="mt-4 text-gray-500">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et libero nulla eaque error neque
-                            ipsa culpa autem, at itaque nostrum!
+                            {{this.editorForm.controls['description'].value}}
                         </p>
                     </div>
 
-                    <form action="" class="mx-auto mb-0 mt-8 max-w-md space-y-4">
+                    <form action="" class="mx-auto mb-0 mt-8 max-w-md space-y-4" [formGroup]="editorForm">
                         <div>
                             <label for="email" class="sr-only">Email</label>
 
                             <div class="relative">
-                                <input type="email" id="Title"
+                                <input type="email" formControlName="headline" id="Title"
                                     class="mt-2 w-full rounded border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                     placeholder="title ..." />
                             </div>
@@ -207,7 +210,7 @@
                             <label for="password" class="sr-only">Password</label>
                             <div class="relative">
                                 <div>
-                                    <textarea id="Description"
+                                    <textarea id="Description" formControlName="description"
                                         class="mt-2 w-full rounded border-gray-200 align-top shadow-sm sm:text-sm"
                                         rows="4"
                                         placeholder="Provide a concise, professional description, if possible."></textarea>
