@@ -6,4 +6,5 @@ export interface Compose {
     draftId: string;
     tags: Tag[];
     article: Article | unknown;
+    images: string[];
 }

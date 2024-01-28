@@ -8,7 +8,7 @@ import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/co
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Article, BlocksEntity } from '@lib/interfaces/article';
 import { ArtifactService } from '@lib/services/artifacts/artifacts.service';
-import { Observable, debounceTime, skip } from 'rxjs';
+import { Observable, combineLatest, debounceTime, skip } from 'rxjs';
 import { Dialog, DialogModule } from '@angular/cdk/dialog';
 
 import { editorjsConfig, toolsConfig } from '@lib/editor/editor.config';
@@ -125,7 +125,10 @@ export class ComposeComponent implements OnInit, OnDestroy {
                 disableClose: false,
             };
 
-            this.getContentFromPublication(outputData.blocks as BlocksEntity[]).then((_description) => {
+            combineLatest([
+                this.artifactService.getImageFromPublication(outputData.blocks as BlocksEntity[]),
+                this.artifactService.getContentFromPublication(outputData.blocks as BlocksEntity[]),
+            ]).subscribe(([_images, _description]) => {
                 if (outputData.blocks.length > 0) {
                     const dialogRef = this.cdkDialog.open(PublishComponent, {
                         ...DialogConf,
@@ -133,6 +136,7 @@ export class ComposeComponent implements OnInit, OnDestroy {
                             header: this.editorForm.controls['headline'].value,
                             description: new ShortenStringPipe().transform(_description),
                             draftId: this.draftHashIdentifier,
+                            images: _images,
                         },
                     });
                     dialogRef.closed.subscribe((result) => {
@@ -142,20 +146,6 @@ export class ComposeComponent implements OnInit, OnDestroy {
                     // this._warningWithEmptyPublish()
                 }
             });
-        });
-    }
-
-    private getContentFromPublication(blocks: BlocksEntity[]): Promise<string> {
-        return new Promise((resolve) => {
-            if (blocks) {
-                blocks.forEach((element) => {
-                    if (element.type == 'paragraph') {
-                        const head = element.data.text ? element.data.text : '';
-                        resolve(new DOMParser().parseFromString(head, 'text/html').body.innerText);
-                    }
-                });
-            }
-            resolve('');
         });
     }
 

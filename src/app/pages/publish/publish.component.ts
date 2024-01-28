@@ -2,24 +2,32 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
 import { Compose } from '@lib/interfaces/compose';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { Tag } from '@lib/interfaces/article';
 
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
+import { CheckboxComponent } from './checkbox.component';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, MatChipsModule, MatIconModule, NgFor],
+    imports: [ReactiveFormsModule, MatChipsModule, MatIconModule, NgFor, NgIf, FormsModule, CheckboxComponent],
     templateUrl: './publish.component.html',
     styleUrl: './publish.component.css',
 })
 export class PublishComponent implements OnInit {
     public editorForm!: FormGroup;
     public tags: Tag[] = [];
+    public isChecked = false;
+
+    public poster!: {
+        label: string;
+        url: string;
+        selected: boolean;
+    }[];
     readonly separatorKeysCodes = [ENTER, COMMA] as const;
 
     constructor(
@@ -43,6 +51,15 @@ export class PublishComponent implements OnInit {
             headline: this.data.header,
             description: this.data.description,
         });
+
+        this.poster = this.data.images.map((url, i) => {
+            return { label: `${i}_selection`, url: url, selected: i === 0 ? true : false };
+        });
+        console.log(this.poster);
+    }
+
+    public get selectedPoster(): string | undefined {
+        return this.poster.find((image) => image.selected)?.url;
     }
 
     public close(): void {
@@ -62,6 +79,27 @@ export class PublishComponent implements OnInit {
         const index: number = this.tags.indexOf(tag);
         if (index >= 0) {
             this.tags.splice(index, 1);
+        }
+    }
+
+    public onCheckboxChange(index: number): void {
+        // Uncheck other checkboxes when one is checked
+        this.poster.forEach((checkbox: { selected: boolean }, i: number) => {
+            checkbox.selected = !(i !== index);
+        });
+        console.log(this.poster);
+    }
+
+    //XXXXXXX
+    public handleCheckboxChange(event: Event): void {
+        // Uncheck other checkboxes when the current one is checked
+        if (event.target instanceof HTMLInputElement) {
+            this.isChecked = event.target.checked;
+
+            // You can implement logic to uncheck other checkboxes here
+            if (this.isChecked) {
+                console.log('Checkbox checked');
+            }
         }
     }
 }
