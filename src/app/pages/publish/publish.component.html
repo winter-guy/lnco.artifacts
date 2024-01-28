@@ -1,4 +1,4 @@
-<div class="bg-white container h-full overflow-y-auto md:overflow-y-hidden">
+<div class="bg-white container h-full overflow-y-auto lg:overflow-y-hidden">
     <div class="flex justify-between items-center my-10">
         <div class="flex">
             <button routerLink="/" type="button" title="close" (click)="close()"
@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <div class="flex flex-col md:flex-row md:space-x-2 space-y-4 md:space-y-0">
+    <div class="flex flex-col lg:flex-row lg:space-x-2 space-y-4 lg:space-y-0">
         <a href="#" class="group block relative grow-3">
             <div class="h-[350px] sm:h-[450px] relative">
                 <span
@@ -65,13 +65,11 @@
                         </button>
                     </div>
                 </div>
-
             </div>
 
 
             <div class="mt-1.5">
                 <p class="text-xs text-gray-500">Space Grey</p>
-
                 <div class="mt-1.5 flex gap-1">
                     <form>
                         <fieldset>
@@ -129,7 +127,7 @@
             </div>
         </a>
         <div class="group block rounded">
-            <div class="grid grid-cols-2 md:grid-cols-2 overflow-auto gap-2 md:max-w-sm h-[450px]">
+            <div class="grid grid-cols-2 md:grid-cols-2 overflow-auto gap-2 lg:max-w-sm h-[450px]">
                 <div class="relative">
                     <input aria-label="select" id="Basic"
                         class="cursor-pointer rounded m-1.5 absolute text-blue-600 transition disabled:cursor-not-allowed disabled:bg-slate-200 disabled:opacity-75 border-slate-300"
@@ -185,8 +183,8 @@
 
         </div>
         <div class="grow-2">
-            <div class="md:mx-4">
-                <div class="mx-auto max-w-md py-16 sm:px-6">
+            <div>
+                <div class="max-w-md px-6 md:px-0">
                     <div class="mx-auto max-w-lg text-left">
                         <h1 class="text-2xl font-bold sm:text-3xl">{{this.editorForm.controls['headline'].value}}</h1>
 
@@ -200,8 +198,8 @@
                             <label for="email" class="sr-only">Email</label>
 
                             <div class="relative">
-                                <input type="email" formControlName="headline" id="Title"
-                                    class="mt-2 w-full rounded border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                                <input type="headline" formControlName="headline" id="Title"
+                                    class="mt-2 w-full border rounded border-btn p-4 pe-12 text-sm shadow-sm"
                                     placeholder="title ..." />
                             </div>
                         </div>
@@ -211,7 +209,7 @@
                             <div class="relative">
                                 <div>
                                     <textarea id="Description" formControlName="description"
-                                        class="mt-2 w-full rounded border-gray-200 align-top shadow-sm sm:text-sm"
+                                        class="mt-2 w-full rounded border-btn align-top shadow-sm sm:text-sm"
                                         rows="4"
                                         placeholder="Provide a concise, professional description, if possible."></textarea>
                                 </div>
@@ -222,7 +220,28 @@
                           </span>
 
                         <div class="flex items-center justify-between">
+                            <mat-chip-grid #chipList aria-label="Fruit selection">
+                                <div>
+                                  <mat-chip *ngFor="let fruit of tags" (removed)="remove(fruit)">
+                                    {{ fruit.name }}
+                                    <button matChipRemove>
+                                      <mat-icon>cancel</mat-icon>
+                                    </button>
+                                  </mat-chip>
+                                </div>
+                                <div class="w-full space-y-0.5">
+                                    <input type="tags" id="Title"
+                                    class="mt-2 w-full rounded border border-btn p-4 pe-12 text-sm shadow-sm disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-75"
+                                    placeholder="Add tags..." 
+                                    [matChipInputFor]="chipList"
+                                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                    [matChipInputAddOnBlur]="true"
 
+                                    (matChipInputTokenEnd)="add($event)"
+                                    [disabled]="tags && tags.length > 4"
+                                    />
+                                </div>
+                              </mat-chip-grid>
                         </div>
                     </form>
                 </div>
