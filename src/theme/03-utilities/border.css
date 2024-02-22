@@ -2,6 +2,10 @@
     @apply border-[#C1C1C1] dark:border-[#545454];
 }
 
+.border-light {
+    @apply border-[#e8eaf0] dark:border-[#545454];
+}
+
 .border-btn {
     @apply border-gray-200 dark:border-[#545454];
 }
