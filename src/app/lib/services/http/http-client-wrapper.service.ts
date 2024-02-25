@@ -8,7 +8,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 })
 export class HttpService {
     private _headers: HttpHeaders;
-    private _baseUrl: string = environment.apiUrl;
+    private _baseUrl: string = environment.apiUri;
 
     constructor(private _httpClient: HttpClient) {
         this._headers = new HttpHeaders().set('Content-Type', 'application/json');

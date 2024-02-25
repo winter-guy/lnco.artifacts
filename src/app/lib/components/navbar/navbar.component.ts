@@ -49,4 +49,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
         const NAV_URL = '/compose';
         this._router.navigate([NAV_URL], { queryParams: { page: id } });
     }
+
+    public signInEvent(): void {
+        return;
+    }
 }
