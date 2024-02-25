@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { CommonModule, DOCUMENT } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { AuthService, ThemeService } from '@lib/services';
+import { AuthService as AuthTemp, ThemeService } from '@lib/services';
 import { LogoComponent } from '../logo/logo.component';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { AppTheme } from '@lib/services/theme';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
     selector: 'app-navbar',
@@ -21,7 +22,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     $navbarState!: Observable<boolean>;
 
-    constructor(public _router: Router, public _authService: AuthService, public _themeService: ThemeService) {}
+    constructor(
+        public _router: Router,
+        public _authService: AuthTemp,
+        public _themeService: ThemeService,
+        public auth: AuthService,
+        @Inject(DOCUMENT) private doc: Document,
+    ) {}
 
     ngOnInit(): void {
         this._themeService.currentTheme$
@@ -50,7 +57,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this._router.navigate([NAV_URL], { queryParams: { page: id } });
     }
 
-    public signInEvent(): void {
-        return;
+    public loginWithRedirect(): void {
+        this.auth.loginWithRedirect();
+    }
+
+    public logout(): void {
+        this.auth.logout({ logoutParams: { returnTo: this.doc.location.origin } });
     }
 }

@@ -3,11 +3,7 @@
         <div class="h-16 flex items-center justify-between">
             <app-logo></app-logo>
             <nav class="flex items-center space-x-2">
-                <button data-cy="logout-button"
-                    class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:z-10 shrink-0 saturate-[110%] border-btn focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 px-3 p-1.5 text-sm font-medium rounded-full dark:bg-transparent dark:text-slate-50"
-                    (click)="onBtnActionClicked()">
-                    <span>contribute</span>                     
-                </button>
+                
 
                 <button data-cy="light-button"
                     class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:z-10 shrink-0 saturate-[110%] focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 p-1.5 text-sm font-medium rounded-full dark:bg-transparent dark:text-slate-50"
@@ -38,10 +34,21 @@
                         </svg>
                     </span>
                 </button>
-                <button data-cy="logout-button"
+                <button data-cy="logout-button" *ngIf="auth.isAuthenticated$ | async"
                     class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:z-10 shrink-0 saturate-[110%] border-btn focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 px-3 p-1.5 text-sm font-medium rounded-full dark:bg-transparent dark:text-slate-50"
-                    (click)="signInEvent()">
-                    <span>Sign In</span>
+                    (click)="onBtnActionClicked()">
+                    <span>contribute</span>                     
+                </button>
+                <button data-cy="logout-button"  *ngIf="(auth.isAuthenticated$ | async) === false" 
+                    class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:z-10 shrink-0 saturate-[110%] border-btn focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 px-3 p-1.5 text-sm font-medium rounded-full dark:bg-transparent dark:text-slate-50"
+                    (click)="loginWithRedirect()">
+                    <span>sign in</span>
+                </button>
+                
+                <button data-cy="logout-button" *ngIf="auth.isAuthenticated$ | async"
+                    class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-2 focus:z-10 shrink-0 saturate-[110%] border-transparent focus:ring-slate-300 bg-[#fde047] dark:bg-[#fde047] text-slate-900 hover:bg-yellow-400  px-3 p-1.5 text-sm font-medium rounded-full dark:text-slate-900"
+                    (click)="logout()">
+                    <span>sign out</span>
                 </button>
             </nav>
         </div>

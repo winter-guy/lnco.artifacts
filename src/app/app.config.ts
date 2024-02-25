@@ -1,12 +1,29 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { jwtInterceptor, serverErrorInterceptor } from '@lib/interceptors';
 import { routes } from './app.routes';
-import { provideAnimations } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-browser/animations';
+import { AuthModule } from '@auth0/auth0-angular';
+import { environment } from '@env/environment';
 
 export const appConfig: ApplicationConfig = {
     providers: [
+        importProvidersFrom(
+            AuthModule.forRoot({
+                domain: environment.auth.domain,
+                clientId: environment.auth.clientId,
+                // audience: 'https://auth.redsuites.io/',
+                authorizationParams: {
+                    redirect_uri: window.location.origin,
+                },
+                httpInterceptor: {
+                    ...environment.httpInterceptor,
+                },
+            }),
+            BrowserAnimationsModule,
+        ),
         provideRouter(routes, withComponentInputBinding()),
         provideHttpClient(withInterceptors([serverErrorInterceptor, jwtInterceptor])),
         provideAnimations(),
