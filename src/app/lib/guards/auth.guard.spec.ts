@@ -1,15 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 import { CanMatchFn, Route, Router, UrlSegment } from '@angular/router';
-import { AuthService } from '@lib/services';
+import { AuthyService } from '@lib/services';
 import { authGuard } from './auth.guard';
 
 describe('authGuard', () => {
-    let authService: AuthService;
+    let authService: AuthyService;
     let router: Router;
     let canMatch: CanMatchFn;
 
     beforeEach(() => {
-        authService = TestBed.inject(AuthService);
+        authService = TestBed.inject(AuthyService);
         router = TestBed.inject(Router);
         canMatch = authGuard();
     });

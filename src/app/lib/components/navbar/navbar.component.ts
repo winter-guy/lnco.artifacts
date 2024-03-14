@@ -3,7 +3,7 @@
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { AuthService as AuthTemp, ThemeService } from '@lib/services';
+import { AuthyService as AuthTemp, ThemeService } from '@lib/services';
 import { LogoComponent } from '../logo/logo.component';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { AppTheme } from '@lib/services/theme';

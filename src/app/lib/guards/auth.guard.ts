@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { CanMatchFn, Route, Router, UrlSegment } from '@angular/router';
-import { AuthService } from '@lib/services';
+import { AuthyService } from '@lib/services';
 
 type AuthGuardOptions = {
     requiresAuthentication: boolean;
@@ -43,7 +43,7 @@ const defaultAuthGuardOptions = (): AuthGuardOptions => ({
 export const authGuard = (options: AuthGuardOptions = defaultAuthGuardOptions()): CanMatchFn => {
     return (_: Route, segments: UrlSegment[]) => {
         const router = inject(Router);
-        const authService = inject(AuthService);
+        const authService = inject(AuthyService);
 
         if (options.requiresAuthentication === authService.isAuthenticated) {
             return true;
