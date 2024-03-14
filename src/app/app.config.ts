@@ -14,9 +14,9 @@ export const appConfig: ApplicationConfig = {
             AuthModule.forRoot({
                 domain: environment.auth.domain,
                 clientId: environment.auth.clientId,
-                // audience: 'https://auth.redsuites.io/',
                 authorizationParams: {
                     redirect_uri: window.location.origin,
+                    audience: environment.auth.audience,
                 },
                 httpInterceptor: {
                     ...environment.httpInterceptor,

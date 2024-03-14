@@ -12,3 +12,7 @@ body.dark {
     @apply bg-[#000000] transition duration-500 ease-in-out;
     @apply text-zinc-50;
 }
+
+.image-tool__caption {
+    @apply hidden;
+}

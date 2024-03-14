@@ -5,31 +5,31 @@
  * */
 
 import config from '@lib/services/auth/config.json';
+import endpoints from '@lib/services/endpoint.json';
 
-const {
-    domain,
-    clientId,
-    authorizationParams: { audience },
-    apiUri,
-    errorPath,
-} = config as {
+// eslint-disable-next-line prettier/prettier
+const { domain, clientId, authorizationParams: { audience }, apiUri, errorPath } = config as {
     domain: string;
     clientId: string;
     authorizationParams: {
-        audience?: string;
+        audience: string;
     };
     apiUri: string;
     errorPath: string;
 };
 
+const { imageOnS3 } = endpoints as {
+    imageOnS3: string;
+};
+
 export const environment = {
     production: true,
-    apiUri: 'http://localhost:3000/api/v1', // need to disable as http intercepter get to be in place.
-    storeApi: 'https://4kafiznttgjtzd3nkcslgn7qbu0ewugv.lambda-url.ap-southeast-2.on.aws',
+    apiUri: 'http://localhost:3000/api/v2', // need to disable as http intercepter get to be in place.
+    storeApi: imageOnS3,
     auth: {
         domain,
         clientId,
-        ...(audience && audience !== 'YOUR_API_IDENTIFIER' ? { audience } : null),
+        audience,
         redirectUri: window.location.origin,
         errorPath,
     },

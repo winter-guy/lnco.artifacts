@@ -16,7 +16,7 @@ const {
     domain: string;
     clientId: string;
     authorizationParams: {
-        audience?: string;
+        audience: string;
     };
     apiUri: string;
     errorPath: string;
@@ -24,12 +24,12 @@ const {
 
 export const environment = {
     production: false,
-    apiUri: 'http://localhost:3000/api/v1', // need to disable as http intercepter get to be in place.
+    apiUri: 'http://localhost:3000/api/v2', // need to disable as http intercepter get to be in place.
     storeApi: 'https://4kafiznttgjtzd3nkcslgn7qbu0ewugv.lambda-url.ap-southeast-2.on.aws',
     auth: {
         domain,
         clientId,
-        ...(audience && audience !== 'YOUR_API_IDENTIFIER' ? { audience } : null),
+        audience,
         redirectUri: window.location.origin,
         errorPath,
     },

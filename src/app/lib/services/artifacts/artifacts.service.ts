@@ -11,7 +11,7 @@ export class ArtifactService {
     constructor(protected httpService: HttpService) {}
 
     public getArtifacts(): Observable<Artifact[]> {
-        return this.httpService.get<Artifact[]>('/articles');
+        return this.httpService.get<Artifact[]>('/fetch');
     }
 
     public getArtifactsById(id: string): Observable<Article> {
