@@ -6,4 +6,10 @@ export interface Artifact {
     head: string;
     meta: string;
     details: string;
+
+    author: string;
+    forepart: string;
+    backdrop: string;
+    modifiedDate: number;
+    cl: number;
 }
