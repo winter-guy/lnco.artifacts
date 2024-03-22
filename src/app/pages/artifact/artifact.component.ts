@@ -1,16 +1,12 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @angular-eslint/component-selector */
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Article } from '@lib/interfaces/article';
+import { ActivatedRoute, Router } from '@angular/router';
 
+import { Article } from '@lib/interfaces/article';
 import { ArtifactService } from '@lib/services/artifacts/artifacts.service';
 
-import { toolsConfig } from '@lib/editor/editor.config';
 import EditorJS from '@editorjs/editorjs';
-import { ActivatedRoute, Router } from '@angular/router';
+import { toolsConfig } from '@lib/editor/editor.config';
 
 @Component({
     standalone: true,
@@ -21,14 +17,10 @@ export class ArtifactComponent implements OnInit {
     public post!: Article | undefined;
     public editor!: EditorJS;
 
-    constructor(
-        protected artifactService: ArtifactService, 
-        private _router: ActivatedRoute, 
-        private router: Router
-    ) {}
+    constructor(protected artifactService: ArtifactService, private _route: ActivatedRoute, private _router: Router) {}
 
     ngOnInit(): void {
-        const url = this._router.snapshot.queryParams['page'] as string;
+        const url = this._route.snapshot.queryParams['page'] as string;
 
         this.artifactService.getArtifactsById(url).subscribe((res) => {
             if (res) {
@@ -49,6 +41,6 @@ export class ArtifactComponent implements OnInit {
 
     public onBtnActionClicked(id: string): void {
         const NAV_URL = '/compose';
-        this.router.navigate([NAV_URL], { queryParams: { page: id } });
+        this._router.navigate([NAV_URL], { queryParams: { page: id } });
     }
 }

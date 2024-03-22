@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /**
  * This file can be replaced during build by using the `fileReplacements` array.
  * `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
@@ -6,13 +7,7 @@
 
 import config from '@lib/services/auth/config.json';
 
-const {
-    domain,
-    clientId,
-    authorizationParams: { audience },
-    apiUri,
-    errorPath,
-} = config as {
+const { domain, clientId, authorizationParams: { audience }, apiUri, errorPath } = config as {
     domain: string;
     clientId: string;
     authorizationParams: {
@@ -22,10 +17,10 @@ const {
     errorPath: string;
 };
 
+
 export const environment = {
     production: false,
-    apiUri: 'http://localhost:3000/api/v2', // need to disable as http intercepter get to be in place.
-    storeApi: 'https://4kafiznttgjtzd3nkcslgn7qbu0ewugv.lambda-url.ap-southeast-2.on.aws',
+    apiUri: apiUri, // need to disable as http intercepter get to be in place.
     auth: {
         domain,
         clientId,

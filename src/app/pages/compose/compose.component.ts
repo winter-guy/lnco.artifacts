@@ -1,24 +1,24 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable @typescript-eslint/require-await */
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { Article, BlocksEntity } from '@lib/interfaces/article';
-import { ArtifactService } from '@lib/services/artifacts/artifacts.service';
+import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { RouterModule, ActivatedRoute } from '@angular/router';
 import { Observable, combineLatest, debounceTime, skip } from 'rxjs';
 import { Dialog, DialogModule } from '@angular/cdk/dialog';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+
+import { SharedModule } from '@lib/content/shared.module';
+import { ThemeService } from '@lib/services';
+import { ArtifactService } from '@lib/services/artifacts/artifacts.service';
+import { PublishComponent } from '@pages/publish/publish.component';
+
+import { Article, BlocksEntity } from '@lib/interfaces/article';
+import { Compose } from '@lib/interfaces/compose';
 
 import { editorjsConfig, toolsConfig } from '@lib/editor/editor.config';
 import EditorJS from '@editorjs/editorjs';
-import { ThemeService } from '@lib/services';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from '@lib/content/shared.module';
-import { PublishComponent } from '@pages/publish/publish.component';
-import { Compose } from '@lib/interfaces/compose';
+
 import { ShortenStringPipe } from '@lib/pipe/short.pipe';
+import { AuthService } from '@auth0/auth0-angular';
+import { myValueSubject } from '@lib/services/core/publish';
 
 @Component({
     standalone: true,
@@ -35,14 +35,16 @@ export class ComposeComponent implements OnInit, OnDestroy {
 
     constructor(
         protected artifactService: ArtifactService,
+
         private _formBuilder: FormBuilder,
         private _router: ActivatedRoute,
-        private themeService: ThemeService,
-        private cdkDialog: Dialog,
+        private _themeService: ThemeService,
+        private _cdkDialog: Dialog,
+        private readonly _auth: AuthService,
     ) {}
 
     ngOnInit(): void {
-        this.themeService.setNavbarState(false);
+        this._themeService.setNavbarState(false);
         this.editorForm = this._formBuilder.group({
             headline: [
                 '',
@@ -53,17 +55,21 @@ export class ComposeComponent implements OnInit, OnDestroy {
             article: [],
         });
 
+        this._auth.getAccessTokenSilently().subscribe((token) => {
+            myValueSubject.next(token);
+        });
+
         /* overrides theme for composer page, dark theme abstructs view and editing experiance. */
-        this.themeService.setTheme('light');
+        this._themeService.setTheme('light');
 
         this.detectEditorChanges()
             .pipe(debounceTime(200), skip(1))
             .subscribe({
                 next: () => {
-                    this.editor.save().then(async (outputData) => {
+                    this.editor.save().then((outputData) => {
                         JSON.stringify(outputData, null, 2);
                         Object.create(<Article>{});
-                        // console.log(this.editorData)
+                        console.log(outputData);
                         /* put draft creation logic here */
                     });
                 },
@@ -115,7 +121,7 @@ export class ComposeComponent implements OnInit, OnDestroy {
 
     public saveEditorData(): void {
         this.editor.save().then((outputData) => {
-            const DialogConf = {
+            const dialogConf = {
                 width: '100vw',
                 height: '100vh',
                 minHeight: '100vh',
@@ -130,16 +136,19 @@ export class ComposeComponent implements OnInit, OnDestroy {
                 this.artifactService.getContentFromPublication(outputData.blocks as BlocksEntity[]),
             ]).subscribe(([_images, _description]) => {
                 if (outputData.blocks.length > 0) {
-                    const dialogRef = this.cdkDialog.open(PublishComponent, {
-                        ...DialogConf,
+                    console.log(outputData);
+                    const dialogRef = this._cdkDialog.open(PublishComponent, {
+                        ...dialogConf,
                         data: <Compose>{
-                            header: this.editorForm.controls['headline'].value,
+                            header: this.editorForm.controls['headline'].value as string,
                             description: new ShortenStringPipe().transform(_description),
                             draftId: this.draftHashIdentifier,
                             images: _images,
                         },
                     });
                     dialogRef.closed.subscribe((result) => {
+                        console.log(result);
+                        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
                         console.log(`Dialog result: ${result}`);
                     });
                 } else {
@@ -150,6 +159,6 @@ export class ComposeComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.themeService.setNavbarState(true);
+        this._themeService.setNavbarState(true);
     }
 }

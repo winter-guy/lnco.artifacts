@@ -24,7 +24,7 @@ const { imageOnS3 } = endpoints as {
 
 export const environment = {
     production: true,
-    apiUri: 'http://localhost:3000/api/v2', // need to disable as http intercepter get to be in place.
+    apiUri: apiUri, // need to disable as http intercepter get to be in place.
     storeApi: imageOnS3,
     auth: {
         domain,
