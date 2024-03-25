@@ -37,6 +37,7 @@ export class PublishComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        this.tags = this.data.tags;
         this.editorForm = this._formBuilder.group({
             headline: [
                 '',

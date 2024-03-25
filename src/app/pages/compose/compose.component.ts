@@ -19,6 +19,7 @@ import EditorJS from '@editorjs/editorjs';
 import { ShortenStringPipe } from '@lib/pipe/short.pipe';
 import { AuthService } from '@auth0/auth0-angular';
 import { myValueSubject } from '@lib/services/core/publish';
+import { SecRecord } from '@lib/interfaces/record';
 
 @Component({
     standalone: true,
@@ -83,7 +84,7 @@ export class ComposeComponent implements OnInit, OnDestroy {
         }
     }
 
-    postDataBlock!: Article;
+    postDataBlock!: SecRecord;
     public buildEditorWithBlocks(_artifactId: string): void {
         this.artifactService.getArtifactsById(_artifactId).subscribe((article) => {
             this.postDataBlock = article;
@@ -93,10 +94,10 @@ export class ComposeComponent implements OnInit, OnDestroy {
                 readOnly: false,
                 placeholder: 'Share your story ... ',
                 tools: toolsConfig,
-                data: article,
+                data: article.record,
             });
 
-            this.editorForm.get('headline')?.patchValue(article.highlight.header);
+            this.editorForm.get('headline')?.patchValue(article.meta.head);
         });
     }
 
@@ -136,7 +137,6 @@ export class ComposeComponent implements OnInit, OnDestroy {
                 this.artifactService.getContentFromPublication(outputData.blocks as BlocksEntity[]),
             ]).subscribe(([_images, _description]) => {
                 if (outputData.blocks.length > 0) {
-                    console.log(outputData);
                     const dialogRef = this._cdkDialog.open(PublishComponent, {
                         ...dialogConf,
                         data: <Compose>{
@@ -144,6 +144,7 @@ export class ComposeComponent implements OnInit, OnDestroy {
                             description: new ShortenStringPipe().transform(_description),
                             draftId: this.draftHashIdentifier,
                             images: _images,
+                            tags: this.postDataBlock?.meta?.tags,
                         },
                     });
                     dialogRef.closed.subscribe((result) => {

@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpService } from '../http/http-client-wrapper.service';
 import { Artifact } from '@lib/interfaces/artifact';
 import { Observable, filter, from, map, take } from 'rxjs';
-import { Article, BlocksEntity } from '@lib/interfaces/article';
+import { BlocksEntity } from '@lib/interfaces/article';
+import { SecRecord } from '@lib/interfaces/record';
 
 @Injectable({
     providedIn: 'root',
@@ -14,9 +15,8 @@ export class ArtifactService {
         return this.httpService.get<Artifact[]>('/fetch');
     }
 
-    public getArtifactsById(id: string): Observable<Article> {
-        id = 'a3b9c8d7e6f5a4b3c2d1e0f';
-        return this.httpService.get<Article>(`/artifacts?id=${id}`);
+    public getArtifactsById(id: string): Observable<SecRecord> {
+        return this.httpService.get<SecRecord>(`/fetch/${id}`);
     }
 
     public getImageFromPublication(blocks: BlocksEntity[]): Observable<string[]> {

@@ -124,8 +124,8 @@
                         <div class="flex items-center justify-between">
                             <mat-chip-grid #chipList aria-label="Fruit selection">
                                 <div>
-                                    <mat-chip *ngFor="let fruit of tags" (removed)="remove(fruit)">
-                                        {{ fruit.name }}
+                                    <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
+                                        {{ tag.name }}
                                         <button matChipRemove>
                                             <mat-icon>cancel</mat-icon>
                                         </button>
