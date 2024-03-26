@@ -16,21 +16,31 @@ import { switchMap } from 'rxjs/operators';
 export const jwtInterceptor: HttpInterceptorFn = (request, next) => {
     const authService = inject(AuthService);
 
+    // Define your list of endpoints that don't require the access token
+    const exceptionEndpoints = ['/api/v2/fetch', '/api/v2/fetch/'];
+
+    // Check if the requested endpoint is in the exception list
+    if (exceptionEndpoints.some((endpoint) => request.url.includes(endpoint))) {
+        // Proceed with the request without adding the Authorization header
+        return next(request);
+    }
+
+    // If not in the exception list, obtain the JWT token asynchronously
     return authService.getAccessTokenSilently().pipe(
         switchMap((token) => {
+            // Clone the original request and add the Authorization header with the JWT token
             const clonedRequest = request.clone({
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
                 setHeaders: {
                     'Content-Type': 'application/json; charset=utf-8',
                     'Access-Control-Allow-Origin': 'true',
                     'Access-Control-Allow-Credentials': 'true',
                     'Cache-Control': 'no-cache, no-store, must-revalidate, post-check=0, pre-check=0',
                     'SPA-name': 'artifacts',
-
                     Authorization: `Bearer ${token}`,
                 },
             });
 
+            // Proceed with the cloned request
             return next(clonedRequest);
         }),
     );

@@ -41,8 +41,10 @@ export class ArtifactComponent implements OnInit {
     @ViewChild('editorjs')
     div!: ElementRef<HTMLInputElement>;
 
-    public onBtnActionClicked(id: string): void {
+    public onBtnActionClicked(): void {
         const NAV_URL = '/compose';
-        this._router.navigate([NAV_URL], { queryParams: { page: id } });
+        this._route.queryParams.subscribe((params) => {
+            this._router.navigate([NAV_URL], { queryParams: { page: params['page'] as string } });
+        });
     }
 }
