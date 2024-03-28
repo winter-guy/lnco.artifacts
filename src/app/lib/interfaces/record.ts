@@ -8,6 +8,7 @@ export interface Record {
     id: string;
     record: Document;
     meta: Meta;
+    inShort?: InShort[];
 }
 
 /**
@@ -76,4 +77,9 @@ interface Data {
 
 interface Tag {
     name: string;
+}
+
+interface InShort {
+    head: string;
+    content: string;
 }

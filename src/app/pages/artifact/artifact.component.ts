@@ -9,15 +9,17 @@ import { toolsConfig } from '@lib/editor/editor.config';
 import { SecRecord } from '@lib/interfaces/record';
 
 import { CdkMenu, CdkMenuModule } from '@angular/cdk/menu';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
 
 @Component({
     standalone: true,
-    imports: [CommonModule, CdkMenuModule, CdkMenu],
+    imports: [CommonModule, CdkMenuModule, CdkMenu, CdkAccordionModule],
     templateUrl: './artifact.component.html',
 })
 export class ArtifactComponent implements OnInit {
     public post!: SecRecord | undefined;
     public editor!: EditorJS;
+    expandedIndex = 0;
 
     constructor(protected artifactService: ArtifactService, private _route: ActivatedRoute, private _router: Router) {}
 
