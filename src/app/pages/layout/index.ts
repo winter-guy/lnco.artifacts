@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from '@auth0/auth0-angular';
 
 export const routes: Routes = [
     {
@@ -20,5 +21,6 @@ export const routes: Routes = [
         path: 'compose',
         title: 'Compose',
         loadChildren: async () => (await import('@pages/compose')).routes,
+        canActivate: [AuthGuard],
     },
 ];
