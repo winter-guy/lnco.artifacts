@@ -34,16 +34,15 @@
     ]
   },
   "dependencies": {
-    "@angular/animations": "^17.0.9",
-    "@angular/cdk": "^17.3.1",
-    "@angular/common": "^17.0.9",
-    "@angular/compiler": "^17.0.9",
-    "@angular/core": "^17.0.9",
-    "@angular/forms": "^17.0.9",
-    "@angular/material": "^17.1.1",
-    "@angular/platform-browser": "^17.0.9",
-    "@angular/platform-browser-dynamic": "^17.0.9",
-    "@angular/router": "^17.0.9",
+    "@angular/common": "^17.3.2",
+    "@angular/compiler": "^17.3.2",
+    "@angular/core": "^17.3.2",
+    "@angular/forms": "^17.3.2",
+    "@angular/localize": "^17.3.2",
+    "@angular/material-moment-adapter": "17.3.1",
+    "@angular/platform-browser": "^17.3.2",
+    "@angular/platform-browser-dynamic": "^17.3.2",
+    "@angular/router": "^17.3.2",
     "@auth0/auth0-angular": "^2.2.3",
     "@editorjs/delimiter": "^1.4.0",
     "@editorjs/editorjs": "^2.28.2",
@@ -60,14 +59,14 @@
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^17.0.10",
+    "@angular-devkit/build-angular": "^17.3.2",
     "@angular-eslint/builder": "16.0.1",
     "@angular-eslint/eslint-plugin": "16.0.1",
     "@angular-eslint/eslint-plugin-template": "16.0.1",
     "@angular-eslint/schematics": "^17.2.0",
     "@angular-eslint/template-parser": "16.0.1",
-    "@angular/cli": "^17.0.9",
-    "@angular/compiler-cli": "^17.0.9",
+    "@angular/cli": "^17.3.2",
+    "@angular/compiler-cli": "^17.3.2",
     "@culur/stylelint-config": "^1.2.0",
     "@iconify/json": "^2.2.64",
     "@iconify/tailwind": "^0.1.2",
@@ -97,6 +96,6 @@
     "simple-git-hooks": "^2.8.1",
     "stylelint": "^15.6.1",
     "tailwindcss": "^3.3.2",
-    "typescript": "~5.2.2"
+    "typescript": "~5.4.2"
   }
 }
