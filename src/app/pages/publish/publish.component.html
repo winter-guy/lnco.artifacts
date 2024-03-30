@@ -27,123 +27,200 @@
         </div>
     </div>
     <div class="flex flex-col space-y-4 lg:flex-row lg:space-x-2 lg:space-y-0">
-        <a class="group relative block grow-3" *ngIf="this.poster">
-            <div class="relative sm:max-w-[350px] md:h-[450px]">
-                <span class="inline-flex my-2 shrink-0 items-center space-x-1.5 text-xs font-medium px-3 py-1 rounded-md text-slate-800 bg-slate-100 false">
-                    <span class="whitespace-nowrap">preview</span>
-                  </span>
-                <span
-                    class="absolute z-40 m-1 flex shrink-0 items-center space-x-1.5 rounded bg-white p-1 text-xs font-medium text-slate-800">
-                    <span class="whitespace-nowrap">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
-                            <path fill-rule="evenodd" d="M2 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4Zm10.5 5.707a.5.5 0 0 0-.146-.353l-1-1a.5.5 0 0 0-.708 0L9.354 9.646a.5.5 0 0 1-.708 0L6.354 7.354a.5.5 0 0 0-.708 0l-2 2a.5.5 0 0 0-.146.353V12a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5V9.707ZM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" clip-rule="evenodd" />
-                          </svg>
-                                                 
-                    </span>
-                </span>
-                <ng-container>
-                    <a class="group block cursor-pointer">
-                        <div class="relative">
-                            <img src="{{ selectedPoster }}" alt=""
-                                class="inset-0 w-full rounded object-cover opacity-100 h-[350px]" />
-                            <!-- <img src="{{ '' }}" alt="" class="inset-0 w-full object-cover opacity-0 group-hover:opacity-100" /> -->
-                        </div>
-                        <div class="mt-3">
+          <mat-stepper #stepper class="w-full">
+            <mat-step>
+              <form>
+                <ng-template matStepLabel>Set up Wall</ng-template>
+                <div>
+                    <div class="flex justify-start space-x-4">
+                        <a class="group relative block" *ngIf="this.poster">
+                            <div class="relative sm:max-w-[350px] md:h-[450px]">
+                                <span class="inline-flex my-2 shrink-0 items-center space-x-1.5 text-xs font-medium px-3 py-1 rounded-md text-slate-800 bg-slate-100 false">
+                                    <span class="whitespace-nowrap">preview</span>
+                                  </span>
+                                <span
+                                    class="absolute z-40 m-1 flex shrink-0 items-center space-x-1.5 rounded bg-white p-1 text-xs font-medium text-slate-800">
+                                    <span class="whitespace-nowrap">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+                                            <path fill-rule="evenodd" d="M2 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4Zm10.5 5.707a.5.5 0 0 0-.146-.353l-1-1a.5.5 0 0 0-.708 0L9.354 9.646a.5.5 0 0 1-.708 0L6.354 7.354a.5.5 0 0 0-.708 0l-2 2a.5.5 0 0 0-.146.353V12a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5V9.707ZM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" clip-rule="evenodd" />
+                                          </svg>
+                                                                 
+                                    </span>
+                                </span>
+                                <ng-container>
+                                    <a class="group block cursor-pointer">
+                                        <div class="relative">
+                                            <img src="{{ selectedPoster }}" alt=""
+                                                class="inset-0 w-full rounded object-cover opacity-100 h-[350px]" />
+                                            <!-- <img src="{{ '' }}" alt="" class="inset-0 w-full object-cover opacity-0 group-hover:opacity-100" /> -->
+                                        </div>
+                                        <div class="mt-3">
+                                            <span
+                                                class="text-base font-medium text-gray-700 group-hover:underline group-hover:underline-offset-4 dark:text-slate-50">
+                                                {{ this.editorForm.controls['headline'].value }}
+                                            </span>
+                                            <p class="mt-1.5 max-w-[40ch] text-xs text-gray-500 dark:text-slate-300">
+                                                {{ this.editorForm.controls['description'].value }}
+                                            </p>
+                                        </div>
+                                    </a>
+                                </ng-container>
+                                <img [src]="selectedPoster" alt=""
+                                    class="hidden h-[350px] max-w-[350px] rounded object-cover sm:h-[450px]" />
+                                <div class="z-99 absolute bottom-2 hidden w-full justify-center">
+                                    <div class="flex -space-x-px">
+                                        <button title="previous"
+                                            class="inline-flex shrink-0 items-center justify-center space-x-1.5 rounded-md rounded-r-none border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-900 saturate-[110%] transition hover:bg-slate-50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 disabled:opacity-50">
+                                            <span>
+                                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                                    viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
+                                                    xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+                                                    <path d="m15 6-6 6 6 6"></path>
+                                                </svg>
+                                            </span>
+                                        </button>
+                                        <button title="next"
+                                            class="inline-flex shrink-0 items-center justify-center space-x-1.5 rounded-md rounded-l-none border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-900 saturate-[110%] transition hover:bg-slate-50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 disabled:opacity-50">
+                                            <span>
+                                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                                    viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
+                                                    xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+                                                    <path d="m9 18 6-6-6-6"></path>
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="group block rounded p-2 border border-dashed border-base">
+                            <div class="grid grid-cols-2 gap-2 overflow-auto md:grid-cols-2 lg:max-w-sm">
+                                <div class="relative" *ngFor="let image of poster; let i = index">
+                                    <checkbox [label]="image.label" [isChecked]="image.selected" (checkedChange)="onCheckboxChange(i)">
+                                    </checkbox>
+                                    <img class="h-auto max-w-full rounded" [src]="image.url" [alt]="image" title="poster" />
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                  <!-- <button mat-button matStepperNext>Next</button> -->
+                </div>
+              </form>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Review Content</ng-template>
+              <div>
+                <div class="flex space-x-4">
+                    <a class="group relative block" *ngIf="this.poster">
+                        <div class="relative sm:max-w-[350px] md:h-[450px]">
+                            <span class="inline-flex my-2 shrink-0 items-center space-x-1.5 text-xs font-medium px-3 py-1 rounded-md text-slate-800 bg-slate-100 false">
+                                <span class="whitespace-nowrap">preview</span>
+                              </span>
                             <span
-                                class="text-base font-medium text-gray-700 group-hover:underline group-hover:underline-offset-4 dark:text-slate-50">
-                                {{ this.editorForm.controls['headline'].value }}
+                                class="absolute z-40 m-1 flex shrink-0 items-center space-x-1.5 rounded bg-white p-1 text-xs font-medium text-slate-800">
+                                <span class="whitespace-nowrap">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+                                        <path fill-rule="evenodd" d="M2 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4Zm10.5 5.707a.5.5 0 0 0-.146-.353l-1-1a.5.5 0 0 0-.708 0L9.354 9.646a.5.5 0 0 1-.708 0L6.354 7.354a.5.5 0 0 0-.708 0l-2 2a.5.5 0 0 0-.146.353V12a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5V9.707ZM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" clip-rule="evenodd" />
+                                      </svg>
+                                                             
+                                </span>
                             </span>
-                            <p class="mt-1.5 max-w-[40ch] text-xs text-gray-500 dark:text-slate-300">
-                                {{ this.editorForm.controls['description'].value }}
-                            </p>
+                            <ng-container>
+                                <a class="group block cursor-pointer">
+                                    <div class="relative">
+                                        <img src="{{ selectedPoster }}" alt=""
+                                            class="inset-0 w-full rounded object-cover opacity-100 h-[350px]" />
+                                        <!-- <img src="{{ '' }}" alt="" class="inset-0 w-full object-cover opacity-0 group-hover:opacity-100" /> -->
+                                    </div>
+                                    <div class="mt-3">
+                                        <span
+                                            class="text-base font-medium text-gray-700 group-hover:underline group-hover:underline-offset-4 dark:text-slate-50">
+                                            {{ this.editorForm.controls['headline'].value }}
+                                        </span>
+                                        <p class="mt-1.5 max-w-[40ch] text-xs text-gray-500 dark:text-slate-300">
+                                            {{ this.editorForm.controls['description'].value }}
+                                        </p>
+                                    </div>
+                                </a>
+                            </ng-container>
+                            <img [src]="selectedPoster" alt=""
+                                class="hidden h-[350px] max-w-[350px] rounded object-cover sm:h-[450px]" />
+                            <div class="z-99 absolute bottom-2 hidden w-full justify-center">
+                                <div class="flex -space-x-px">
+                                    <button title="previous"
+                                        class="inline-flex shrink-0 items-center justify-center space-x-1.5 rounded-md rounded-r-none border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-900 saturate-[110%] transition hover:bg-slate-50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 disabled:opacity-50">
+                                        <span>
+                                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                                viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
+                                                xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+                                                <path d="m15 6-6 6 6 6"></path>
+                                            </svg>
+                                        </span>
+                                    </button>
+                                    <button title="next"
+                                        class="inline-flex shrink-0 items-center justify-center space-x-1.5 rounded-md rounded-l-none border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-900 saturate-[110%] transition hover:bg-slate-50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 disabled:opacity-50">
+                                        <span>
+                                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                                viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
+                                                xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
+                                                <path d="m9 18 6-6-6-6"></path>
+                                            </svg>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </a>
-                </ng-container>
-                <img [src]="selectedPoster" alt=""
-                    class="hidden h-[350px] max-w-[350px] rounded object-cover sm:h-[450px]" />
-                <div class="z-99 absolute bottom-2 hidden w-full justify-center">
-                    <div class="flex -space-x-px">
-                        <button title="previous"
-                            class="inline-flex shrink-0 items-center justify-center space-x-1.5 rounded-md rounded-r-none border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-900 saturate-[110%] transition hover:bg-slate-50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 disabled:opacity-50">
-                            <span>
-                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                    viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
-                                    xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
-                                    <path d="m15 6-6 6 6 6"></path>
-                                </svg>
-                            </span>
-                        </button>
-                        <button title="next"
-                            class="inline-flex shrink-0 items-center justify-center space-x-1.5 rounded-md rounded-l-none border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-900 saturate-[110%] transition hover:bg-slate-50 focus:z-10 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2 disabled:opacity-50">
-                            <span>
-                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
-                                    viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
-                                    xmlns="http://www.w3.org/2000/svg" class="h-5 w-5">
-                                    <path d="m9 18 6-6-6-6"></path>
-                                </svg>
-                            </span>
-                        </button>
+                    <div class="max-w-md px-0 lg:px-6">
+                        <form action="" class="mx-auto mb-0 space-y-4" [formGroup]="editorForm">
+                            <div>
+                                <div class="relative">
+                                    <input type="headline" formControlName="headline" id="headline"
+                                        class="border-btn mt-2 w-full rounded border p-4 pe-12 text-sm shadow-sm"
+                                        placeholder="title ..." />
+                                </div>
+                            </div>
+                            <div>
+                                <label for="password" class="sr-only">Password</label>
+                                <div class="relative">
+                                    <div>
+                                        <textarea id="Description" formControlName="description"
+                                            class="border-btn mt-2 w-full rounded align-top shadow-sm sm:text-sm" rows="4"
+                                            placeholder="Provide a concise, professional description, if possible."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="false inline-flex shrink-0 items-center space-x-1.5 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-800">
+                                <span>note* description will get shorten at 134 words max.</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <mat-chip-grid #chipList aria-label="Fruit selection">
+                                    <div>
+                                        <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
+                                            {{ tag.name }}
+                                            <button matChipRemove>
+                                                <mat-icon>cancel</mat-icon>
+                                            </button>
+                                        </mat-chip>
+                                    </div>
+                                    <div class="w-full space-y-0.5">
+                                        <input type="tags" id="Title"
+                                            class="border-btn mt-2 w-full rounded border p-4 pe-12 text-sm shadow-sm disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-75"
+                                            placeholder="Add tags..." [matChipInputFor]="chipList"
+                                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                            [matChipInputAddOnBlur]="true" (matChipInputTokenEnd)="add($event)"
+                                            [disabled]="tags && tags.length > 4" />
+                                    </div>
+                                </mat-chip-grid>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </div>
-        </a>
-        <div class="group block rounded p-2 border border-dashed border-base">
-            <div class="grid grid-cols-2 gap-2 overflow-auto md:grid-cols-2 lg:max-w-sm">
-                <div class="relative" *ngFor="let image of poster; let i = index">
-                    <checkbox [label]="image.label" [isChecked]="image.selected" (checkedChange)="onCheckboxChange(i)">
-                    </checkbox>
-                    <img class="h-auto max-w-full rounded" [src]="image.url" [alt]="image" title="poster" />
-                </div>
-            </div>
-        </div>
-        <div class="grow-2 pb-4 md:pb-0">
-            <div>
-                <div class="max-w-md px-0 lg:px-6">
-                    <form action="" class="mx-auto mb-0 space-y-4" [formGroup]="editorForm">
-                        <div>
-                            <div class="relative">
-                                <input type="headline" formControlName="headline" id="headline"
-                                    class="border-btn mt-2 w-full rounded border p-4 pe-12 text-sm shadow-sm"
-                                    placeholder="title ..." />
-                            </div>
-                        </div>
-                        <div>
-                            <label for="password" class="sr-only">Password</label>
-                            <div class="relative">
-                                <div>
-                                    <textarea id="Description" formControlName="description"
-                                        class="border-btn mt-2 w-full rounded align-top shadow-sm sm:text-sm" rows="4"
-                                        placeholder="Provide a concise, professional description, if possible."></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            class="false inline-flex shrink-0 items-center space-x-1.5 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-800">
-                            <span>note* description will get shorten at 134 words max.</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <mat-chip-grid #chipList aria-label="Fruit selection">
-                                <div>
-                                    <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
-                                        {{ tag.name }}
-                                        <button matChipRemove>
-                                            <mat-icon>cancel</mat-icon>
-                                        </button>
-                                    </mat-chip>
-                                </div>
-                                <div class="w-full space-y-0.5">
-                                    <input type="tags" id="Title"
-                                        class="border-btn mt-2 w-full rounded border p-4 pe-12 text-sm shadow-sm disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-75"
-                                        placeholder="Add tags..." [matChipInputFor]="chipList"
-                                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                                        [matChipInputAddOnBlur]="true" (matChipInputTokenEnd)="add($event)"
-                                        [disabled]="tags && tags.length > 4" />
-                                </div>
-                            </mat-chip-grid>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+                <!-- <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button> -->
+              </div>
+            </mat-step>
+          </mat-stepper>
     </div>
 </div>

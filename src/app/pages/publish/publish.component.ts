@@ -6,6 +6,9 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 
 import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 import { Tag } from '@lib/interfaces/article';
 
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
@@ -14,7 +17,17 @@ import { CheckboxComponent } from './checkbox.component';
 
 @Component({
     standalone: true,
-    imports: [ReactiveFormsModule, MatChipsModule, MatIconModule, NgFor, NgIf, FormsModule, CheckboxComponent],
+    imports: [
+        ReactiveFormsModule,
+        MatChipsModule,
+        MatIconModule,
+        MatStepperModule,
+        MatFormFieldModule,
+        NgFor,
+        NgIf,
+        FormsModule,
+        CheckboxComponent,
+    ],
     templateUrl: './publish.component.html',
     styleUrl: './publish.component.css',
 })
