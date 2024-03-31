@@ -88,7 +88,7 @@
             </div>
         </a>
           <mat-stepper class="w-full" labelPosition="bottom">
-            <mat-step label="Set up Wall" state="phone">
+            <mat-step label="Set up Wall">
               <form>
                 <!-- <ng-template matStepLabel>Set up Wall</ng-template> -->
                 <div>
@@ -192,13 +192,6 @@
                   <button mat-button (click)="stepper.reset()">Reset</button> -->
                 </div>
               </mat-step>
-              <!-- Icon overrides. -->
-  <ng-template matStepperIcon="phone">
-    <mat-icon>call_end</mat-icon>
-  </ng-template>
-  <ng-template matStepperIcon="chat">
-    <mat-icon>forum</mat-icon>
-  </ng-template>
           </mat-stepper>
     </div>
 </div>
