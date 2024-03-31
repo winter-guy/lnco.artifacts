@@ -5,7 +5,6 @@
  * */
 
 import config from '@lib/services/auth/config.json';
-import endpoints from '@lib/services/endpoint.json';
 
 // eslint-disable-next-line prettier/prettier
 const { domain, clientId, authorizationParams: { audience }, apiUri, errorPath } = config as {
@@ -18,14 +17,9 @@ const { domain, clientId, authorizationParams: { audience }, apiUri, errorPath }
     errorPath: string;
 };
 
-const { imageOnS3 } = endpoints as {
-    imageOnS3: string;
-};
-
 export const environment = {
     production: true,
     apiUri: apiUri, // need to disable as http intercepter get to be in place.
-    storeApi: imageOnS3,
     auth: {
         domain,
         clientId,
