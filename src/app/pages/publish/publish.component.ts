@@ -14,6 +14,7 @@ import { Tag } from '@lib/interfaces/article';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { NgFor, NgIf } from '@angular/common';
 import { CheckboxComponent } from './checkbox.component';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 @Component({
     standalone: true,
@@ -27,12 +28,15 @@ import { CheckboxComponent } from './checkbox.component';
         NgIf,
         FormsModule,
         CheckboxComponent,
+        MatButtonToggleModule,
     ],
     templateUrl: './publish.component.html',
     styleUrl: './publish.component.css',
 })
 export class PublishComponent implements OnInit {
     public editorForm!: FormGroup;
+    public inShort!: FormGroup;
+
     public tags: Tag[] = [];
     public isChecked = false;
 
@@ -59,6 +63,11 @@ export class PublishComponent implements OnInit {
                 },
             ],
             description: [],
+        });
+
+        this.inShort = this._formBuilder.group({
+            head: [''],
+            content: [],
         });
 
         this.editorForm.patchValue({

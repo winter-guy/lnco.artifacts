@@ -10,13 +10,14 @@
             </button>
         </div>
         <div class="flex h-8 space-x-2">
+            <button disabled
+                class="border-btn inline-flex shrink-0 items-center justify-center space-x-1.5 rounded-full border px-3 py-1.5 text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
+                <span>schedule</span>
+            </button>
             <div class="relative z-0 flex -space-x-px">
-                <button
-                    class="border-btn inline-flex shrink-0 items-center justify-center space-x-1.5 rounded-full rounded-r-none border px-3 py-1.5 text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
-                    <span>schedule</span>
-                </button>
+
                 <button title="drop"
-                    class="border-btn inline-flex shrink-0 items-center justify-center space-x-1 rounded-full rounded-l-none border px-3 py-1.5 text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
+                    class="border-btn inline-flex shrink-0 items-center justify-center space-x-1 rounded-full border px-3 py-1.5 text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
                     <span> post </span>
                 </button>
             </div>
@@ -28,17 +29,20 @@
     </div>
     <div class="flex flex-col space-y-4 lg:flex-row lg:space-x-2 lg:space-y-0">
         <a class="group relative block" *ngIf="this.poster">
-            <div class="relative sm:max-w-[350px] md:h-[450px]">
-                <span class="inline-flex my-2 shrink-0 items-center space-x-1.5 text-xs font-medium px-3 py-1 rounded-md text-slate-800 bg-slate-100 false">
+            <div class="relative sm:max-w-[450px] md:h-[450px]">
+                <span
+                    class="inline-flex my-2 shrink-0 items-center space-x-1.5 text-xs font-medium px-3 py-1 rounded-md text-slate-800 bg-slate-100 false">
                     <span class="whitespace-nowrap">preview</span>
-                  </span>
+                </span>
                 <span
                     class="absolute z-40 m-1 flex shrink-0 items-center space-x-1.5 rounded bg-white p-1 text-xs font-medium text-slate-800">
                     <span class="whitespace-nowrap">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
-                            <path fill-rule="evenodd" d="M2 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4Zm10.5 5.707a.5.5 0 0 0-.146-.353l-1-1a.5.5 0 0 0-.708 0L9.354 9.646a.5.5 0 0 1-.708 0L6.354 7.354a.5.5 0 0 0-.708 0l-2 2a.5.5 0 0 0-.146.353V12a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5V9.707ZM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z" clip-rule="evenodd" />
-                          </svg>
-                                                 
+                            <path fill-rule="evenodd"
+                                d="M2 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4Zm10.5 5.707a.5.5 0 0 0-.146-.353l-1-1a.5.5 0 0 0-.708 0L9.354 9.646a.5.5 0 0 1-.708 0L6.354 7.354a.5.5 0 0 0-.708 0l-2 2a.5.5 0 0 0-.146.353V12a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5V9.707ZM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"
+                                clip-rule="evenodd" />
+                        </svg>
+
                     </span>
                 </span>
                 <ng-container>
@@ -87,111 +91,110 @@
                 </div>
             </div>
         </a>
-          <mat-stepper class="w-full" labelPosition="bottom">
+        <mat-stepper class="w-full" labelPosition="bottom" orientation="vertical" [disableRipple]="true">
             <mat-step label="Set up Wall">
-              <form>
-                <!-- <ng-template matStepLabel>Set up Wall</ng-template> -->
-                <div>
-                    <div class="flex justify-end space-x-4 py-2">
-                        
-                        <div class="group block rounded p-2">
-                            <div class="grid grid-cols-2 gap-2 overflow-auto md:grid-cols-2 lg:max-w-sm">
-                                <div class="relative" *ngFor="let image of poster; let i = index">
-                                    <checkbox [label]="image.label" [isChecked]="image.selected" (checkedChange)="onCheckboxChange(i)">
-                                    </checkbox>
-                                    <img class="h-auto max-w-full rounded" [src]="image.url" [alt]="image" title="poster" />
+                <form>
+                    <!-- <ng-template matStepLabel>Set up Wall</ng-template> -->
+                    <div>
+                        <div class="flex justify-start space-x-4 py-2">
+                            <div class="group block rounded p-2">
+                                <div class="grid grid-cols-2 gap-2 overflow-auto md:grid-cols-2 lg:max-w-sm">
+                                    <div class="relative" *ngFor="let image of poster; let i = index">
+                                        <checkbox [label]="image.label" [isChecked]="image.selected"
+                                            (checkedChange)="onCheckboxChange(i)">
+                                        </checkbox>
+                                        <img class="h-auto max-w-full rounded" [src]="image.url" [alt]="image"
+                                            title="poster" />
+                                    </div>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
+                        <!-- <button mat-button matStepperNext>Next</button> -->
                     </div>
-                  <!-- <button mat-button matStepperNext>Next</button> -->
-                </div>
-              </form>
+                </form>
             </mat-step>
-            <mat-step>
-              <ng-template matStepLabel>Review Content</ng-template>
-              <div>
-                <div class="flex space-x-4 justify-end">
-                    <div class="max-w-md px-0 lg:px-6">
-                        <form action="" class="mx-auto mb-0 space-y-4" [formGroup]="editorForm">
-                            <div>
-                                <div class="relative">
-                                    <input type="headline" formControlName="headline" id="headline"
-                                        class="border-btn mt-2 w-full rounded border p-4 pe-12 text-sm shadow-sm"
-                                        placeholder="title ..." />
-                                </div>
-                            </div>
-                            <div>
-                                <label for="password" class="sr-only">Password</label>
-                                <div class="relative">
-                                    <div>
-                                        <textarea id="Description" formControlName="description"
-                                            class="border-btn mt-2 w-full rounded align-top shadow-sm sm:text-sm" rows="4"
-                                            placeholder="Provide a concise, professional description, if possible."></textarea>
+            <mat-step label="Review Content">
+                <div>
+                    <div class="flex space-x-4 justify-start">
+                        <div class="max-w-md px-0 lg:px-6">
+                            <form action="" class="mx-auto mb-0 space-y-4" [formGroup]="editorForm">
+                                <div>
+                                    <div class="relative">
+                                        <input type="headline" formControlName="headline" id="headline"
+                                            class="border-btn mt-2 w-full rounded border p-4 pe-12 text-sm "
+                                            placeholder="title ..." />
                                     </div>
                                 </div>
-                            </div>
-                            <div
-                                class="false inline-flex shrink-0 items-center space-x-1.5 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-800">
-                                <span>note* description will get shorten at 134 words max.</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <mat-chip-grid #chipList aria-label="Fruit selection">
-                                    <div>
-                                        <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
-                                            {{ tag.name }}
-                                            <button matChipRemove>
-                                                <mat-icon>cancel</mat-icon>
-                                            </button>
-                                        </mat-chip>
+                                <div>
+                                    <label for="password" class="sr-only">Password</label>
+                                    <div class="relative">
+                                        <div>
+                                            <textarea id="Description" formControlName="description"
+                                                class="border-btn mt-2 w-full rounded align-top sm:text-sm" rows="4"
+                                                placeholder="Provide a concise, professional description, if possible."></textarea>
+                                        </div>
                                     </div>
-                                    <div class="w-full space-y-0.5">
-                                        <input type="tags" id="Title"
-                                            class="border-btn mt-2 w-full rounded border p-4 pe-12 text-sm shadow-sm disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-75"
-                                            placeholder="Add tags..." [matChipInputFor]="chipList"
-                                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                                            [matChipInputAddOnBlur]="true" (matChipInputTokenEnd)="add($event)"
-                                            [disabled]="tags && tags.length > 4" />
-                                    </div>
-                                </mat-chip-grid>
-                            </div>
-                        </form>
+                                </div>
+                                <div
+                                    class="false inline-flex shrink-0 items-center space-x-1.5 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-800">
+                                    <span>note* description will get shorten at 134 words max.</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <mat-chip-grid #chipList aria-label="Fruit selection">
+                                        <div>
+                                            <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
+                                                {{ tag.name }}
+                                                <button matChipRemove>
+                                                    <mat-icon>cancel</mat-icon>
+                                                </button>
+                                            </mat-chip>
+                                        </div>
+                                        <div class="w-full space-y-0.5">
+                                            <input type="tags" id="Title"
+                                                class="border-btn mt-2 w-full rounded border p-4 pe-12 text-sm disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-75"
+                                                placeholder="Add tags..." [matChipInputFor]="chipList"
+                                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                                [matChipInputAddOnBlur]="true" (matChipInputTokenEnd)="add($event)"
+                                                [disabled]="tags && tags.length > 4" />
+                                        </div>
+                                    </mat-chip-grid>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </div>
-                <!-- <button mat-button matStepperPrevious>Back</button>
+                    <!-- <button mat-button matStepperPrevious>Back</button>
                 <button mat-button (click)="stepper.reset()">Reset</button> -->
-              </div>
+                </div>
             </mat-step>
-            <mat-step>
-                <ng-template matStepLabel>In Shorts</ng-template>
+            <mat-step label="In Shorts">
                 <div>
-                  <div class="flex space-x-4 justify-end">
-                      <div class="max-w-md px-0 lg:px-6 w-full">
-                          <form action="" class="mx-auto mb-0 space-y-4" [formGroup]="editorForm">
-                              <div>
-                                  <div class="relative">
-                                      <input type="headline" formControlName="headline" id="headline"
-                                          class="border-btn mt-2 w-full rounded border p-4 pe-12 text-sm shadow-sm"
-                                          placeholder="title ..." />
-                                  </div>
-                              </div>
-                              <div>
-                                  <label for="password" class="sr-only">Password</label>
-                                  <div class="relative">
-                                      <div>
-                                          <textarea id="Description" formControlName="description"
-                                              class="border-btn mt-2 w-full rounded align-top shadow-sm sm:text-sm" rows="4"
-                                              placeholder="Provide a concise, professional description, if possible."></textarea>
-                                      </div>
-                                  </div>
-                              </div>
-                          </form>
-                      </div>
-                  </div>
-                  <!-- <button mat-button matStepperPrevious>Back</button>
+                    <div class="flex space-x-4 justify-start">
+                        <div class="max-w-md px-0 lg:px-6 w-full">
+                            <form action="" class="mx-auto mb-0 space-y-4" [formGroup]="inShort">
+                                <div>
+                                    <div class="relative">
+                                        <input type="text" formControlName="head" id="head"
+                                            class="border-btn mt-2 w-full rounded border p-4 pe-12 text-sm"
+                                            placeholder="in short headline ..." />
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="content" class="sr-only">Password</label>
+                                    <div class="relative">
+                                        <div>
+                                            <textarea id="content" formControlName="content"
+                                                class="border-btn mt-2 w-full rounded align-top sm:text-sm" rows="8"
+                                                placeholder="Provide a concise content summary."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- <button mat-button matStepperPrevious>Back</button>
                   <button mat-button (click)="stepper.reset()">Reset</button> -->
                 </div>
-              </mat-step>
-          </mat-stepper>
+            </mat-step>
+        </mat-stepper>
     </div>
 </div>

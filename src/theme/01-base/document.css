@@ -16,3 +16,20 @@ body.dark {
 .image-tool__caption {
     @apply hidden;
 }
+
+.mat-stepper-horizontal, .mat-stepper-vertical {
+    @apply bg-white !important
+}
+
+.mat-step-label-selected {
+    @apply p-2 inline-flex shrink-0 items-center justify-center space-x-1.5 rounded-full border px-3 py-1.5 text-sm saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50 !important;
+}
+
+.mat-step-header.cdk-keyboard-focused, .mat-step-header.cdk-program-focused {
+    @apply bg-white !important;
+    
+}
+
+.mat-step-header {
+    @apply hover:bg-white bg-white !important; 
+}
