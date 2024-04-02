@@ -79,7 +79,7 @@ interface Tag {
     name: string;
 }
 
-interface InShort {
+export interface InShort {
     head: string;
     content: string;
 }

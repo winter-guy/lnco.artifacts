@@ -33,3 +33,7 @@ body.dark {
 .mat-step-header {
     @apply hover:bg-white bg-white !important; 
 }
+
+.mdc-evolution-chip-set .mdc-evolution-chip-set__chips {
+    @apply ml-0;
+}

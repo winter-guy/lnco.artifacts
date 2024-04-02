@@ -21,9 +21,11 @@ import { AuthService } from '@auth0/auth0-angular';
 import { myValueSubject } from '@lib/services/core/publish';
 import { SecRecord } from '@lib/interfaces/record';
 
+import { CdkMenu, CdkMenuModule } from '@angular/cdk/menu';
+
 @Component({
     standalone: true,
-    imports: [CommonModule, RouterModule, ReactiveFormsModule, SharedModule, DialogModule],
+    imports: [CommonModule, RouterModule, ReactiveFormsModule, SharedModule, DialogModule, CdkMenuModule, CdkMenu],
     templateUrl: './compose.component.html',
 })
 export class ComposeComponent implements OnInit, OnDestroy {
@@ -35,12 +37,12 @@ export class ComposeComponent implements OnInit, OnDestroy {
     public editorForm!: FormGroup;
 
     constructor(
-        protected artifactService: ArtifactService,
+        protected readonly artifactService: ArtifactService,
 
-        private _formBuilder: FormBuilder,
-        private _router: ActivatedRoute,
-        private _themeService: ThemeService,
-        private _cdkDialog: Dialog,
+        private readonly _formBuilder: FormBuilder,
+        private readonly _router: ActivatedRoute,
+        private readonly _themeService: ThemeService,
+        private readonly _cdkDialog: Dialog,
         private readonly _auth: AuthService,
     ) {}
 
@@ -70,7 +72,6 @@ export class ComposeComponent implements OnInit, OnDestroy {
                     this.editor.save().then((outputData) => {
                         JSON.stringify(outputData, null, 2);
                         Object.create(<Article>{});
-                        console.log(outputData);
                         /* put draft creation logic here */
                     });
                 },

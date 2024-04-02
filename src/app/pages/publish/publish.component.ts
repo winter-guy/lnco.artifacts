@@ -15,7 +15,9 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { NgFor, NgIf } from '@angular/common';
 import { CheckboxComponent } from './checkbox.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-
+import { StepperSelectionEvent } from '@angular/cdk/stepper';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { InShort } from '@lib/interfaces/record';
 @Component({
     standalone: true,
     imports: [
@@ -29,6 +31,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
         FormsModule,
         CheckboxComponent,
         MatButtonToggleModule,
+        CdkAccordionModule,
     ],
     templateUrl: './publish.component.html',
     styleUrl: './publish.component.css',
@@ -36,7 +39,14 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 export class PublishComponent implements OnInit {
     public editorForm!: FormGroup;
     public inShort!: FormGroup;
-
+    public enableInShortsEditor!: boolean;
+    public inShorts: InShort[] = [
+        {
+            head: 'Navigating the UK Housing Market: Trends, Challenges, and Opportunities',
+            content: `The UK housing market has seen a significant price increase over the past two years, driven by low interest rates and high demand. However, rising mortgage rates pose a challenge for homeowners, potentially leading to financial strain when fixed-rate deals expire. Market indicators suggest a slowdown, with analysts predicting a 5-12% decline in prices over the next 18 months. The trajectory of interest rates and inflation will be critical in determining future market direction. Despite short-term challenges, opportunities exist for first-time buyers and investors, contingent on monitoring macroeconomic factors closely.`,
+        },
+        { head: 'ascas', content: 'ascas' },
+    ];
     public tags: Tag[] = [];
     public isChecked = false;
 
@@ -81,6 +91,13 @@ export class PublishComponent implements OnInit {
         console.log(this.poster);
     }
 
+    public onSelectionChange($event: StepperSelectionEvent): void {
+        console.log('Selection changed:', $event.selectedStep.label);
+        // You can perform any action here based on the selected index
+
+        this.enableInShortsEditor = $event.selectedStep.label === 'In Shorts';
+    }
+
     public get selectedPoster(): string | undefined {
         return this.poster.find((image) => image.selected)?.url;
     }
@@ -110,7 +127,6 @@ export class PublishComponent implements OnInit {
         this.poster.forEach((checkbox: { selected: boolean }, i: number) => {
             checkbox.selected = !(i !== index);
         });
-        console.log(this.poster);
     }
 
     //XXXXXXX
