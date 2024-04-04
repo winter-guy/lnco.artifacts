@@ -33,24 +33,52 @@
                     class="inline-flex my-2 shrink-0 items-center space-x-1.5 text-xs font-medium px-3 py-1 rounded-md text-slate-800 bg-slate-100 false">
                     <span class="whitespace-nowrap">preview</span>
                 </span>
-                <span
-                    class="absolute z-40 m-1 flex shrink-0 items-center space-x-1.5 rounded bg-white p-1 text-xs font-medium text-slate-800">
-                    <span class="whitespace-nowrap">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
-                            <path fill-rule="evenodd"
-                                d="M2 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4Zm10.5 5.707a.5.5 0 0 0-.146-.353l-1-1a.5.5 0 0 0-.708 0L9.354 9.646a.5.5 0 0 1-.708 0L6.354 7.354a.5.5 0 0 0-.708 0l-2 2a.5.5 0 0 0-.146.353V12a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5V9.707ZM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"
-                                clip-rule="evenodd" />
-                        </svg>
-
-                    </span>
-                </span>
                 <ng-container>
                     <a class="group block cursor-pointer">
-                        <div class="relative">
+                        <div class="relative" *ngIf="!previewFlag; else imageSelect">
+                            <div class="flex w-full h-full justify-center">
+                                <a role="button" (click)="toogleImagePreview()"
+                                    class="bg-black/50 backdrop-blur-sm top-[50%] absolute text-white text-xs py-2 px-4 border rounded-full">
+                                    Change preview image
+                                </a>
+                            </div>
                             <img src="{{ selectedPoster }}" alt=""
                                 class="inset-0 w-full rounded object-cover opacity-100 h-[350px]" />
                             <!-- <img src="{{ '' }}" alt="" class="inset-0 w-full object-cover opacity-0 group-hover:opacity-100" /> -->
                         </div>
+                        <ng-template #imageSelect>
+                            <div class="flex justify-start space-x-4 py-2 relative">
+                                <div class="group block rounded p-2">
+                                    <div class="grid grid-cols-2 gap-2 overflow-auto md:grid-cols-2 lg:max-w-sm">
+                                        <div class="relative" *ngFor="let image of poster; let i = index"
+                                            (click)="onCheckboxChange(i)">
+                                            <img class="h-auto max-w-full rounded cursor-pointer" [src]="image.url"
+                                                [alt]="image.label" title="poster" />
+                                            <span *ngIf="image.selected"
+                                                class="absolute top-0 z-40 m-0.5 flex shrink-0 items-center space-x-1.5 rounded-sm text-xs font-medium text-slate-800">
+                                                <span class="whitespace-nowrap">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                                                        fill="currentColor" class="w-4 h-4 fill-white">
+                                                        <path fill-rule="evenodd"
+                                                            d="M2 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4Zm10.5 5.707a.5.5 0 0 0-.146-.353l-1-1a.5.5 0 0 0-.708 0L9.354 9.646a.5.5 0 0 1-.708 0L6.354 7.354a.5.5 0 0 0-.708 0l-2 2a.5.5 0 0 0-.146.353V12a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5V9.707ZM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"
+                                                            clip-rule="evenodd"></path>
+                                                    </svg>
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-0.5 flex h-max w-max gap-4 rounded-full absolute right-0 bottom-0">
+                                    <button title="drop" (click)="toogleImagePreview()"
+                                        class="inline-flex shrink-0 gap-0.5 items-center justify-center rounded-full border text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 fill-green-500">
+                                            <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm3.844-8.791a.75.75 0 0 0-1.188-.918l-3.7 4.79-1.649-1.833a.75.75 0 1 0-1.114 1.004l2.25 2.5a.75.75 0 0 0 1.15-.043l4.25-5.5Z" clip-rule="evenodd" />
+                                          </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </ng-template>
+
                         <div class="mt-3">
                             <span
                                 class="text-base font-medium text-gray-700 group-hover:underline group-hover:underline-offset-4 dark:text-slate-50">
@@ -108,7 +136,7 @@
                         </button>
                     </div>
                     <cdk-accordion>
-                        @for (item of inShorts; track item; let index = $index) {
+                        @for (item of this.inShortFormArray.get('myArray')?.value; track item; let index = $index) {
                         <cdk-accordion-item [expanded]="index == 0" #accordionItem="cdkAccordionItem" role="button"
                             tabindex="0" [attr.id]="'accordion-header-' + index"
                             [attr.aria-expanded]="accordionItem.expanded"
@@ -134,19 +162,31 @@
                                         </circle>
                                     </svg>
                                 </div>
-                                <span class="text-left text-sm font-medium text-slate-950 dark:text-gray-100">
+                                <span
+                                    class="text-left text-sm font-medium text-slate-950 dark:text-gray-100 flex flex-col">
+                                    <div class="p-0.5 border flex w-max gap-4 rounded-full">
+                                        <button title="drop" (click)="removeSummary($event, index)"
+                                            class="inline-flex shrink-0 gap-0.5 items-center justify-center rounded-full border text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                                                fill="currentColor" class="w-4 h-4 fill-red-500">
+                                                <path fill-rule="evenodd"
+                                                    d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm4-7a.75.75 0 0 0-.75-.75h-6.5a.75.75 0 0 0 0 1.5h6.5A.75.75 0 0 0 12 8Z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </button>
+                                        <button title="drop" (click)="editSummary($event, index, item)"
+                                            class="inline-flex shrink-0 gap-1 p-0.5 items-center justify-center rounded-full border text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                                                fill="currentColor" class="w-3 h-3">
+                                                <path fill-rule="evenodd"
+                                                    d="M11.013 2.513a1.75 1.75 0 0 1 2.475 2.474L6.226 12.25a2.751 2.751 0 0 1-.892.596l-2.047.848a.75.75 0 0 1-.98-.98l.848-2.047a2.75 2.75 0 0 1 .596-.892l7.262-7.261Z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </button>
+                                    </div>
                                     {{item?.head}}
                                 </span>
-                                <button title="drop"
-                                    class="border-btn inline-flex shrink-0 gap-1 px-1.5 items-center justify-center rounded-full border text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
-                                        class="w-4 h-4 fill-red-500">
-                                        <path fill-rule="evenodd"
-                                            d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm4-7a.75.75 0 0 0-.75-.75h-6.5a.75.75 0 0 0 0 1.5h6.5A.75.75 0 0 0 12 8Z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    remove
-                                </button>
+
                             </div>
                             <div class="example-accordion-item-body" role="region"
                                 [style.display]="accordionItem.expanded ? '' : 'none'"
@@ -170,26 +210,6 @@
         </div>
         <mat-stepper class="w-full" labelPosition="bottom" orientation="vertical" [disableRipple]="true"
             (selectionChange)="onSelectionChange($event)">
-            <mat-step label="Set up wall">
-                <form>
-                    <!-- <ng-template matStepLabel>Set up Wall</ng-template> -->
-                    <div>
-                        <div class="flex justify-start space-x-4 py-2">
-                            <div class="group block rounded p-2">
-                                <div class="grid grid-cols-2 gap-2 overflow-auto md:grid-cols-2 lg:max-w-sm">
-                                    <div class="relative" *ngFor="let image of poster; let i = index">
-                                        <checkbox [label]="image.label" [isChecked]="image.selected"
-                                            (checkedChange)="onCheckboxChange(i)">
-                                        </checkbox>
-                                        <img class="h-auto max-w-full rounded" [src]="image.url" [alt]="image"
-                                            title="poster" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </mat-step>
             <mat-step label="Review content">
                 <div>
                     <div class="flex space-x-4 justify-start">
@@ -198,7 +218,7 @@
                                 <div>
                                     <div class="relative">
                                         <label for="headline" type="text" id="headline"
-                                            class="block overflow-hidden my-1 rounded-md border border-gray-200 px-3 py-2 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
+                                            class="block overflow-hidden my-1 rounded-md border border-gray-200 px-3 py-2  focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
                                             <span class="text-xs font-medium text-gray-700"> headline </span>
 
                                             <input type="email" id="head" formControlName="headline"
@@ -233,11 +253,11 @@
                                             </mat-chip>
                                         </div>
                                         <div class="w-full space-y-0.5">
-                                            <label for="headline" type="text" id="headline"
-                                                class="block overflow-hidden my-1 rounded-md border border-gray-200 px-2 py-2 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
-                                                <span class="text-xs font-medium text-gray-700"> headline </span>
+                                            <label for="tags" type="text" id="tags"
+                                                class="block overflow-hidden my-1 rounded-md border border-gray-200 px-2 py-2  focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
+                                                <span class="text-xs font-medium text-gray-700"> Add tags </span>
 
-                                                <input type="text" id="tags" placeholder="Add tags ..."
+                                                <input type="text" id="tags" placeholder="Add tags..."
                                                     [matChipInputFor]="chipList"
                                                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                                                     [matChipInputAddOnBlur]="true" (matChipInputTokenEnd)="add($event)"
@@ -260,11 +280,11 @@
                                 <div>
                                     <div class="relative">
                                         <label for="head" type="text" id="head"
-                                            class="block overflow-hidden mt-1 rounded-md border border-gray-200 px-3 py-2 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
+                                            class="block overflow-hidden mt-1 rounded-md border border-gray-200 px-3 py-2 focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
                                             <span class="text-xs font-medium text-gray-700"> in short headline </span>
 
                                             <input type="email" id="head" formControlName="head"
-                                                placeholder="it has been started ...."
+                                                placeholder="it has been started..."
                                                 class="mt-1 w-full border-none p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm" />
                                         </label>
                                     </div>
@@ -278,17 +298,43 @@
                                                 placeholder="Provide a concise content summary."></textarea>
                                         </div>
 
-                                        <button title="add"
-                                            class="border-btn my-2 px-1.5 right-0 inline-flex shrink-0 gap-1 items-center justify-center rounded-full border text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                                                fill="currentColor" class="w-4 h-4 fill-green-500">
-                                                <path fill-rule="evenodd"
-                                                    d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm.75-10.25v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 1.5 0Z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
+                                        <button type="button" title="add" (click)="addSummary()"
+                                            *ngIf="this.inShort.controls['index'].value == null; else edit"
+                                            class="border-btn my-2 rounded-full inline-flex shrink-0 gap-1 items-center justify-center text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
 
-                                            add
+                                            <span
+                                                class="inline-flex shrink-0 items-center gap-1 text-xs font-medium p-0.5 rounded-md text-slate-800 false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                                                    fill="currentColor" class="w-4 h-4 fill-green-500">
+                                                    <path fill-rule="evenodd"
+                                                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm.75-10.25v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 1.5 0Z"
+                                                        clip-rule="evenodd" />
+                                                </svg>
+                                                <span class="whitespace-nowrap pr-1">Add</span>
+                                            </span>
                                         </button>
+
+                                        <ng-template #edit>
+                                            <div class="p-0.5 border flex gap-4 mt-2 rounded-full w-max">
+                                                <button title="drop" type="button" (click)="addSummary()"
+                                                    class="inline-flex shrink-0 gap-0.5 p-0.5 items-center justify-center rounded-full border text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                                                        fill="currentColor" class="w-4 h-4 fill-green-500">
+                                                        <path fill-rule="evenodd"
+                                                            d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm3.844-8.791a.75.75 0 0 0-1.188-.918l-3.7 4.79-1.649-1.833a.75.75 0 1 0-1.114 1.004l2.25 2.5a.75.75 0 0 0 1.15-.043l4.25-5.5Z"
+                                                            clip-rule="evenodd" />
+                                                    </svg>
+                                                </button>
+                                                <button title="drop" type="button" (click)="resetSummary()"
+                                                    class="inline-flex shrink-0 gap-1 p-0.5 items-center justify-center rounded-full border text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                                                        fill="currentColor" class="w-4 h-4">
+                                                        <path
+                                                            d="M5.28 4.22a.75.75 0 0 0-1.06 1.06L6.94 8l-2.72 2.72a.75.75 0 1 0 1.06 1.06L8 9.06l2.72 2.72a.75.75 0 1 0 1.06-1.06L9.06 8l2.72-2.72a.75.75 0 0 0-1.06-1.06L8 6.94 5.28 4.22Z" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </ng-template>
                                     </div>
                                 </div>
                             </form>

@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/ban-types */
 import { Component, Inject, OnInit } from '@angular/core';
 import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
 import { Compose } from '@lib/interfaces/compose';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
@@ -39,6 +38,8 @@ import { InShort } from '@lib/interfaces/record';
 export class PublishComponent implements OnInit {
     public editorForm!: FormGroup;
     public inShort!: FormGroup;
+    public inShortFormArray!: FormGroup;
+
     public enableInShortsEditor!: boolean;
     public inShorts: InShort[] = [
         {
@@ -64,6 +65,10 @@ export class PublishComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        this.inShortFormArray = this._formBuilder.group({
+            myArray: this._formBuilder.array([]),
+        });
+
         this.tags = this.data.tags;
         this.editorForm = this._formBuilder.group({
             headline: [
@@ -76,8 +81,9 @@ export class PublishComponent implements OnInit {
         });
 
         this.inShort = this._formBuilder.group({
+            index: [],
             head: [''],
-            content: [],
+            content: [''],
         });
 
         this.editorForm.patchValue({
@@ -88,7 +94,6 @@ export class PublishComponent implements OnInit {
         this.poster = this.data.images.map((url, i) => {
             return { label: `${i}_selection`, url: url, selected: i === 0 ? true : false };
         });
-        console.log(this.poster);
     }
 
     public onSelectionChange($event: StepperSelectionEvent): void {
@@ -140,5 +145,52 @@ export class PublishComponent implements OnInit {
                 console.log('Checkbox checked');
             }
         }
+    }
+
+    addSummary(): void {
+        const myArrayFormArray = this.inShortFormArray.get('myArray');
+        if (!myArrayFormArray || !(myArrayFormArray instanceof FormArray)) {
+            return;
+        }
+
+        const newFormGroup = this._formBuilder.group({
+            head: [this.inShort.get('head')?.value],
+            content: [this.inShort.get('content')?.value],
+        });
+
+        const contentIndex = this.inShort.controls['index'].value as number;
+        if (!Object.is(contentIndex, null)) {
+            myArrayFormArray.removeAt(Number(contentIndex));
+        }
+
+        myArrayFormArray.push(newFormGroup);
+        this.inShort.reset();
+    }
+
+    public removeSummary(event: Event, index: number): void {
+        event.stopPropagation();
+
+        const myArrayFormArray = this.inShortFormArray.get('myArray') as FormArray;
+        if (!myArrayFormArray) {
+            console.error("Failed to get 'myArray' FormArray");
+            return;
+        }
+
+        myArrayFormArray.removeAt(index);
+    }
+
+    public editSummary(event: Event, index: number, content: InShort): void {
+        event.stopPropagation();
+
+        this.inShort.patchValue({ ...content, index: index });
+    }
+
+    public resetSummary(): void {
+        this.inShort.reset();
+    }
+
+    previewFlag = false;
+    public toogleImagePreview(): void {
+        this.previewFlag = !this.previewFlag;
     }
 }
