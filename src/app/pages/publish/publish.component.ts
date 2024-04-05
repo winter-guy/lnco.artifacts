@@ -11,15 +11,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { Tag } from '@lib/interfaces/article';
 
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { CheckboxComponent } from './checkbox.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { StepperSelectionEvent } from '@angular/cdk/stepper';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { InShort } from '@lib/interfaces/record';
+
 @Component({
     standalone: true,
     imports: [
+        CommonModule,
         ReactiveFormsModule,
         MatChipsModule,
         MatIconModule,

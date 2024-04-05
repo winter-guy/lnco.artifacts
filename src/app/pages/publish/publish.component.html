@@ -47,7 +47,7 @@
                             <!-- <img src="{{ '' }}" alt="" class="inset-0 w-full object-cover opacity-0 group-hover:opacity-100" /> -->
                         </div>
                         <ng-template #imageSelect>
-                            <div class="flex justify-start space-x-4 py-2 relative">
+                            <div class="flex justify-start space-x-4 relative ">
                                 <div class="group block rounded p-2">
                                     <div class="grid grid-cols-2 gap-2 overflow-auto md:grid-cols-2 lg:max-w-sm">
                                         <div class="relative" *ngFor="let image of poster; let i = index"
@@ -55,14 +55,13 @@
                                             <img class="h-auto max-w-full rounded cursor-pointer" [src]="image.url"
                                                 [alt]="image.label" title="poster" />
                                             <span *ngIf="image.selected"
-                                                class="absolute top-0 z-40 m-0.5 flex shrink-0 items-center space-x-1.5 rounded-sm text-xs font-medium text-slate-800">
-                                                <span class="whitespace-nowrap">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                                                        fill="currentColor" class="w-4 h-4 fill-white">
-                                                        <path
-                                                            d="M3.75 2a.75.75 0 0 0-.75.75v10.5a.75.75 0 0 0 1.28.53L8 10.06l3.72 3.72a.75.75 0 0 0 1.28-.53V2.75a.75.75 0 0 0-.75-.75h-8.5Z" />
-                                                    </svg>
-                                                </span>
+                                                class="absolute h-full w-full justify-center top-0 z-40 m-1 flex shrink-0 items-center space-x-1.5 rounded-sm text-xs font-medium text-slate-800">
+                                                <a role="button"
+                                                    class="bg-black/50 backdrop-blur-sm absolute text-white text-xs py-1 px-3 rounded-full">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+                                                        <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm3.844-8.791a.75.75 0 0 0-1.188-.918l-3.7 4.79-1.649-1.833a.75.75 0 1 0-1.114 1.004l2.25 2.5a.75.75 0 0 0 1.15-.043l4.25-5.5Z" clip-rule="evenodd" />
+                                                      </svg>                                                      
+                                                </a>
                                             </span>
                                         </div>
                                     </div>
