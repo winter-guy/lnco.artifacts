@@ -142,7 +142,7 @@
                         </button>
                     </div>
                     <cdk-accordion>
-                        @for (item of this.inShortFormArray.get('myArray')?.value; track item; let index = $index) {
+                        @for (item of this.inShortFormArray.get('formArray')?.value; track item; let index = $index) {
                         <cdk-accordion-item [expanded]="index == 0" #accordionItem="cdkAccordionItem" role="button"
                             tabindex="0" [attr.id]="'accordion-header-' + index"
                             [attr.aria-expanded]="accordionItem.expanded"

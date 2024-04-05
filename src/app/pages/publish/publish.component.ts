@@ -68,7 +68,7 @@ export class PublishComponent implements OnInit {
 
     ngOnInit(): void {
         this.inShortFormArray = this._formBuilder.group({
-            myArray: this._formBuilder.array([]),
+            formArray: this._formBuilder.array([]),
         });
 
         this.tags = this.data.tags;
@@ -95,6 +95,18 @@ export class PublishComponent implements OnInit {
 
         this.poster = this.data.images.map((url, i) => {
             return { label: `${i}_selection`, url: url, selected: i === 0 ? true : false };
+        });
+
+        const formArray = this.inShortFormArray.get('formArray') as FormArray;
+        this.data.inShort.forEach((item) => {
+            formArray.push(this.createItem(item));
+        });
+    }
+
+    createItem(item: InShort): FormGroup {
+        return this._formBuilder.group({
+            head: [item.head],
+            content: [item.content],
         });
     }
 
@@ -150,7 +162,7 @@ export class PublishComponent implements OnInit {
     }
 
     addSummary(): void {
-        const myArrayFormArray = this.inShortFormArray.get('myArray');
+        const myArrayFormArray = this.inShortFormArray.get('formArray');
         if (!myArrayFormArray || !(myArrayFormArray instanceof FormArray)) {
             return;
         }
@@ -172,9 +184,9 @@ export class PublishComponent implements OnInit {
     public removeSummary(event: Event, index: number): void {
         event.stopPropagation();
 
-        const myArrayFormArray = this.inShortFormArray.get('myArray') as FormArray;
+        const myArrayFormArray = this.inShortFormArray.get('formArray') as FormArray;
         if (!myArrayFormArray) {
-            console.error("Failed to get 'myArray' FormArray");
+            console.error("Failed to get 'formArray' FormArray");
             return;
         }
 
