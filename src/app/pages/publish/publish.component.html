@@ -59,9 +59,8 @@
                                                 <span class="whitespace-nowrap">
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
                                                         fill="currentColor" class="w-4 h-4 fill-white">
-                                                        <path fill-rule="evenodd"
-                                                            d="M2 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4Zm10.5 5.707a.5.5 0 0 0-.146-.353l-1-1a.5.5 0 0 0-.708 0L9.354 9.646a.5.5 0 0 1-.708 0L6.354 7.354a.5.5 0 0 0-.708 0l-2 2a.5.5 0 0 0-.146.353V12a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5V9.707ZM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"
-                                                            clip-rule="evenodd"></path>
+                                                        <path
+                                                            d="M3.75 2a.75.75 0 0 0-.75.75v10.5a.75.75 0 0 0 1.28.53L8 10.06l3.72 3.72a.75.75 0 0 0 1.28-.53V2.75a.75.75 0 0 0-.75-.75h-8.5Z" />
                                                     </svg>
                                                 </span>
                                             </span>
@@ -69,11 +68,19 @@
                                     </div>
                                 </div>
                                 <div class="p-0.5 flex h-max w-max gap-4 rounded-full absolute right-0 bottom-0">
-                                    <button title="drop" (click)="toogleImagePreview()"
-                                        class="inline-flex shrink-0 gap-0.5 items-center justify-center rounded-full border text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 fill-green-500">
-                                            <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm3.844-8.791a.75.75 0 0 0-1.188-.918l-3.7 4.79-1.649-1.833a.75.75 0 1 0-1.114 1.004l2.25 2.5a.75.75 0 0 0 1.15-.043l4.25-5.5Z" clip-rule="evenodd" />
-                                          </svg>
+                                    <button type="button" title="add" (click)="toogleImagePreview()"
+                                        class="border-btn my-2 rounded-full inline-flex shrink-0 gap-1 items-center justify-center text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
+
+                                        <span
+                                            class="inline-flex shrink-0 items-center gap-1 text-xs font-medium p-0.5 rounded-md text-slate-800 false">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                                                fill="currentColor" class="w-4 h-4 fill-green-500">
+                                                <path fill-rule="evenodd"
+                                                    d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm3.844-8.791a.75.75 0 0 0-1.188-.918l-3.7 4.79-1.649-1.833a.75.75 0 1 0-1.114 1.004l2.25 2.5a.75.75 0 0 0 1.15-.043l4.25-5.5Z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                            <span class="whitespace-nowrap pr-1">done</span>
+                                        </span>
                                     </button>
                                 </div>
                             </div>
@@ -84,7 +91,7 @@
                                 class="text-base font-medium text-gray-700 group-hover:underline group-hover:underline-offset-4 dark:text-slate-50">
                                 {{ this.editorForm.controls['headline'].value }}
                             </span>
-                            <p class="mt-1.5 max-w-[40ch] text-xs text-gray-500 dark:text-slate-300">
+                            <p class="mt-1.5 text-xs text-gray-500 dark:text-slate-300">
                                 {{ this.editorForm.controls['description'].value }}
                             </p>
                         </div>
@@ -161,7 +168,7 @@
                                         <circle cx="12" cy="12" r="9">
                                         </circle>
                                     </svg>
-                                    
+
                                 </div>
                                 <span
                                     class="text-left text-sm font-medium text-slate-950 dark:text-gray-100 flex flex-col">
@@ -182,7 +189,7 @@
                                         {{item?.content}}
                                     </p>
 
-                                    <div class="p-0.5 border flex m-4 w-max gap-4 rounded-full relative">
+                                    <div class="p-0.5 border items-center flex m-4 w-max gap-1 rounded-full relative">
                                         <button title="drop" (click)="removeSummary($event, index)"
                                             class="inline-flex shrink-0 gap-0.5 items-center justify-center rounded-full border text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
@@ -192,6 +199,7 @@
                                                     clip-rule="evenodd" />
                                             </svg>
                                         </button>
+                                        <div class="border w-2 h-2 rounded-full"></div>
                                         <button title="drop" (click)="editSummary($event, index, item)"
                                             class="inline-flex shrink-0 gap-1 p-0.5 items-center justify-center rounded-full border text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
@@ -256,7 +264,7 @@
                                         </div>
                                         <div class="w-full space-y-0.5">
                                             <label for="tags" type="text" id="tags"
-                                                class="block overflow-hidden my-1 rounded-md border border-gray-200 px-2 py-2  focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
+                                                class="block overflow-hidden my-1 rounded-md border border-gray-200 px-3 py-2 focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
                                                 <span class="text-xs font-medium text-gray-700"> Add tags </span>
 
                                                 <input type="text" id="tags" placeholder="Add tags..."
@@ -282,7 +290,7 @@
                                 <div>
                                     <div class="relative">
                                         <label for="head" type="text" id="head"
-                                            class="block overflow-hidden mt-1 rounded-md rounded-b-none border-b-0 border border-gray-200 px-3 py-2 focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
+                                            class="block overflow-hidden mt-1 rounded-md mb-2 border border-gray-200 px-3 py-2 focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
                                             <span class="text-xs font-medium text-gray-700"> in short headline </span>
 
                                             <input type="email" id="head" formControlName="head"
@@ -296,7 +304,7 @@
                                     <div class="relative">
                                         <div>
                                             <textarea id="content" formControlName="content"
-                                                class="border-btn rounded-t-none w-full rounded align-top sm:text-sm" rows="8"
+                                                class="border-btn w-full rounded align-top sm:text-sm" rows="8"
                                                 placeholder="Provide a concise content summary."></textarea>
                                         </div>
 
@@ -317,7 +325,7 @@
                                         </button>
 
                                         <ng-template #edit>
-                                            <div class="p-0.5 border flex gap-4 mt-2 rounded-full w-max">
+                                            <div class="p-0.5 border flex items-center gap-1 mt-2 rounded-full w-max">
                                                 <button title="drop" type="button" (click)="addSummary()"
                                                     class="inline-flex shrink-0 gap-0.5 p-0.5 items-center justify-center rounded-full border text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
@@ -327,6 +335,7 @@
                                                             clip-rule="evenodd" />
                                                     </svg>
                                                 </button>
+                                                <div class="border w-2 h-2 rounded-full"></div>
                                                 <button title="drop" type="button" (click)="resetSummary()"
                                                     class="inline-flex shrink-0 gap-1 p-0.5 items-center justify-center rounded-full border text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"

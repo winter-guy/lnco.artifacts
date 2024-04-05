@@ -37,3 +37,7 @@ body.dark {
 .mdc-evolution-chip-set .mdc-evolution-chip-set__chips {
     @apply ml-0 !important;
 }
+
+input.mat-mdc-chip-input {
+    @apply m-0 !important;
+}
