@@ -64,7 +64,6 @@ export class PublishComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        console.log(this.data);
         this.inShortFormArray = this._formBuilder.group({
             formArray: this._formBuilder.array([]),
         });

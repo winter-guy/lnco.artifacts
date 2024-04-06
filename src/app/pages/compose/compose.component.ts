@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
-import { RouterModule, ActivatedRoute } from '@angular/router';
+import { RouterModule, ActivatedRoute, Router } from '@angular/router';
 import { Observable, combineLatest, debounceTime, skip } from 'rxjs';
-import { Dialog, DialogModule } from '@angular/cdk/dialog';
+import { Dialog, DialogModule, DialogRef } from '@angular/cdk/dialog';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
 import { SharedModule } from '@lib/content/shared.module';
@@ -19,7 +19,7 @@ import EditorJS from '@editorjs/editorjs';
 import { ShortenStringPipe } from '@lib/pipe/short.pipe';
 import { AuthService } from '@auth0/auth0-angular';
 import { myValueSubject } from '@lib/services/core/publish';
-import { SecRecord } from '@lib/interfaces/record';
+import { Record, SecRecord } from '@lib/interfaces/record';
 
 import { CdkMenu, CdkMenuModule } from '@angular/cdk/menu';
 
@@ -41,7 +41,8 @@ export class ComposeComponent implements OnInit, OnDestroy {
         protected readonly artifactService: ArtifactService,
 
         private readonly _formBuilder: FormBuilder,
-        private readonly _router: ActivatedRoute,
+        private readonly _route: ActivatedRoute,
+        private readonly _router: Router,
         private readonly _themeService: ThemeService,
         private readonly _cdkDialog: Dialog,
         private readonly _auth: AuthService,
@@ -78,7 +79,7 @@ export class ComposeComponent implements OnInit, OnDestroy {
                 },
             });
 
-        this.draftHashIdentifier = this._router.snapshot.queryParams['page'] as string;
+        this.draftHashIdentifier = this._route.snapshot.queryParams['page'] as string;
         if (this.draftHashIdentifier) {
             this.buildEditorWithBlocks(this.draftHashIdentifier);
         } else {
@@ -148,7 +149,7 @@ export class ComposeComponent implements OnInit, OnDestroy {
                 this.artifactService.getContentFromPublication(outputData.blocks as BlocksEntity[]),
             ]).subscribe(([_images, _description]) => {
                 if (outputData.blocks.length > 0) {
-                    const dialogRef = this._cdkDialog.open(PublishComponent, {
+                    const dialogRef: DialogRef<Record, PublishComponent> = this._cdkDialog.open(PublishComponent, {
                         ...dialogConf,
                         data: {
                             header: this.editorForm.controls['headline'].value as string,
@@ -162,16 +163,19 @@ export class ComposeComponent implements OnInit, OnDestroy {
                             editing: !!this.postDataBlock?.id,
                         } as Compose,
                     });
-                    dialogRef.closed.subscribe((result) => {
-                        console.log(result);
-                        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-                        console.log(`Dialog result: ${result}`);
+                    dialogRef.closed.subscribe((res) => {
+                        if (res) this.onBtnActionClicked(res.id);
                     });
                 } else {
                     // this._warningWithEmptyPublish()
                 }
             });
         });
+    }
+
+    public onBtnActionClicked(pageId: string): void {
+        const NAV_URL = '/artifact';
+        this._router.navigate([NAV_URL], { queryParams: { page: pageId } });
     }
 
     ngOnDestroy(): void {
