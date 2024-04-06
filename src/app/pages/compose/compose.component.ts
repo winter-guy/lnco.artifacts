@@ -35,6 +35,7 @@ export class ComposeComponent implements OnInit, OnDestroy {
     public draftHashIdentifier!: string;
 
     public editorForm!: FormGroup;
+    public userName!: string | undefined;
 
     constructor(
         protected readonly artifactService: ArtifactService,
@@ -83,6 +84,15 @@ export class ComposeComponent implements OnInit, OnDestroy {
         } else {
             this.buildEditorWithoutBlocks();
         }
+
+        this._auth.isAuthenticated$.subscribe((isAuthenticated) => {
+            if (isAuthenticated) {
+                // Access the user's profile
+                this._auth.user$.subscribe((user) => {
+                    this.userName = user?.nickname; // Or any other property containing the user's name
+                });
+            }
+        });
     }
 
     postDataBlock!: SecRecord;
@@ -140,7 +150,7 @@ export class ComposeComponent implements OnInit, OnDestroy {
                 if (outputData.blocks.length > 0) {
                     const dialogRef = this._cdkDialog.open(PublishComponent, {
                         ...dialogConf,
-                        data: <Compose>{
+                        data: {
                             header: this.editorForm.controls['headline'].value as string,
                             description: new ShortenStringPipe().transform(_description),
                             draftId: this.draftHashIdentifier,
@@ -148,7 +158,8 @@ export class ComposeComponent implements OnInit, OnDestroy {
                             tags: this.postDataBlock?.meta?.tags,
                             inShort: this.postDataBlock?.inShort,
                             article: outputData,
-                        },
+                            author: this.userName,
+                        } as Compose,
                     });
                     dialogRef.closed.subscribe((result) => {
                         console.log(result);

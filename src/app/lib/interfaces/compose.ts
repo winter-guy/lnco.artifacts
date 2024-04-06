@@ -9,4 +9,6 @@ export interface Compose {
     article: Document;
     images: string[];
     inShort: InShort[];
+
+    author: string;
 }

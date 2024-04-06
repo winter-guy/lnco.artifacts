@@ -61,7 +61,7 @@ export class ArtifactService {
             try {
                 const meta: Meta = {
                     id: composer.draftId,
-                    author: '',
+                    author: composer.author,
                     username: '',
                     poster: poster,
                     tags: tags,
