@@ -65,7 +65,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     @needConfirmation({
         message: `Are you sure you want to log out?`,
         description: `Logging out will terminate your current session and require you to 
-                    sign in again to access your account and modify artifacts. `,
+                        sign in again to access your account and modify artifacts. `,
         label: 'sign out',
         disableCloseBtn: true,
     })

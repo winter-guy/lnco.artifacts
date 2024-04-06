@@ -1,4 +1,4 @@
-<main class="relative flex flex-wrap items-center justify-center bg-warm columns-1 md:column-2 max-auto">
+<main class="relative flex flex-wrap items-center justify-center bg-warm columns-1 md:column-2 max-auto dark:bg-black border border-base">
   <!-- <div role="alert" class="w-full p-4 text-sm font-medium rounded-lg bg-amber-50 text-amber-800 ring-1 ring-amber-100">Are you sure you want to delete this item? This action cannot be undone.</div> -->
   <div class="relative cards md:block max-h-96">
     <div class="relative bg-warm">
@@ -12,14 +12,14 @@
         </div>
         <div class="relative flex flex-col items-start justify-between p-8 overflow-auto rounded" [ngClass]="data.message_alignment">
           <span class="text-lg mb-2">{{ data && data.message }}</span>
-          <span class="text-xs mb-4 text-slate-500 lowercase">{{ data && data.description }}</span>
+          <span class="text-xs mb-4 text-slate-500 dark:text-slate-200 lowercase">{{ data && data.description }}</span>
           <div class="relative z-0 flex w-full -space-x-px max-w-[400px] justify-center" [ngClass]="{'!w-1/2': !data.label}">
             <button [mat-dialog-close]="true" type="button" *ngIf="data.label"
               class="flex items-center justify-center flex-1 px-3 py-4 mr-2 text-sm font-medium text-white transition bg-red-500 border border-red-500 rounded appearance-none cursor-pointer select-none hover:border-red-600 hover:bg-red-600 focus:outline-none focus:ring-transparent">
               {{ data.label }}
             </button>
             <button title="accpet" [mat-dialog-close]="false" type="button"
-              class="flex items-center justify-center flex-1 px-3 py-4 text-sm font-medium text-gray-800 transition bg-warm border border-gray-200 rounded appearance-none cursor-pointer select-none hover:border-gray-300 hover:bg-gray-100 focus:border-gray-300 focus:outline-none focus:ring-transparent">
+              class="flex items-center justify-center flex-1 px-3 py-4 text-sm font-medium text-gray-800 dark:bg-slate-50 transition border border-base rounded appearance-none cursor-pointer select-none hover:border-gray-300 hover:bg-gray-100 dark:hover:bg-slate-100 focus:border-gray-300 focus:outline-none focus:ring-transparent">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
