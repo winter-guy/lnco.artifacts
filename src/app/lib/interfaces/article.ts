@@ -36,6 +36,7 @@ export interface File {
 
 export interface Tag {
     name: string;
+    url?: string;
 }
 
 export interface Highlights {

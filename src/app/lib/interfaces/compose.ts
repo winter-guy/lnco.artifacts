@@ -11,4 +11,5 @@ export interface Compose {
     inShort: InShort[];
 
     author: string;
+    editing: boolean;
 }

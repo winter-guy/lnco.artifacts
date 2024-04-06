@@ -15,10 +15,16 @@
                 <span>schedule</span>
             </button>
             <div class="relative z-0 flex -space-x-px">
-                <button title="drop" (click)="submit()"
+                <button title="drop" (click)="submit()" *ngIf="!data.editing; else updatepost"
                     class="border-btn inline-flex shrink-0 items-center justify-center space-x-1 rounded-full border px-3 py-1.5 text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
                     <span> post </span>
                 </button>
+                <ng-template #updatepost>
+                    <button title="drop" (click)="update()"
+                        class="border-btn inline-flex shrink-0 items-center justify-center space-x-1 rounded-full border px-3 py-1.5 text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
+                        <span> update </span>
+                    </button>
+                </ng-template>
             </div>
             <div
                 class="relative flex h-8 w-8 shrink-0 select-none items-center justify-center rounded-full bg-slate-200 text-xs font-semibold uppercase text-slate-800">

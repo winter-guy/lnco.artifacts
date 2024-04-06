@@ -53,8 +53,7 @@ export class ArtifactComponent implements OnInit {
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     public deletePost() {
         if (this.post)
-            this.artifactService.deleteArtifact(this.post.id).subscribe((res) => {
-                console.log(res);
+            this.artifactService.deleteArtifact(this.post.id).subscribe(() => {
                 this._router.navigate(['/home']);
             });
     }

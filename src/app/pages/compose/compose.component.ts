@@ -159,6 +159,7 @@ export class ComposeComponent implements OnInit, OnDestroy {
                             inShort: this.postDataBlock?.inShort,
                             article: outputData,
                             author: this.userName,
+                            editing: !!this.postDataBlock?.id,
                         } as Compose,
                     });
                     dialogRef.closed.subscribe((result) => {

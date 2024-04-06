@@ -55,8 +55,12 @@ export class ArtifactService {
         return this.httpService.delete(`/remove/${id}`);
     }
 
+    public updateArtifact(id: string, payload: Partial<Record>): Observable<Record> {
+        return this.httpService.patch<Record, Partial<Record>>(`/update/${id}`, payload);
+    }
+
     // eslint-disable-next-line prettier/prettier
-    public async postPublicationMapper(composer: Compose, poster: string | undefined, record: Document, inShort: InShort[], tags: Tag[]): Promise<Partial<Record>> {
+    public async postPublicationMapper(composer: Compose, _meta: {head: string; details: string}, poster: string | undefined, record: Document, inShort: InShort[], tags: Tag[]): Promise<Partial<Record>> {
         return new Promise<Partial<Record>>((resolve, reject) => {
             try {
                 const meta: Meta = {
@@ -68,9 +72,10 @@ export class ArtifactService {
                     imgs: composer.images,
                     createdDate: Number(new Date()),
                     modifiedDate: Number(new Date()),
-                    head: composer.header,
+
+                    head: _meta.head,
+                    details: _meta.details,
                     meta: '',
-                    details: composer.description,
                     cl: 0,
                 };
 

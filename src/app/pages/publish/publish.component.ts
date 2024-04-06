@@ -64,6 +64,7 @@ export class PublishComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        console.log(this.data);
         this.inShortFormArray = this._formBuilder.group({
             formArray: this._formBuilder.array([]),
         });
@@ -105,6 +106,10 @@ export class PublishComponent implements OnInit {
         // eslint-disable-next-line @typescript-eslint/await-thenable
         const mappedvalue = await this._artifactSrvc.postPublicationMapper(
             this.data,
+            {
+                head: this.editorForm.controls['headline'].value as string,
+                details: this.editorForm.controls['description'].value as string,
+            },
             this.poster,
             this.data.article,
             this.inShortFormArray.controls['formArray'].value as InShort[],
@@ -112,6 +117,25 @@ export class PublishComponent implements OnInit {
         );
 
         this._artifactSrvc.postArtifact(mappedvalue).subscribe((res) => {
+            this.dialogRef.close(res);
+        });
+    }
+
+    async update(): Promise<void> {
+        const mappedvalue = await this._artifactSrvc.postPublicationMapper(
+            this.data,
+            {
+                head: this.editorForm.controls['headline'].value as string,
+                details: this.editorForm.controls['description'].value as string,
+            },
+            this.poster,
+            this.data.article,
+            this.inShortFormArray.controls['formArray'].value as InShort[],
+            this.tags,
+        );
+
+        console.log(mappedvalue);
+        this._artifactSrvc.updateArtifact(this.data.draftId, mappedvalue).subscribe((res) => {
             this.dialogRef.close(res);
         });
     }

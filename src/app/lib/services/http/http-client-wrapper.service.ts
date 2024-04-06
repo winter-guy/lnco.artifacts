@@ -34,6 +34,16 @@ export class HttpService {
             .pipe(catchError((error: HttpErrorResponse) => this._handleError(error)));
     }
 
+    patch<T, K>(url: string, model: K | null, httpParams?: HttpParams): Observable<T> {
+        const requestUrl = `${this._baseUrl}${url}`;
+        return this._httpClient
+            .patch<T>(requestUrl, model, {
+                params: httpParams ? httpParams : undefined,
+                headers: this._headers ? this._headers : undefined,
+            })
+            .pipe(catchError((error: HttpErrorResponse) => this._handleError(error)));
+    }
+
     delete<T>(url: string, httpParams?: HttpParams): Observable<T> {
         const requestUrl = `${this._baseUrl}${url}`;
         return this._httpClient
