@@ -10,6 +10,7 @@ import { SecRecord } from '@lib/interfaces/record';
 
 import { CdkMenu, CdkMenuModule } from '@angular/cdk/menu';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { needConfirmation } from '@lib/content/dialog.directive';
 
 @Component({
     standalone: true,
@@ -50,8 +51,12 @@ export class ArtifactComponent implements OnInit {
         });
     }
 
-    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-    public deletePost() {
+    @needConfirmation({
+        message: 'Are you sure you want to permanently delete this post? This action cannot be undone.',
+        label: 'delete',
+        disableCloseBtn: true,
+    })
+    public deletePost(): void {
         if (this.post)
             this.artifactService.deleteArtifact(this.post.id).subscribe(() => {
                 this._router.navigate(['/home']);
