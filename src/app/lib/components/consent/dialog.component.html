@@ -11,7 +11,8 @@
           </button>
         </div>
         <div class="relative flex flex-col items-start justify-between p-8 overflow-auto rounded" [ngClass]="data.message_alignment">
-          <h4 class="">{{ data && data.message }}</h4>
+          <span class="text-lg mb-2">{{ data && data.message }}</span>
+          <span class="text-xs mb-4 text-slate-500 lowercase">{{ data && data.description }}</span>
           <div class="relative z-0 flex w-full -space-x-px max-w-[400px] justify-center" [ngClass]="{'!w-1/2': !data.label}">
             <button [mat-dialog-close]="true" type="button" *ngIf="data.label"
               class="flex items-center justify-center flex-1 px-3 py-4 mr-2 text-sm font-medium text-white transition bg-red-500 border border-red-500 rounded appearance-none cursor-pointer select-none hover:border-red-600 hover:bg-red-600 focus:outline-none focus:ring-transparent">

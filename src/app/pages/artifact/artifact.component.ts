@@ -52,7 +52,8 @@ export class ArtifactComponent implements OnInit {
     }
 
     @needConfirmation({
-        message: 'Are you sure you want to permanently delete this post? This action cannot be undone.',
+        message: 'Are you sure you want to permanently delete this post?',
+        description: 'This action cannot be undone.',
         label: 'delete',
         disableCloseBtn: true,
     })

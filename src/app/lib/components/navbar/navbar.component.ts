@@ -8,6 +8,7 @@ import { LogoComponent } from '../logo/logo.component';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { AppTheme } from '@lib/services/theme';
 import { AuthService } from '@auth0/auth0-angular';
+import { needConfirmation } from '@lib/content/dialog.directive';
 
 @Component({
     selector: 'app-navbar',
@@ -61,6 +62,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.auth.loginWithRedirect();
     }
 
+    @needConfirmation({
+        message: `Are you sure you want to log out?`,
+        description: `Logging out will terminate your current session and require you to 
+                    sign in again to access your account and modify artifacts. `,
+        label: 'sign out',
+        disableCloseBtn: true,
+    })
     public logout(): void {
         this.auth.logout({ logoutParams: { returnTo: this.doc.location.origin } });
     }
