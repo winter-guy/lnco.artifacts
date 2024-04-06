@@ -19,9 +19,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     private readonly _destroy$ = new Subject();
     public artifacts!: Artifact[];
 
+    public date!: Date;
+    monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+
     constructor(public artifactService: ArtifactService, protected router: Router) {}
 
     ngOnInit(): void {
+        this.date = new Date();
         this._themeService.currentTheme$
             .pipe(takeUntil(this._destroy$))
             .subscribe((theme) => (this.currentTheme = theme));
