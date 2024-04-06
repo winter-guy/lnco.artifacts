@@ -28,6 +28,7 @@ export interface Meta {
     imgs: string[];
     createdDate: number;
     modifiedDate: number;
+    poster?: string;
 
     head: string;
     meta?: string;

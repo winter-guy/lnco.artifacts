@@ -121,7 +121,7 @@
 
 <ng-template #edit>
 	<div class="relative" role="menubar">
-		<div class="z-10 mt-2 w-56 border border-base border-light rounded-sm bg-white dark:bg-black shadow-std group">
+		<div class="z-10 mt-2 w-56 border border-base border-light rounded-sm bg-white dark:bg-black group">
 			<div class="p-2 group-hover:text-gray-700">
 				<a (click)="onBtnActionClicked()"
 					class="cursor-pointer rounded px-4 py-2 text-sm flex items-center text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-200"
@@ -133,22 +133,18 @@
 						</span>
 					</div>
 				</a>
-				<a href="#"
-					class="block rounded px-4 py-2 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-200"
+				<a class="block rounded px-4 py-2 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-200"
 					role="menuitem">
 					Share
 				</a>
 			</div>
 
 			<div class="border-t border-light">
-
-				<form method="POST" action="#">
-					<button type="submit"
-						class="flex w-full gap-2 items-center p-4 text-sm text-red-500 hover:bg-red-50 dark:text-white dark:hover:text-white dark:hover:bg-red-700"
-						role="menuitem">
-						Delete artifact...
-					</button>
-				</form>
+				<button (click)="deletePost()"
+					class="flex w-full gap-2 items-center p-4 text-sm text-red-500 hover:bg-red-50 dark:text-white dark:hover:text-white dark:hover:bg-red-700"
+					role="menuitem">
+					Delete artifact
+				</button>
 			</div>
 		</div>
 	</div>

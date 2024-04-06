@@ -16,7 +16,8 @@ import { CheckboxComponent } from './checkbox.component';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { StepperSelectionEvent } from '@angular/cdk/stepper';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
-import { InShort } from '@lib/interfaces/record';
+import { InShort, Record } from '@lib/interfaces/record';
+import { ArtifactService } from '@lib/services/artifacts/artifacts.service';
 
 @Component({
     standalone: true,
@@ -43,17 +44,12 @@ export class PublishComponent implements OnInit {
     public inShortFormArray!: FormGroup;
 
     public enableInShortsEditor!: boolean;
-    public inShorts: InShort[] = [
-        {
-            head: 'Navigating the UK Housing Market: Trends, Challenges, and Opportunities',
-            content: `The UK housing market has seen a significant price increase over the past two years, driven by low interest rates and high demand. However, rising mortgage rates pose a challenge for homeowners, potentially leading to financial strain when fixed-rate deals expire. Market indicators suggest a slowdown, with analysts predicting a 5-12% decline in prices over the next 18 months. The trajectory of interest rates and inflation will be critical in determining future market direction. Despite short-term challenges, opportunities exist for first-time buyers and investors, contingent on monitoring macroeconomic factors closely.`,
-        },
-        { head: 'ascas', content: 'ascas' },
-    ];
+
     public tags: Tag[] = [];
     public isChecked = false;
 
-    public poster!: {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    public _poster!: {
         label: string;
         url: string;
         selected: boolean;
@@ -61,9 +57,10 @@ export class PublishComponent implements OnInit {
     readonly separatorKeysCodes = [ENTER, COMMA] as const;
 
     constructor(
-        public dialogRef: DialogRef<string>,
+        public dialogRef: DialogRef<Record>,
         @Inject(DIALOG_DATA) public data: Compose,
         private _formBuilder: FormBuilder,
+        private readonly _artifactSrvc: ArtifactService,
     ) {}
 
     ngOnInit(): void {
@@ -71,7 +68,7 @@ export class PublishComponent implements OnInit {
             formArray: this._formBuilder.array([]),
         });
 
-        this.tags = this.data.tags;
+        this.tags = this.data.tags ?? [];
         this.editorForm = this._formBuilder.group({
             headline: [
                 '',
@@ -93,13 +90,29 @@ export class PublishComponent implements OnInit {
             description: this.data.description,
         });
 
-        this.poster = this.data.images.map((url, i) => {
+        this._poster = this.data.images.map((url, i) => {
             return { label: `${i}_selection`, url: url, selected: i === 0 ? true : false };
         });
 
         const formArray = this.inShortFormArray.get('formArray') as FormArray;
-        this.data.inShort.forEach((item) => {
+
+        this.data?.inShort?.forEach((item) => {
             formArray.push(this.createItem(item));
+        });
+    }
+
+    async submit(): Promise<void> {
+        // eslint-disable-next-line @typescript-eslint/await-thenable
+        const mappedvalue = await this._artifactSrvc.postPublicationMapper(
+            this.data,
+            this.poster,
+            this.data.article,
+            this.inShortFormArray.controls['formArray'].value as InShort[],
+            this.tags,
+        );
+
+        this._artifactSrvc.postArtifact(mappedvalue).subscribe((res) => {
+            this.dialogRef.close(res);
         });
     }
 
@@ -117,8 +130,8 @@ export class PublishComponent implements OnInit {
         this.enableInShortsEditor = $event.selectedStep.label === 'In Shorts';
     }
 
-    public get selectedPoster(): string | undefined {
-        return this.poster.find((image) => image.selected)?.url;
+    public get poster(): string | undefined {
+        return this._poster.find((image) => image.selected)?.url;
     }
 
     public close(): void {
@@ -129,7 +142,7 @@ export class PublishComponent implements OnInit {
         const value = (event.value || '').trim();
 
         if (value) {
-            this.tags.push({ name: value });
+            this.tags?.push({ name: value });
         }
         event.chipInput?.clear();
     }
@@ -143,7 +156,7 @@ export class PublishComponent implements OnInit {
 
     public onCheckboxChange(index: number): void {
         // Uncheck other checkboxes when one is checked
-        this.poster.forEach((checkbox: { selected: boolean }, i: number) => {
+        this._poster.forEach((checkbox: { selected: boolean }, i: number) => {
             checkbox.selected = !(i !== index);
         });
     }

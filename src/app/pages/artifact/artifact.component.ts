@@ -49,4 +49,13 @@ export class ArtifactComponent implements OnInit {
             this._router.navigate([NAV_URL], { queryParams: { page: params['page'] as string } });
         });
     }
+
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+    public deletePost() {
+        if (this.post)
+            this.artifactService.deleteArtifact(this.post.id).subscribe((res) => {
+                console.log(res);
+                this._router.navigate(['/home']);
+            });
+    }
 }

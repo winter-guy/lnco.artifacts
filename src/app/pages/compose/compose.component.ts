@@ -146,7 +146,8 @@ export class ComposeComponent implements OnInit, OnDestroy {
                             draftId: this.draftHashIdentifier,
                             images: _images,
                             tags: this.postDataBlock?.meta?.tags,
-                            inShort: this.postDataBlock.inShort,
+                            inShort: this.postDataBlock?.inShort,
+                            article: outputData,
                         },
                     });
                     dialogRef.closed.subscribe((result) => {

@@ -15,7 +15,7 @@
                 <span>schedule</span>
             </button>
             <div class="relative z-0 flex -space-x-px">
-                <button title="drop"
+                <button title="drop" (click)="submit()"
                     class="border-btn inline-flex shrink-0 items-center justify-center space-x-1 rounded-full border px-3 py-1.5 text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
                     <span> post </span>
                 </button>
@@ -29,10 +29,28 @@
     <div class="flex flex-col lg:flex-row lg:space-x-2">
         <div class="group relative block" *ngIf="this.poster">
             <div class="relative" *ngIf="!enableInShortsEditor; else inShortPreview">
-                <span
-                    class="inline-flex my-2 shrink-0 items-center space-x-1.5 text-xs font-medium px-3 py-1 rounded-md text-slate-800 bg-slate-100 false">
-                    <span class="whitespace-nowrap">preview</span>
-                </span>
+                <div class="flex gap-2">
+                    <span
+                        class="inline-flex my-2 shrink-0 items-center space-x-1.5 text-xs px-3 py-1 font-medium rounded-md text-slate-800 bg-slate-100 false">
+                        <span class="whitespace-nowrap">preview</span>
+                    </span>
+                    <div class="flex h-max w-max gap-4 rounded-full" *ngIf="previewFlag">
+                        <button type="button" title="add" (click)="toogleImagePreview()"
+                            class="border-btn my-2 rounded-md inline-flex shrink-0 gap-1 items-center px-3 py-1 justify-center text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
+
+                            <span
+                                class="inline-flex shrink-0 items-center gap-1 text-xs font-medium rounded-md text-slate-800 false">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+                                    class="w-4 h-4 fill-blue-500">
+                                    <path fill-rule="evenodd"
+                                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm3.844-8.791a.75.75 0 0 0-1.188-.918l-3.7 4.79-1.649-1.833a.75.75 0 1 0-1.114 1.004l2.25 2.5a.75.75 0 0 0 1.15-.043l4.25-5.5Z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <span class="whitespace-nowrap pr-1">done</span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
                 <ng-container>
                     <a class="group block cursor-pointer">
                         <div class="relative" *ngIf="!previewFlag; else imageSelect">
@@ -42,45 +60,32 @@
                                     Change preview image
                                 </a>
                             </div>
-                            <img src="{{ selectedPoster }}" alt=""
+                            <img src="{{ poster }}" alt=""
                                 class="inset-0 w-full rounded object-cover opacity-100 h-[350px]" />
                             <!-- <img src="{{ '' }}" alt="" class="inset-0 w-full object-cover opacity-0 group-hover:opacity-100" /> -->
                         </div>
                         <ng-template #imageSelect>
                             <div class="flex justify-start space-x-4 relative ">
-                                <div class="group block rounded p-2">
+                                <div class="group block rounded overflow-x-auto h-96">
                                     <div class="grid grid-cols-2 gap-2 overflow-auto md:grid-cols-2 lg:max-w-sm">
-                                        <div class="relative" *ngFor="let image of poster; let i = index"
+                                        <div class="relative max-h-60" *ngFor="let image of _poster; let i = index"
                                             (click)="onCheckboxChange(i)">
-                                            <img class="h-auto max-w-full rounded cursor-pointer" [src]="image.url"
-                                                [alt]="image.label" title="poster" />
+                                            <img class="rounded cursor-pointer h-full w-full object-cover"
+                                                [src]="image.url" [alt]="image.label" title="poster" />
                                             <span *ngIf="image.selected"
                                                 class="absolute h-full w-full justify-center top-0 z-40 m-1 flex shrink-0 items-center space-x-1.5 rounded-sm text-xs font-medium text-slate-800">
                                                 <a role="button"
                                                     class="bg-black/50 backdrop-blur-sm absolute text-white text-xs py-1 px-3 rounded-full">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
-                                                        <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm3.844-8.791a.75.75 0 0 0-1.188-.918l-3.7 4.79-1.649-1.833a.75.75 0 1 0-1.114 1.004l2.25 2.5a.75.75 0 0 0 1.15-.043l4.25-5.5Z" clip-rule="evenodd" />
-                                                      </svg>                                                      
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                                                        fill="currentColor" class="w-4 h-4">
+                                                        <path fill-rule="evenodd"
+                                                            d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm3.844-8.791a.75.75 0 0 0-1.188-.918l-3.7 4.79-1.649-1.833a.75.75 0 1 0-1.114 1.004l2.25 2.5a.75.75 0 0 0 1.15-.043l4.25-5.5Z"
+                                                            clip-rule="evenodd" />
+                                                    </svg>
                                                 </a>
                                             </span>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="p-0.5 flex h-max w-max gap-4 rounded-full absolute right-0 bottom-0">
-                                    <button type="button" title="add" (click)="toogleImagePreview()"
-                                        class="border-btn my-2 rounded-full inline-flex shrink-0 gap-1 items-center justify-center text-sm font-medium saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50">
-
-                                        <span
-                                            class="inline-flex shrink-0 items-center gap-1 text-xs font-medium p-0.5 rounded-md text-slate-800 false">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
-                                                fill="currentColor" class="w-4 h-4 fill-green-500">
-                                                <path fill-rule="evenodd"
-                                                    d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm3.844-8.791a.75.75 0 0 0-1.188-.918l-3.7 4.79-1.649-1.833a.75.75 0 1 0-1.114 1.004l2.25 2.5a.75.75 0 0 0 1.15-.043l4.25-5.5Z"
-                                                    clip-rule="evenodd" />
-                                            </svg>
-                                            <span class="whitespace-nowrap pr-1">done</span>
-                                        </span>
-                                    </button>
                                 </div>
                             </div>
                         </ng-template>
@@ -96,8 +101,7 @@
                         </div>
                     </a>
                 </ng-container>
-                <img [src]="selectedPoster" alt=""
-                    class="hidden h-[350px] max-w-[350px] rounded object-cover sm:h-[450px]" />
+                <img [src]="poster" alt="" class="hidden h-[350px] max-w-[350px] rounded object-cover sm:h-[450px]" />
                 <div class="z-99 absolute bottom-2 hidden w-full justify-center">
                     <div class="flex -space-x-px">
                         <button title="previous"
@@ -184,7 +188,7 @@
                                         <div class="h-full w-px bg-slate-300">
                                         </div>
                                     </div>
-                                    <p class="pl-4 text-xs text-slate-500 dark:text-gray-100">
+                                    <p class="pl-4 text-xs text-slate-500 dark:text-gray-100 overflow-y-auto max-h-96">
                                         {{item?.content}}
                                     </p>
 
