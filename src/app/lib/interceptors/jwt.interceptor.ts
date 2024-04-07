@@ -18,9 +18,13 @@ export const jwtInterceptor: HttpInterceptorFn = (request, next) => {
 
     // Define your list of endpoints that don't require the access token
     const exceptionEndpoints = ['/api/v2/fetch', '/api/v2/fetch/'];
-
+    let isAuthenticated!: boolean;
     // Check if the requested endpoint is in the exception list
-    if (exceptionEndpoints.some((endpoint) => request.url.includes(endpoint))) {
+    authService.isAuthenticated$.subscribe((authenticated) => {
+        isAuthenticated = authenticated;
+    });
+
+    if (exceptionEndpoints.some((endpoint) => request.url.includes(endpoint)) && !isAuthenticated) {
         // Proceed with the request without adding the Authorization header
         return next(request);
     }
