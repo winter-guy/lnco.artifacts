@@ -1,0 +1,93 @@
+[
+    {
+      "id": "a3b9c8d7e6f5a4b3c2d1e0f",
+      "createdDate": "20/02/2014",
+      "img": "https://picsum.photos/id/85/250",
+      "background": "https://fastly.picsum.photos/id/85/250/250.jpg?hmac=KAncLpjCcta8mc1ul_3CQMg_G0t4gE6RoBaS-nWjvoM",
+      "head": "Revolutionizing Urban Agriculture: How Vertical Farming is Reshaping the Future of Food Production.",
+      "meta": "Innovative farming techniques, sustainability",
+      "details": "Vertical farming has emerged as a transformative approach to agricultural practices, emphasizing sustainability and efficient space utilization."
+    },
+    {
+      "id": "1f2e3d4c5b6a7f8e9d0c1b2",
+      "createdDate": "20/02/2014",
+      "img": "https://picsum.photos/id/88/250",
+      "background": "https://picsum.photos/id/152/250",
+      "head": "Exploring the Deep Sea: Uncovering the Mysteries of Earth's Final Frontier.",
+      "meta": "Deep-sea exploration, marine biology",
+      "details": "Scientists delve into the depths of the ocean to unravel the mysteries of Earth's final frontier, discovering unique marine life and ecosystems."
+    },
+    {
+      "id": "8d7c6b5a4f3e2d1c0b9a8f",
+      "createdDate": "20/02/2014",
+      "img": "https://picsum.photos/id/68/250",
+      "background": "https://picsum.photos/id/80/250",
+      "head": "Random Article 1",
+      "meta": "Lorem ipsum, random details",
+      "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam."
+    },
+    {
+      "id": "4e5d6c7b8a9f0e1d2c3b4",
+      "createdDate": "20/02/2014",
+      "img": "https://picsum.photos/id/98/250",
+      "background": "https://picsum.photos/id/7/250",
+      "head": "Random Article 2",
+      "meta": "Dolor sit amet, consectetur",
+      "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    {
+      "id": "9c8b7a6d5e4f3a2b1c0d",
+      "createdDate": "20/02/2014",
+      "img": "https://picsum.photos/id/101/250",
+      "background": "https://picsum.photos/id/56/250",
+      "head": "New Horizons in Space Exploration: Unveiling the Wonders Beyond Our Solar System.",
+      "meta": "Space exploration, exoplanets",
+      "details": "Embark on a cosmic journey as astronomers make groundbreaking discoveries beyond our solar system, revealing the vast wonders of the universe."
+    },
+    {
+      "id": "5b6a7f8e9d0c1b2a3b4c",
+      "createdDate": "20/02/2014",
+      "img": "https://picsum.photos/id/123/250",
+      "background": "https://picsum.photos/id/72/250",
+      "head": "The Art of Mindfulness: Nurturing Mental Well-being in the Modern Age.",
+      "meta": "Mindfulness, mental health",
+      "details": "Explore the transformative power of mindfulness in fostering mental well-being, providing insights and techniques for navigating the challenges of the modern age."
+    },
+    {
+      "id": "0f1e2d3c4b5a6f7e8d9c",
+      "createdDate": "20/02/2014",
+      "img": "https://picsum.photos/id/202/250",
+      "background": "https://picsum.photos/id/169/250",
+      "head": "Beyond Robotics: Artificial Intelligence's Impact on Everyday Life.",
+      "meta": "Artificial intelligence, technology",
+      "details": "Delve into the multifaceted impact of artificial intelligence on daily life, from smart homes and virtual assistants to the evolving landscape of technology."
+    },
+    {
+      "id": "6b5a4f3e2d1c0b9a8f7e",
+      "createdDate": "20/02/2014",
+      "img": "https://picsum.photos/id/215/250",
+      "background": "https://picsum.photos/id/185/250",
+      "head": "Culinary Fusion: Exploring the Intersection of Global Flavors in Modern Cuisine.",
+      "meta": "Culinary arts, global cuisine",
+      "details": "Embark on a gastronomic journey as chefs blend diverse global flavors, creating a culinary fusion that reflects the richness of cultural diversity in modern cuisine."
+    },
+    {
+      "id": "3d4c5b6a7f8e9d0c1b2a",
+      "createdDate": "20/02/2014",
+      "img": "https://picsum.photos/id/180/250",
+      "background": "https://picsum.photos/id/233/250",
+      "head": "The Power of Sustainable Fashion: Redefining Style with Environmental Consciousness.",
+      "meta": "Sustainable fashion, eco-friendly clothing",
+      "details": "Witness the evolution of fashion towards sustainability, as designers and consumers embrace eco-friendly practices, redefining style with a focus on environmental consciousness."
+    },
+    {
+      "id": "acbdfe0d1c2b3a4f5e6d7",
+      "createdDate": "20/02/2014",
+      "img": "https://picsum.photos/id/210/250",
+      "background": "https://picsum.photos/id/233/250",
+      "head": "Urban Wildlife Adventures: Exploring Nature in the Heart of the City.",
+      "meta": "Urban wildlife, nature exploration",
+      "details": "Discover the surprising diversity of wildlife thriving in urban environments, as nature enthusiasts explore the beauty of flora and fauna within the bustling heart of the city."
+    }
+  ]
+  
