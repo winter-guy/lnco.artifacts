@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+
 import { storage } from '@lib/utils/storage/storage.utils';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
-export class AuthService {
+export class AuthyService {
     isAuthenticated$ = new BehaviorSubject<boolean>(!!storage.getItem('appSession'));
 
     get isAuthenticated(): boolean {

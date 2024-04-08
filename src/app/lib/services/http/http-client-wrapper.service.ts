@@ -8,7 +8,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 })
 export class HttpService {
     private _headers: HttpHeaders;
-    private _baseUrl: string = environment.apiUrl;
+    private _baseUrl: string = environment.apiUri;
 
     constructor(private _httpClient: HttpClient) {
         this._headers = new HttpHeaders().set('Content-Type', 'application/json');
@@ -28,6 +28,16 @@ export class HttpService {
         const requestUrl = `${this._baseUrl}${url}`;
         return this._httpClient
             .post<T>(requestUrl, model, {
+                params: httpParams ? httpParams : undefined,
+                headers: this._headers ? this._headers : undefined,
+            })
+            .pipe(catchError((error: HttpErrorResponse) => this._handleError(error)));
+    }
+
+    patch<T, K>(url: string, model: K | null, httpParams?: HttpParams): Observable<T> {
+        const requestUrl = `${this._baseUrl}${url}`;
+        return this._httpClient
+            .patch<T>(requestUrl, model, {
                 params: httpParams ? httpParams : undefined,
                 headers: this._headers ? this._headers : undefined,
             })

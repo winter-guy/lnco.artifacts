@@ -1,0 +1,38 @@
+$card-snap: 820px;
+$medium: 900px;
+
+*:hover {
+  transition: all 150ms ease-in;
+}
+
+.checkbox-container {
+  @apply m-1 p-[1px] rounded-full flex absolute;
+}
+
+main {
+  @apply h-full rounded p-2;
+  .cards {
+    @apply w-[400px] h-full;
+  }
+
+  @media screen and (max-width: $card-snap) {
+    flex-direction: column-reverse;
+    .cards {
+      @apply w-full;
+    }
+  }
+}
+
+img {
+  @apply rounded;
+}
+
+mat-card {
+  img {
+    @apply max-w-full max-h-full
+  }
+}
+
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__surface {
+  @apply rounded
+}

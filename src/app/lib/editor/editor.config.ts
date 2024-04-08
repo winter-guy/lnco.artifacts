@@ -10,7 +10,7 @@ import List from '@editorjs/list';
 import Marker from '@editorjs/marker';
 import RawTool from '@editorjs/raw';
 
-import { UploadBlobToS3BucketAndGetUrl, UploadByUrlToS3BucketAndGetUrl } from '@lib/services/core/publish';
+import { uploadBlobToS3BucketAndGetUrl, uploadByUrlToS3BucketAndGetUrl } from '@lib/services/core/publish';
 
 export const toolsConfig = {
     Marker: {
@@ -46,7 +46,7 @@ export const toolsConfig = {
                  */
                 async uploadByFile(file: Blob) {
                     return new Promise((resolve, reject) => {
-                        UploadBlobToS3BucketAndGetUrl(file).subscribe(
+                        uploadBlobToS3BucketAndGetUrl(file).subscribe(
                             (res) => {
                                 resolve(res);
                             },
@@ -58,7 +58,7 @@ export const toolsConfig = {
                 },
                 async uploadByUrl(url: string) {
                     return new Promise((resolve, reject) => {
-                        UploadByUrlToS3BucketAndGetUrl(url).subscribe(
+                        uploadByUrlToS3BucketAndGetUrl(url).subscribe(
                             (res) => {
                                 resolve(res);
                             },

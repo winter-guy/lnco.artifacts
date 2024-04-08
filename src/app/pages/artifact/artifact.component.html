@@ -1,20 +1,152 @@
+<div class="relative isolate overflow-hidden bg-transparent px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
+	<div class="absolute inset-0 -z-10 overflow-hidden">
+		<svg class="absolute hidden left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 dark:stroke-[#454545] [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]" aria-hidden="true">
+		<defs>
+		  <pattern id="e813992c-7d03-4cc4-a2bd-151760b470a0" width="200" height="200" x="50%" y="-1" patternUnits="userSpaceOnUse">
+			<path d="M100 200V.5M.5 .5H200" fill="none" />
+		  </pattern>
+		</defs>
+		<svg x="50%" y="-1" class="overflow-visible fill-gray-50 dark:fill-[#3c3c3c]">
+		  <path d="M-100.5 0h201v201h-201Z M699.5 0h201v201h-201Z M499.5 400h201v201h-201Z M-300.5 600h201v201h-201Z" stroke-width="0" />
+		</svg>
+		<rect width="100%" height="100%" stroke-width="0" fill="url(#e813992c-7d03-4cc4-a2bd-151760b470a0)" />
+	  </svg>
+	</div>
+	<div
+		class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:items-start lg:gap-y-10">
+		<div
+			class="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-1 lg:gap-x-8 lg:px-8">
+			<div class="lg:pr-4">
+				<div class="lg:max-w-lg">
+					<!-- <p class="text-base font-semibold leading-7 text-indigo-600">Deploy faster</p> -->
+					<div class="relative z-0 flex space-x-2 mb-6" *ngIf="post" cdkMenuBar>
+						<button data-cy="light-button" cdkMenuItem [cdkMenuTriggerFor]="edit"
+							class="disabled:opacity-50 border border-btn transition inline-flex items-center justify-center space-x-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white focus:z-10 shrink-0 saturate-[110%] focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 p-1.5 text-sm font-medium rounded-full dark:bg-transparent dark:text-slate-50"
+							title="more">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+								class="w-4 h-4">
+								<path
+									d="M2 8a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM6.5 8a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0ZM12.5 6.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z" />
+							</svg>
 
-<article class="max-w-2xl md:mx-8 px-0 py-24 my-12 space-y-16 dark:bg-transparent dark:text-gray-50">
-	<div class="w-full mx-auto space-y-4">
-		<h1 class="text-5xl font-thin leading-none">{{localCached && localCached.highlight.header}}</h1>
-		<div class="flex flex-wrap md:space-x-2 text-sm dark:text-gray-400">
-			<a rel="noopener noreferrer" href="#" class="p-1 hover:underline">#MambaUI</a>
-			<a rel="noopener noreferrer" href="#" class="p-1 hover:underline">#TailwindCSS</a>
-			<a rel="noopener noreferrer" href="#" class="p-1 hover:underline">#Angular</a>
+						</button>
+
+						<button data-cy="dark-button" disabled
+							class="disabled:opacity-50 border border-btn transition inline-flex items-center justify-center space-x-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white focus:z-10 shrink-0 saturate-[110%] focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 p-1.5 text-sm font-medium rounded-full dark:bg-transparent dark:text-slate-50"
+							title="archive">
+							<span>
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+									class="w-4 h-4">
+									<path d="M2 3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3Z" />
+									<path fill-rule="evenodd"
+										d="M13 6H3v6a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V6ZM8.75 7.75a.75.75 0 0 0-1.5 0v2.69L6.03 9.22a.75.75 0 0 0-1.06 1.06l2.5 2.5a.75.75 0 0 0 1.06 0l2.5-2.5a.75.75 0 1 0-1.06-1.06l-1.22 1.22V7.75Z"
+										clip-rule="evenodd" />
+								</svg>
+							</span>
+						</button>
+					</div>
+					<h1 class="text-5xl font-semibold leading-none">{{ post?.meta?.head}}</h1>
+					<p class="text-sm" *ngIf="(post?.meta?.createdDate)">by
+						<a href="#" target="_blank" rel="noopener noreferrer"
+							class="hover:underline text-red-500 dark:text-violet-400">
+							<span>{{post?.meta?.author}}</span>
+						</a> on
+						<time datetime="post.time">{{(post?.meta?.createdDate) | date}}</time>
+					</p>
+				</div>
+
+			</div>
 		</div>
-		<p class="text-sm dark:text-gray-400">by
-			<a href="#" target="_blank" rel="noopener noreferrer" class="hover:underline dark:text-violet-400">
-				<span>Leroy Jenkins</span>
-			</a> on
-			<time datetime="2021-02-12 15:34:18-0200">Feb 12th 2021</time>
-		</p>
+		<div
+			class="-ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-3 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
+			<span class="pl-3 font-extralight" *ngIf="post?.inShort">in short ...</span>
+			<cdk-accordion>
+				@for (item of post?.inShort; track item; let index = $index) {
+				<cdk-accordion-item [expanded]="index == 0" #accordionItem="cdkAccordionItem" class="" role="button"
+					tabindex="0" [attr.id]="'accordion-header-' + index" [attr.aria-expanded]="accordionItem.expanded"
+					[attr.aria-controls]="'accordion-body-' + index">
+					<div class="flex w-full items-center space-x-2 p-2" (click)="accordionItem.toggle()">
+						<div class="w-4 h-4">
+							<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
+								*ngIf="!accordionItem.expanded" viewBox="0 0 24 24" stroke-linecap="round"
+								stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"
+								class="h-4 w-4 dark:text-white text-slate-500">
+								<path d="M15.5 12H12m0 0H8.5m3.5 0V8.5m0 3.5v3.5">
+								</path>
+								<circle cx="12" cy="12" r="9">
+								</circle>
+							</svg>
+							<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
+								*ngIf="accordionItem.expanded" viewBox="0 0 24 24" stroke-linecap="round"
+								stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"
+								class="h-4 w-4 dark:text-white text-slate-500">
+								<path d="M8.667 12h7">
+								</path>
+								<circle cx="12" cy="12" r="9">
+								</circle>
+							</svg>
+						</div>
+						<span class="text-left text-sm font-medium text-slate-950 dark:text-gray-100">
+							{{item?.head}}
+						</span>
+					</div>
+					<div class="example-accordion-item-body" role="region"
+						[style.display]="accordionItem.expanded ? '' : 'none'" [attr.id]="'accordion-body-' + index"
+						[attr.aria-labelledby]="'accordion-header-' + index">
+						<div class="relative px-4">
+							<div class="absolute h-full w-2">
+								<div class="h-full w-px bg-slate-300">
+								</div>
+							</div>
+							<p class="pl-4 text-xs text-slate-500 dark:text-gray-100">
+								{{item?.content}}
+							</p>
+						</div>
+					</div>
+				</cdk-accordion-item>
+				}
+			</cdk-accordion>
+			<!-- <img class="w-[48rem] max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] h-[300px] object-contain" src="{{post?.highlight?.imgUrl}}" alt=""> -->
+		</div>
+		<div
+			class="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-1 lg:gap-x-8 lg:px-8">
+			<div class="lg:pr-4">
+				<div class="max-w-xl text-base leading-7 text-gray-700 dark:text-gray-100">
+					<div id="editorjs" class="text-sm"></div>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="dark:text-gray-100">
-		<div id="editorjs"></div>
+</div>
+
+<ng-template #edit>
+	<div class="relative" role="menubar">
+		<div class="z-10 mt-2 w-56 border border-base border-light rounded-sm bg-white dark:bg-black group">
+			<div class="p-2 group-hover:text-gray-700">
+				<a (click)="onBtnActionClicked()"
+					class="cursor-pointer rounded px-4 py-2 text-sm flex items-center text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-200"
+					role="menuitem">
+					<div class="flex flex-col">
+						<span>Edit</span>
+						<span class="text-xs">
+							make revisions or updates to the narrative
+						</span>
+					</div>
+				</a>
+				<a class="block rounded px-4 py-2 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-200"
+					role="menuitem">
+					Share
+				</a>
+			</div>
+
+			<div class="border-t border-light">
+				<button (click)="deletePost()"
+					class="flex w-full gap-2 items-center p-4 text-sm bg-red-500 border text-slate-50 hover:border-red-600 hover:bg-red-600 border-red-500 dark:text-white dark:hover:text-white dark:hover:bg-red-700"
+					role="menuitem">
+					Delete artifact
+				</button>
+			</div>
+		</div>
 	</div>
-</article>
+
+</ng-template>

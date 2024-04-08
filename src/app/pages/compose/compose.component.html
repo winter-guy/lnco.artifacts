@@ -1,0 +1,67 @@
+<div class="flex justify-between items-center mt-10 mb-18">
+  <div class="flex">
+    <button routerLink="/" type="button" title="close"
+      class="inline-flex items-center justify-center h-8 w-8 px-2 py-1 md:m-2 space-x-1 text-sm font-medium text-gray-800 transition bg-warm border border-gray-200 rounded-full appearance-none cursor-pointer select-none hover:border-gray-300 hover:bg-gray-100 focus:border-gray-300 focus:outline-none focus:ring-2 focus:ring-transparent">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+  </div>
+  <div class="flex space-x-2 h-8">
+    <div class="relative z-0 flex -space-x-px">
+      <button (click)="saveEditorData()" class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white focus:z-10 shrink-0 saturate-[110%] border-btn hover:bg-slate-100 px-3 py-1.5 text-sm font-medium rounded-full">
+        <span>publish</span>
+      </button>
+    </div>
+    <div cdkMenuItem [cdkMenuTriggerFor]="edit"
+      class="relative flex shrink-0 select-none items-center justify-center bg-slate-200 font-semibold uppercase text-slate-800 h-8 w-8 text-xs rounded-full">
+      <span>M</span>
+    </div>
+  </div>
+</div>
+<div class="my-16 mb-64">
+  <div class="max-w-2xl mx-auto">
+    <div>
+      <div class="flex items-center justify-between w-full mb-10" [formGroup]="editorForm">
+        <div formControlName="headline" placeholder="Story head" title="set header"
+          class="w-full text-5xl focus-visible:ring-0 focus-visible:outline-none editor-title customTitleControl-field u-minHeight20 u-width100pct u-hideOutline js-customTitleControlSubtitle editable inlineError inlineError--maxLength display-char-count inlineError--muted"
+          id="editor" role="textbox" contenteditable striptags data-placeholder="title..." data-chars-remaining="0">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="editorjs"></div>
+</div>
+
+<ng-template #edit>
+	<div class="relative" role="menubar">
+		<div class="z-10 mt-2 w-56 border border-base border-light rounded-sm bg-white dark:bg-black group">
+			<div class="p-2 group-hover:text-gray-700">
+				<a
+					class="cursor-pointer rounded px-4 py-2 text-sm flex items-center text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-200"
+					role="menuitem">
+					<div class="flex flex-col">
+						<span>Account</span>
+						<span class="text-xs">
+							Update details, manage security, adjust notifications.
+						</span>
+					</div>
+				</a>
+				<a class="block rounded px-4 py-2 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-200"
+					role="menuitem">
+					more actions...
+				</a>
+			</div>
+
+			<div class="border-t border-light">
+				<button
+					class="flex w-full gap-2 items-center bg-red-500 border text-slate-50 hover:border-red-600 hover:bg-red-600 border-red-500 p-4 text-sm dark:text-white dark:hover:text-white dark:hover:bg-red-700"
+					role="menuitem">
+					sign out
+				</button>
+			</div>
+		</div>
+	</div>
+
+</ng-template>

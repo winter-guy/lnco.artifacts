@@ -15,7 +15,7 @@ app.get('/api/users', (req, res) => {
   res.json(data.users);
 });
 
-app.get('/api/v1/articles', async (req, res) => {
+app.get('/api/v2/fetch', async (req, res) => {
   try {
     const articlesData = await fs.readFile(path.join(__dirname, './home/article.json'), 'utf-8');
     res.json(JSON.parse(articlesData));
@@ -25,7 +25,7 @@ app.get('/api/v1/articles', async (req, res) => {
   }
 });
 
-app.get('/api/v1/artifacts', async (req, res) => {
+app.get('/api/v2/artifacts', async (req, res) => {
   try {
     const { id } = req.query; // Extract the 'id' parameter from the query string
 
