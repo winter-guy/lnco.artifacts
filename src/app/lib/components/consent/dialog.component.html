@@ -14,7 +14,7 @@
           </button>
         </div>
         <div class="relative flex flex-col items-start justify-between p-8 overflow-auto rounded"
-          [ngClass]="data.message_alignment">
+          [ngClass]="data.alignment">
           <span class="text-lg mb-2">{{ data && data.message }}</span>
           <span class="text-xs mb-4 text-slate-500 dark:text-slate-200 lowercase">{{ data && data.description }}</span>
           <div class="relative z-0 flex w-full -space-x-px max-w-[400px] justify-center"
@@ -37,7 +37,7 @@
   </div>
 </main>
 
-<div class="flex w-full flex-col gap-4 rounded bg-white p-8 shadow-xl border border-base dark:bg-black ring-1 ring-slate-950/5 sm:w-96" [ngClass]="data.message_alignment" [ngClass]="{'pt-16': !data.disableCloseBtn}">
+<div class="flex w-full flex-col gap-4 rounded bg-white p-8 shadow-xl border border-base dark:bg-black ring-1 ring-slate-950/5 sm:w-96" [ngClass]="data.alignment" [ngClass]="{'pt-16': !data.disableCloseBtn}">
   <div class="absolute top-0 right-0 z-40 flex justify-end" *ngIf="!data.disableCloseBtn">
     <button title="close" type="button" [mat-dialog-close]="true"
       class="inline-flex items-center justify-center w-auto h-8 px-2 py-1 m-2 space-x-1 text-sm font-medium text-gray-800 transition bg-warm border border-gray-200 rounded appearance-none cursor-pointer select-none hover:border-gray-300 hover:bg-gray-100 focus:border-gray-300 focus:outline-none focus:ring-transparent">
@@ -47,7 +47,7 @@
       </svg>
     </button>
   </div>
-  <div class="space-y-1" [ngClass]="data.message_alignment">
+  <div class="space-y-1" [ngClass]="data.alignment">
     <p class="font-medium">{{ data && data.message }}</p>
     <p class="text-slate-600 text-xs dark:text-slate-200">{{ data && data.description }}.</p>
   </div>

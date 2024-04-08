@@ -56,8 +56,7 @@ export class ArtifactComponent implements OnInit {
         description: 'This action cannot be undone.',
         label: 'delete',
         disableCloseBtn: true,
-        // eslint-disable-next-line @typescript-eslint/naming-convention
-        message_alignment: 'items-start',
+        alignment: 'items-start',
     })
     public deletePost(): void {
         if (this.post)

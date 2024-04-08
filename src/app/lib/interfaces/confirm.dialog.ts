@@ -4,6 +4,6 @@ export interface ConfirmDialogData {
     label?: string;
 
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    message_alignment?: 'items-center' | 'items-start';
+    alignment?: 'items-center' | 'items-start';
     disableCloseBtn?: boolean;
 }

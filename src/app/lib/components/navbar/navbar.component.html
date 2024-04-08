@@ -3,12 +3,12 @@
         <div class="h-16 flex items-center justify-between">
             <app-logo></app-logo>
             <nav class="flex items-center space-x-2">
-                
+
 
                 <button data-cy="light-button"
                     class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white focus:z-10 shrink-0 saturate-[110%] focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 p-1.5 text-sm font-medium rounded-full dark:bg-transparent dark:text-slate-50"
-                    [ngClass]="{'border border-btn': currentTheme === 'light'}"
-                    (click)="handleThemeChange('light')" title="light">
+                    [ngClass]="{'border border-btn': currentTheme === 'light'}" (click)="handleThemeChange('light')"
+                    title="light">
                     <span>
                         <svg data-testid="geist-icon" height="16" stroke-linejoin="round" viewBox="0 0 16 16" width="16"
                             style="width: 16px; height: 16px; color: currentcolor;">
@@ -22,8 +22,8 @@
 
                 <button data-cy="dark-button"
                     class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white focus:z-10 shrink-0 saturate-[110%] focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 p-1.5 text-sm font-medium rounded-full dark:bg-transparent dark:text-slate-50"
-                    [ngClass]="{'dark:border border-base': currentTheme === 'dark'}"
-                    (click)="handleThemeChange('dark')" title="dark">
+                    [ngClass]="{'dark:border border-base': currentTheme === 'dark'}" (click)="handleThemeChange('dark')"
+                    title="dark">
                     <span>
                         <svg data-testid="geist-icon" height="16" stroke-linejoin="round" viewBox="0 0 16 16" width="16"
                             style="width: 16px; height: 16px; color: currentcolor;">
@@ -34,24 +34,57 @@
                         </svg>
                     </span>
                 </button>
-                <button data-cy="logout-button" *ngIf="auth.isAuthenticated$ | async; else login"
-                    class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white focus:z-10 shrink-0 saturate-[110%] border-btn focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 px-3 p-1.5 text-sm font-medium rounded-full dark:bg-transparent dark:text-slate-50"
-                    (click)="onBtnActionClicked()">
-                    <span>contribute</span>                     
-                </button>
+                <div  *ngIf="auth.isAuthenticated$ | async; else login" class="flex space-x-2">
+                    <button data-cy="logout-button"
+                        class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white focus:z-10 shrink-0 saturate-[110%] border-btn focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 px-3 p-1.5 text-sm font-medium rounded-full dark:bg-transparent dark:text-slate-50"
+                        (click)="onBtnActionClicked()">
+                        <span>contribute</span>
+                    </button>
+                    <div cdkMenuItem [cdkMenuTriggerFor]="profile"
+                        class="relative flex shrink-0 select-none items-center justify-center bg-slate-200 font-semibold uppercase text-slate-800 h-8 w-8 text-xs rounded-full">
+                        <span>M</span>
+                    </div>
+                </div>
+
                 <ng-template #login>
                     <button data-cy="logout-button"
-                    class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white focus:z-10 shrink-0 saturate-[110%] border-btn focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 px-3 p-1.5 text-sm font-medium rounded-full dark:bg-transparent dark:text-slate-50"
-                    (click)="loginWithRedirect()">
-                    <span>sign in</span>
-                </button>
+                        class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white focus:z-10 shrink-0 saturate-[110%] border-btn focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 px-3 p-1.5 text-sm font-medium rounded-full dark:bg-transparent dark:text-slate-50"
+                        (click)="loginWithRedirect()">
+                        <span>sign in</span>
+                    </button>
                 </ng-template>
-                <button data-cy="logout-button" *ngIf="auth.isAuthenticated$ | async"
-                    class="disabled:opacity-50 transition inline-flex items-center justify-center space-x-1.5 border focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white focus:z-10 shrink-0 saturate-[110%] border-transparent focus:ring-slate-300 bg-[#fde047] dark:bg-[#fde047] text-slate-900 hover:bg-yellow-400  px-3 p-1.5 text-sm font-medium rounded-full dark:text-slate-900"
-                    (click)="logout()">
-                    <span>sign out</span>
-                </button>
             </nav>
         </div>
     </div>
 </header>
+
+<ng-template #profile>
+    <div class="relative" role="menubar">
+        <div class="z-10 mt-2 w-56 border border-base border-light rounded-sm bg-white dark:bg-black group">
+            <div class="p-2 group-hover:text-gray-700">
+                <a class="cursor-pointer rounded px-4 py-2 text-sm flex items-center text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-200"
+                    role="menuitem">
+                    <div class="flex flex-col">
+                        <span>Account</span>
+                        <span class="text-xs">
+                            change setting and informations.
+                        </span>
+                    </div>
+                </a>
+                <a class="block rounded px-4 py-2 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-200"
+                    role="menuitem">
+                    Share
+                </a>
+            </div>
+
+            <div class="border-t border-light">
+                <button (click)="logout()"
+                    class="flex w-full gap-2 items-center p-4 text-sm bg-red-500 border text-slate-50 hover:border-red-600 hover:bg-red-600 border-red-500 dark:text-white dark:hover:text-white dark:hover:bg-red-700"
+                    role="menuitem">
+                    sign out
+                </button>
+            </div>
+        </div>
+    </div>
+
+</ng-template>

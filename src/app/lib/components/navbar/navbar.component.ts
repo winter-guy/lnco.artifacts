@@ -9,11 +9,12 @@ import { Observable, Subject, takeUntil } from 'rxjs';
 import { AppTheme } from '@lib/services/theme';
 import { AuthService } from '@auth0/auth0-angular';
 import { needConfirmation } from '@lib/content/dialog.directive';
+import { CdkMenuModule } from '@angular/cdk/menu';
 
 @Component({
     selector: 'app-navbar',
     standalone: true,
-    imports: [CommonModule, RouterModule, LogoComponent],
+    imports: [CommonModule, RouterModule, LogoComponent, CdkMenuModule],
     templateUrl: './navbar.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
