@@ -7,7 +7,7 @@ import { AuthyService as AuthTemp, ThemeService } from '@lib/services';
 import { LogoComponent } from '../logo/logo.component';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { AppTheme } from '@lib/services/theme';
-import { AuthService, User } from '@auth0/auth0-angular';
+import { AuthService } from '@auth0/auth0-angular';
 import { needConfirmation } from '@lib/content/dialog.directive';
 import { CdkMenuModule } from '@angular/cdk/menu';
 
@@ -21,7 +21,6 @@ import { CdkMenuModule } from '@angular/cdk/menu';
 export class NavbarComponent implements OnInit, OnDestroy {
     public currentTheme!: AppTheme | null;
     private readonly _destroy$ = new Subject();
-    public user!: User | null | undefined;
 
     $navbarState!: Observable<boolean>;
 
@@ -34,11 +33,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
     ) {}
 
     ngOnInit(): void {
-        this.auth.user$.subscribe((res) => {
-            this.user = res;
-            console.log(this.user);
-        });
-
         this._themeService.currentTheme$
             .pipe(takeUntil(this._destroy$))
             .subscribe((theme) => (this.currentTheme = theme));
@@ -49,6 +43,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this._destroy$.complete();
         this._destroy$.unsubscribe();
+    }
+
+    navigateToProfile(): unknown {
+        return this._router.navigate(['/journal']);
     }
 
     handleThemeChange(theme: AppTheme): void {

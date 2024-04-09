@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from '@auth0/auth0-angular';
 import { authGuard } from '@lib/guards';
 
 export const routes: Routes = [
@@ -13,9 +14,14 @@ export const routes: Routes = [
         canMatch: [authGuard()],
     },
     {
-        path: 'users/:username',
+        path: 'users',
         loadChildren: async () => (await import('@pages/user')).routes,
-        canMatch: [authGuard()],
+        canActivate: [AuthGuard],
+    },
+    {
+        path: 'journal',
+        loadChildren: async () => (await import('@pages/journal')).routes,
+        canActivate: [AuthGuard],
     },
     {
         path: 'settings',

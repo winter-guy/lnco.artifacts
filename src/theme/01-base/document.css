@@ -22,7 +22,7 @@ body.dark {
 }
 
 .mat-step-label-selected {
-    @apply px-2 text-sm font-light border-dotted inline-flex shrink-0 items-center justify-center space-x-1.5 rounded-full border saturate-[110%] transition hover:bg-slate-100 focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50 !important;
+    @apply px-2 font-semibold border-none text-xl inline-flex shrink-0 items-center justify-center space-x-1.5 rounded-full border saturate-[110%] transition focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50 !important;
 }
 
 .mat-step-header.cdk-keyboard-focused, .mat-step-header.cdk-program-focused {

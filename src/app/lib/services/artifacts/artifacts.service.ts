@@ -16,6 +16,10 @@ export class ArtifactService {
         return this.httpService.get<Artifact[]>('/fetch');
     }
 
+    public getJournalForSignedInUser(): Observable<Artifact[]> {
+        return this.httpService.get<Artifact[]>('/user/journal');
+    }
+
     public getArtifactsById(id: string): Observable<SecRecord> {
         return this.httpService.get<SecRecord>(`/fetch/${id}`);
     }

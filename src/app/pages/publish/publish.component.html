@@ -237,12 +237,12 @@
                                 <div>
                                     <div class="relative">
                                         <label for="headline" type="text" id="headline"
-                                            class="block overflow-hidden my-1 rounded-md border border-gray-200 px-3 py-2  focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
+                                            class="block bg-gray-100 overflow-hidden my-1 rounded-md border-0 px-3 py-2  focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
                                             <span class="text-xs font-medium text-gray-700"> headline </span>
 
                                             <input type="email" id="head" formControlName="headline"
                                                 placeholder="title ..."
-                                                class="mt-1 w-full border-none p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm" />
+                                                class="mt-1 w-full bg-transparent border-none p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm" />
                                         </label>
                                     </div>
                                 </div>
@@ -251,7 +251,7 @@
                                     <div class="relative">
                                         <div>
                                             <textarea id="Description" formControlName="description"
-                                                class="border-btn mt-2 w-full rounded align-top sm:text-sm" rows="4"
+                                                class="border-btn mt-2 bg-gray-100 border-0 w-full rounded align-top sm:text-sm" rows="4"
                                                 placeholder="Provide a concise, professional description, if possible."></textarea>
                                         </div>
 
@@ -273,7 +273,7 @@
                                         </div>
                                         <div class="w-full space-y-0.5">
                                             <label for="tags" type="text" id="tags"
-                                                class="block overflow-hidden my-1 rounded-md border border-gray-200 px-3 py-2 focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
+                                                class="block overflow-hidden my-1 bg-gray-100 rounded-md border-0 px-3 py-2 focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
                                                 <span class="text-xs font-medium text-gray-700"> Add tags </span>
 
                                                 <input type="text" id="tags" placeholder="Add tags..."
@@ -281,7 +281,7 @@
                                                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                                                     [matChipInputAddOnBlur]="true" (matChipInputTokenEnd)="add($event)"
                                                     [disabled]="tags && tags.length > 4"
-                                                    class="mt-1 w-full border-none p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm" />
+                                                    class="mt-1 w-full border-none bg-transparent p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm" />
                                             </label>
                                         </div>
                                     </mat-chip-grid>
@@ -299,12 +299,12 @@
                                 <div>
                                     <div class="relative">
                                         <label for="head" type="text" id="head"
-                                            class="block overflow-hidden mt-1 rounded-md mb-2 border border-gray-200 px-3 py-2 focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
+                                            class="block overflow-hidden mt-1 bg-gray-100 rounded-md mb-2 border-0 px-3 py-2 focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600">
                                             <span class="text-xs font-medium text-gray-700"> in short headline </span>
 
                                             <input type="email" id="head" formControlName="head"
                                                 placeholder="it has been started..."
-                                                class="mt-1 w-full border-none p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm" />
+                                                class="mt-1 w-full border-none bg-transparent p-0 focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm" />
                                         </label>
                                     </div>
                                 </div>
@@ -313,7 +313,7 @@
                                     <div class="relative">
                                         <div>
                                             <textarea id="content" formControlName="content"
-                                                class="border-btn w-full rounded align-top sm:text-sm" rows="8"
+                                                class="border-btn w-full rounded align-top border-0 bg-gray-100 sm:text-sm" rows="8"
                                                 placeholder="Provide a concise content summary."></textarea>
                                         </div>
 

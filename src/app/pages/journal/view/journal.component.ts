@@ -1,26 +1,23 @@
+import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { CdkMenuModule, CdkMenu } from '@angular/cdk/menu';
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
-import { ArtifactService } from '@lib/services/artifacts/artifacts.service';
-
 import EditorJS from '@editorjs/editorjs';
+import { needConfirmation } from '@lib/content/dialog.directive';
 import { toolsConfig } from '@lib/editor/editor.config';
 import { SecRecord } from '@lib/interfaces/record';
-
-import { CdkMenu, CdkMenuModule, CdkMenuTrigger } from '@angular/cdk/menu';
-import { CdkAccordionModule } from '@angular/cdk/accordion';
-import { needConfirmation } from '@lib/content/dialog.directive';
+import { ArtifactService } from '@lib/services/artifacts/artifacts.service';
 
 @Component({
     standalone: true,
     imports: [CommonModule, CdkMenuModule, CdkMenu, CdkAccordionModule],
-    templateUrl: './artifact.component.html',
+    templateUrl: './journal.component.html',
+    styleUrl: './journal.component.css',
 })
-export class ArtifactComponent implements OnInit {
+export class JournalComponent implements OnInit {
     public post!: SecRecord | undefined;
     public editor!: EditorJS;
-    @ViewChild(CdkMenuTrigger) edit!: CdkMenuTrigger;
     expandedIndex = 0;
 
     constructor(protected artifactService: ArtifactService, private _route: ActivatedRoute, private _router: Router) {}
