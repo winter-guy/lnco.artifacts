@@ -1,16 +1,16 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import { CommonModule, DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
-import { AuthyService as AuthTemp, ThemeService } from '@lib/services';
-import { LogoComponent } from '../logo/logo.component';
-import { Observable, Subject, takeUntil } from 'rxjs';
-import { AppTheme } from '@lib/services/theme';
-import { AuthService } from '@auth0/auth0-angular';
-import { needConfirmation } from '@lib/content/dialog.directive';
-import { CdkMenuModule } from '@angular/cdk/menu';
 
+import { CdkMenuModule } from '@angular/cdk/menu';
+import { AuthService } from '@auth0/auth0-angular';
+
+import { Observable, Subject, takeUntil } from 'rxjs';
+
+import { ThemeService } from '@lib/services';
+import { AppTheme } from '@lib/services/theme';
+import { needConfirmation } from '@lib/content/dialog.directive';
+import { LogoComponent } from '../logo/logo.component';
 @Component({
     selector: 'app-navbar',
     standalone: true,
@@ -25,19 +25,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
     $navbarState!: Observable<boolean>;
 
     constructor(
-        public _router: Router,
-        public _authService: AuthTemp,
-        public _themeService: ThemeService,
+        public router: Router,
+        public themeService: ThemeService,
         public auth: AuthService,
-        @Inject(DOCUMENT) private doc: Document,
+        @Inject(DOCUMENT) private _doc: Document,
     ) {}
 
     ngOnInit(): void {
-        this._themeService.currentTheme$
+        this.themeService.currentTheme$
             .pipe(takeUntil(this._destroy$))
             .subscribe((theme) => (this.currentTheme = theme));
 
-        this.$navbarState = this._themeService.navState;
+        this.$navbarState = this.themeService.navState;
     }
 
     ngOnDestroy(): void {
@@ -46,21 +45,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }
 
     navigateToProfile(): unknown {
-        return this._router.navigate(['/journal']);
+        return this.router.navigate(['/journal']);
     }
 
     handleThemeChange(theme: AppTheme): void {
-        this._themeService.setTheme(theme);
-    }
-
-    onClickSignOut(): void {
-        this._authService.logout();
-        this._router.navigate(['/auth/login']);
+        this.themeService.setTheme(theme);
     }
 
     public onBtnActionClicked(id?: string): void {
         const NAV_URL = '/compose';
-        this._router.navigate([NAV_URL], { queryParams: { page: id } });
+        this.router.navigate([NAV_URL], { queryParams: { page: id } });
     }
 
     public loginWithRedirect(): void {
@@ -75,6 +69,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
         disableCloseBtn: true,
     })
     public logout(): void {
-        this.auth.logout({ logoutParams: { returnTo: this.doc.location.origin } });
+        this.auth.logout({ logoutParams: { returnTo: this._doc.location.origin } });
     }
 }
