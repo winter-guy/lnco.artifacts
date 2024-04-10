@@ -1,7 +1,7 @@
 import { HttpErrorResponse, HttpInterceptorFn, HttpStatusCode } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '@lib/services';
+import { AuthyService } from '@lib/services';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -15,7 +15,7 @@ import { catchError } from 'rxjs/operators';
  */
 export const serverErrorInterceptor: HttpInterceptorFn = (request, next) => {
     const router = inject(Router);
-    const authService = inject(AuthService);
+    const authService = inject(AuthyService);
 
     return next(request).pipe(
         catchError((error: HttpErrorResponse) => {

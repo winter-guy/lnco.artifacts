@@ -26,12 +26,17 @@
       "@lib/*": ["src/app/lib/*"],
       "@pages/*": ["src/app/pages/*"],
       "@env/*": ["src/environments/*"]
-    }
+    },
+    "skipLibCheck": true,
+    "esModuleInterop": true,
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
-  }
+    "strictTemplates": true,
+  },
+  "types": [
+    "node"
+  ]
 }

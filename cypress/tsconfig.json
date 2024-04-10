@@ -2,7 +2,9 @@
   "compilerOptions": {
     "target": "ES2022",
     "types": ["cypress", "./support"],
-    "lib": ["ES2022", "dom"]
+    "lib": ["ES2022", "dom"],
+    "forceConsistentCasingInFileNames": true,
+    "strict": true
   },
   "include": ["**/*.ts"]
 }

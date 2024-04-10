@@ -4,11 +4,40 @@ body {
 }
 
 body {
-    @apply bg-slate-100;
+    @apply bg-white transition duration-500 ease-out;
     @apply text-slate-900;
 }
 
 body.dark {
-    @apply bg-zinc-900;
-    @apply text-zinc-200;
+    @apply bg-[#000000] transition duration-500 ease-in-out;
+    @apply text-zinc-50;
+}
+
+.image-tool__caption {
+    @apply hidden;
+}
+
+.mat-stepper-horizontal, .mat-stepper-vertical {
+    @apply bg-white !important
+}
+
+.mat-step-label-selected {
+    @apply px-2 font-semibold border-none text-xl inline-flex shrink-0 items-center justify-center space-x-1.5 rounded-full border saturate-[110%] transition focus:z-10 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white disabled:opacity-50 !important;
+}
+
+.mat-step-header.cdk-keyboard-focused, .mat-step-header.cdk-program-focused {
+    @apply bg-white !important;
+    
+}
+
+.mat-step-header {
+    @apply hover:bg-white bg-white !important; 
+}
+
+.mdc-evolution-chip-set .mdc-evolution-chip-set__chips {
+    @apply ml-0 !important;
+}
+
+input.mat-mdc-chip-input {
+    @apply m-0 !important;
 }
