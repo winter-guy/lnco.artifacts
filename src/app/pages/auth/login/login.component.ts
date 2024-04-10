@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '@lib/services';
+import { AuthyService } from '@lib/services';
 
 @Component({
     standalone: true,
@@ -12,7 +12,7 @@ export class LoginComponent {
     @Input() returnUrl!: string;
 
     private readonly _router = inject(Router);
-    private readonly _authService = inject(AuthService);
+    private readonly _authService = inject(AuthyService);
 
     login(): void {
         this._authService.login();

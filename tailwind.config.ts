@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { addDynamicIconSelectors } from '@iconify/tailwind';
 
@@ -17,12 +18,18 @@ export default {
         fontFamily: {
             display: ['Oswald', 'sans-serif'],
             body: ['Poppins', 'sans-serif'],
+            exclusive: ['cheltenham', 'sans-serif'],
         },
         container: {
             center: true,
             padding: '1.5rem',
         },
-        extend: {},
+        extend: {
+            flexGrow: {
+                2: '2',
+                3: '3',
+            },
+        },
     },
     plugins: [...TAILWIND_PLUGINS, ...CUSTOM_PLUGINS],
 };

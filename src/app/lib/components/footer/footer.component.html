@@ -1,28 +1,76 @@
-<footer class="w-full container mx-auto flex-shrink-0 px-4 py-8">
-    <!-- wrapper -->
-    <div class="bg-white dark:bg-zinc-800 flex items-center px-6 py-4 rounded-lg shadow justify-between">
-        <app-logo></app-logo>
-
-        <nav class="flex flex-wrap items-center space-x-3">
-            <a
-                href="https://github.com/juanmesa2097/artifacts"
-                title="Repository"
-                class="btn btn-fit"
-            >
-                <span class="icon-[mdi--github] text-3xl"></span>
-            </a>
-        </nav>
-    </div>
-
-    <!-- copyright -->
-    <span class="block pt-6 text-sm text-gray-500 text-center">
-        © {{ currentYear }}
-        <a
-            href="https://github.com/juanmesa2097/artifacts"
-            class="hover:underline"
-        >
-            AngularBoilerplate
-        </a>
-        - {{ packageJson.version }} - Built on planet 🌎
-    </span>
-</footer>
+<div class="px-4 pt-16 mx-auto container md:px-24 lg:px-8">
+  <div class="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4 text-body">
+      <div class="sm:col-span-2">
+          <a href="/" aria-label="Go home" title="Company" class="inline-flex items-center">
+              <span class="text-xl tracking-wide">
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10">
+                      <rect width="22" height="22" rx="1" fill="#001B94" />
+                      <path
+                          d="M11 4V5.75M15.9498 6.05022L14.7123 7.28767M18 11H16.25M15.9498 15.9498L14.7123 14.7123M11 16.25V18M7.28767 14.7123L6.05022 15.9498M5.75 11H4M7.28767 7.28767L6.05022 6.05022M13.9167 11C13.9167 11.7735 13.6094 12.5154 13.0624 13.0624C12.5154 13.6094 11.7735 13.9167 11 13.9167C10.2265 13.9167 9.48459 13.6094 8.93761 13.0624C8.39062 12.5154 8.08333 11.7735 8.08333 11C8.08333 10.2265 8.39062 9.48459 8.93761 8.93761C9.48459 8.39062 10.2265 8.08333 11 8.08333C11.7735 8.08333 12.5154 8.39062 13.0624 8.93761C13.6094 9.48459 13.9167 10.2265 13.9167 11Z"
+                          stroke="white"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                      />
+                  </svg>
+              </span>
+          </a>
+          <div class="mt-6 lg:max-w-sm">
+              <p class="text-sm text-block">
+                l&co artifacts provide essential real estate education, offering tailored insights for successful navigation of today's market challenges.
+              </p>
+              <p class="mt-4 text-sm text-block">
+                trusted partner in navigating the complexities of the modern real estate landscape.
+              </p>
+          </div>
+      </div>
+      <div class="space-y-2 text-sm text-block">
+          <p class="font-medium tracking-wide text-head mb-10 invisible">Contacts</p>
+          <div class="flex">
+              <p class="mr-1">Phone:</p>
+              <a href="tel:850-123-XXXX" aria-label="Our phone" title="Our phone" class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">850-123-XXXX</a>
+          </div>
+          <div class="flex">
+              <p class="mr-1">Email:</p>
+              <a href="mailto:info@lnco.mail" aria-label="Our email" title="Our email" class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">{{'info@lnco.mail'}}</a>
+          </div>
+          <div class="flex">
+              <p class="mr-1">Address:</p>
+              <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer" aria-label="Our address" title="Our address" class="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800">
+                  25 bh dest, DGR WB
+              </a>
+          </div>
+      </div>
+      <div class="space-y-2 text-sm text-block hidden">
+          <p class="font-medium tracking-wide text-head mb-10">Social</p>
+          <p>
+              Bacon ipsum dolor amet short ribs pig sausage prosciutto chicken spare ribs salami.
+          </p>
+          <div class="flex items-center space-x-3">
+              <a href="/" class="transition-colors duration-300 hover:text-deep-purple-accent-400">
+                  <svg viewBox="0 0 24 24" fill="currentColor" class="h-5">
+                      <path
+                          d="M24,4.6c-0.9,0.4-1.8,0.7-2.8,0.8c1-0.6,1.8-1.6,2.2-2.7c-1,0.6-2,1-3.1,1.2c-0.9-1-2.2-1.6-3.6-1.6 c-2.7,0-4.9,2.2-4.9,4.9c0,0.4,0,0.8,0.1,1.1C7.7,8.1,4.1,6.1,1.7,3.1C1.2,3.9,1,4.7,1,5.6c0,1.7,0.9,3.2,2.2,4.1 C2.4,9.7,1.6,9.5,1,9.1c0,0,0,0,0,0.1c0,2.4,1.7,4.4,3.9,4.8c-0.4,0.1-0.8,0.2-1.3,0.2c-0.3,0-0.6,0-0.9-0.1c0.6,2,2.4,3.4,4.6,3.4 c-1.7,1.3-3.8,2.1-6.1,2.1c-0.4,0-0.8,0-1.2-0.1c2.2,1.4,4.8,2.2,7.5,2.2c9.1,0,14-7.5,14-14c0-0.2,0-0.4,0-0.6 C22.5,6.4,23.3,5.5,24,4.6z"
+                      ></path>
+                  </svg>
+              </a>
+          </div>
+      </div>
+  </div>
+  <div class="flex flex-col-reverse justify-between pt-5 pb-10 border-t border-base border-dashed text-block text-xs lg:flex-row">
+      <p>
+          © Copyright 2024 l&co Inc. All rights reserved.
+      </p>
+      <ul class="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
+          <li>
+              <a href="/" class="transition-colors duration-300 hover:text-deep-purple-accent-400">F.A.Q</a>
+          </li>
+          <li>
+              <a href="/" class="transition-colors duration-300 hover:text-deep-purple-accent-400">Privacy Policy</a>
+          </li>
+          <li>
+              <a href="/" class="transition-colors duration-300 hover:text-deep-purple-accent-400">Terms &amp; Conditions</a>
+          </li>
+      </ul>
+  </div>
+</div>
