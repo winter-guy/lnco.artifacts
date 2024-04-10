@@ -90,7 +90,7 @@ export class ComposeComponent implements OnInit, OnDestroy {
             if (isAuthenticated) {
                 // Access the user's profile
                 this._auth.user$.subscribe((user) => {
-                    this.userName = user?.nickname; // Or any other property containing the user's name
+                    this.userName = user?.name; // Or any other property containing the user's name
                 });
             }
         });

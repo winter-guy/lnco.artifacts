@@ -5,8 +5,6 @@ import { AuthService } from '@auth0/auth0-angular';
 
 import { switchMap } from 'rxjs/operators';
 
-const EXCEPTION_ENDPOINTS: string[] = ['/api/v2/fetch', '/api/v2/fetch/'];
-
 /**
  * Interceptor that adds an Authorization header to requests that are authenticated and target the API URL.
  *
@@ -19,9 +17,14 @@ export const jwtInterceptor: HttpInterceptorFn = (request, next) => {
     const authService = inject(AuthService);
 
     // Define your list of endpoints that don't require the access token
-    const normalizedRequestUrl = request.url.trim().toLowerCase();
-    const normalizedEndpoints = EXCEPTION_ENDPOINTS.map((endpoint) => endpoint.toLowerCase());
-    if (normalizedEndpoints.some((endpoint) => normalizedRequestUrl.includes(endpoint))) {
+    const exceptionEndpoints = ['/api/v2/fetch', '/api/v2/fetch/'];
+    let isAuthenticated!: boolean;
+    // Check if the requested endpoint is in the exception list
+    authService.isAuthenticated$.subscribe((authenticated) => {
+        isAuthenticated = authenticated;
+    });
+
+    if (exceptionEndpoints.some((endpoint) => request.url.includes(endpoint)) && !isAuthenticated) {
         // Proceed with the request without adding the Authorization header
         return next(request);
     }
@@ -32,7 +35,10 @@ export const jwtInterceptor: HttpInterceptorFn = (request, next) => {
             // Clone the original request and add the Authorization header with the JWT token
             const clonedRequest = request.clone({
                 setHeaders: {
-                    ...(request.method !== 'GET' && { 'Content-Type': 'application/json; charset=utf-8' }),
+                    'Content-Type': 'application/json; charset=utf-8',
+                    'Access-Control-Allow-Origin': 'true',
+                    'Access-Control-Allow-Credentials': 'true',
+                    'Cache-Control': 'no-cache, no-store, must-revalidate, post-check=0, pre-check=0',
                     'SPA-name': 'artifacts',
                     Authorization: `Bearer ${token}`,
                 },

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable */
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig, ENVIRONMENT_INITIALIZER, importProvidersFrom, inject } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
