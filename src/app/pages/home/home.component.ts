@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     public date!: Date;
     monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 
-    constructor(public artifactService: ArtifactService, protected router: Router) {}
+    constructor(public artifactSrvc: ArtifactService, protected router: Router) {}
 
     ngOnInit(): void {
         this.date = new Date();
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             .pipe(takeUntil(this._destroy$))
             .subscribe((theme) => (this.currentTheme = theme));
 
-        this.getArtifacts();
+        this._getArtifacts();
     }
 
     ngOnDestroy(): void {
@@ -46,8 +46,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         return Math.floor(Math.random() * 200) + 1;
     }
 
-    getArtifacts(): void {
-        this.artifactService.getArtifacts().subscribe((response) => {
+    private _getArtifacts(): void {
+        this.artifactSrvc.getArtifacts().subscribe((response) => {
             this.artifacts = response;
         });
     }
