@@ -1,7 +1,6 @@
 import { HttpErrorResponse, HttpInterceptorFn, HttpStatusCode } from '@angular/common/http';
 import { inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthyService } from '@lib/services';
+import { AuthService } from '@auth0/auth0-angular';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -14,14 +13,13 @@ import { catchError } from 'rxjs/operators';
  * @returns The next Observable.
  */
 export const serverErrorInterceptor: HttpInterceptorFn = (request, next) => {
-    const router = inject(Router);
-    const authService = inject(AuthyService);
+    const authService = inject(AuthService);
 
     return next(request).pipe(
         catchError((error: HttpErrorResponse) => {
             if ([HttpStatusCode.Unauthorized, HttpStatusCode.Forbidden].includes(error.status)) {
                 authService.logout();
-                router.navigateByUrl('/auth/login');
+                authService.loginWithPopup();
             }
 
             return throwError(() => error);

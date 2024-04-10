@@ -44,10 +44,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this._destroy$.unsubscribe();
     }
 
-    navigateToProfile(): unknown {
-        return this.router.navigate(['/journal']);
-    }
-
     handleThemeChange(theme: AppTheme): void {
         this.themeService.setTheme(theme);
     }
