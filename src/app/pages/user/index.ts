@@ -11,9 +11,4 @@ export const routes: Routes = [
         title: 'Profile',
         loadComponent: async () => (await import('./profile/profile.component')).ProfileComponent,
     },
-    {
-        path: 'journal',
-        title: 'Journal',
-        loadChildren: async () => (await import('@pages/journal/view')).routes,
-    },
 ];
