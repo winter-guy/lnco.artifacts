@@ -29,6 +29,9 @@
     },
     "skipLibCheck": true,
     "esModuleInterop": true,
+    "types": [
+      "node"
+    ]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
@@ -36,7 +39,4 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true,
   },
-  "types": [
-    "node"
-  ]
 }
