@@ -1,0 +1,10 @@
+{
+  "domain": "#{domain}",
+  "clientId": "#{clientId}",
+  "authorizationParams": {
+    "audience": "#{audience}"
+  },
+  "apiUri": "#{apiUri}",
+  "appUri": "#{appUri}",
+  "errorPath": "#{errorPath}"
+}
