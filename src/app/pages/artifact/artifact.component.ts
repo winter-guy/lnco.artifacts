@@ -20,7 +20,6 @@ import { needConfirmation } from '@lib/content/dialog.directive';
 export class ArtifactComponent implements OnInit {
     public post!: SecRecord | undefined;
     public editor!: EditorJS;
-    @ViewChild(CdkMenuTrigger) edit!: CdkMenuTrigger;
     expandedIndex = 0;
 
     constructor(protected artifactService: ArtifactService, private _route: ActivatedRoute, private _router: Router) {}
