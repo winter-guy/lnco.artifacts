@@ -10,7 +10,6 @@ export const routes: Routes = [
     {
         path: 'behind-the-scene',
         loadChildren: async () => (await import('@pages/bth')).routes,
-        canActivate: [AuthGuard],
     },
     {
         path: 'journal',
