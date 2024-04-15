@@ -44,9 +44,9 @@ const VALIDATION_MESSAGES = {
 @Component({
     standalone: true,
     imports: [CommonModule, ReactiveFormsModule],
-    templateUrl: './profile.component.html',
+    templateUrl: './about.component.html',
 })
-export class ProfileComponent {
+export class AboutComponent {
     details_form!: FormGroup;
     app_metadata_form!: FormGroup;
     user!: User;
@@ -140,6 +140,7 @@ export class ProfileComponent {
         if (this.details_form.errors)
             Object.keys(this.details_form.controls).forEach((controlname) => {
                 const formControl = formControls[controlname];
+                formControl;
 
                 if (this.details_form.errors && !this.details_form.errors.hasOwnProperty(controlname) && false) {
                     this.details_form.controls[controlname].disable();

@@ -8,8 +8,8 @@ export const routes: Routes = [
         loadChildren: async () => (await import('@pages/layout')).routes,
     },
     {
-        path: 'user',
-        loadChildren: async () => (await import('@pages/user')).routes,
+        path: 'behind-the-scene',
+        loadChildren: async () => (await import('@pages/bth')).routes,
         canActivate: [AuthGuard],
     },
     {
