@@ -28,7 +28,7 @@
             "main": "src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": ["src/assets/logo/lnco.svg", "src/assets"],
             "styles": [
               "src/theme/theme.scss",
               "src/theme/styles.css"
@@ -91,7 +91,7 @@
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": ["src/assets/logo/lnco.svg", "src/assets"],
             "styles": [
               "src/theme/styles.css"
             ],

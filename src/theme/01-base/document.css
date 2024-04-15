@@ -41,3 +41,8 @@ body.dark {
 input.mat-mdc-chip-input {
     @apply m-0 !important;
 }
+
+.ce-rawtool__textarea {
+    background-color: #E5E5E5;
+    color: #242424;
+}
