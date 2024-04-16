@@ -1,5 +1,5 @@
-<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <section>
     <div class="mx-auto max-w-screen-xl px-0 py-8 sm:px-6 sm:py-12 lg:px-8">
         <header>
@@ -25,7 +25,7 @@
             </div>
 
 
-            <div class="hidden sm:flex sm:gap-4">
+            <!-- <div class="hidden sm:flex sm:gap-4" *ngIf="false">
                 <div class="relative">
                     <details class="group [&_summary::-webkit-details-marker]:hidden">
                         <summary
@@ -73,7 +73,7 @@
                         </div>
                     </details>
                 </div>
-            </div>
+            </div> -->
 
             <div class="hidden sm:block" *ngIf="false">
                 <label for="SortBy" class="sr-only">SortBy</label>
@@ -99,8 +99,8 @@
             </div>
         </ng-template>
         <ul class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" *ngIf="journal$ | async as journals; else loading">
-            <ng-container *ngFor="let journal of journals">
-                <a class="group block cursor-pointer"  (click)="onBtnActionClicked(journal.id)">
+            <ng-container *ngFor="let journal of journals; let index">
+                <article class="group block cursor-pointer"  (click)="onBtnActionClicked(journal.id)">
                     <div class="relative h-[350px] sm:h-[250px]">
                         <img src="{{journal?.forepart}}" alt="artwork"
                             class="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0 rounded" />
@@ -122,7 +122,7 @@
                     <!-- <div class="flex flex-wrap md:space-x-3 text-sm dark:text-gray-400">
                     <a rel="noopener noreferrer" href="#" class="hover:underline" *ngFor="let item of x?.tags">#{{item.name}}</a>
                   </div> -->
-                </a>
+                </article>
             </ng-container>
         </ul>
     </div>
