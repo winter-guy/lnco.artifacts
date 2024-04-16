@@ -9,6 +9,7 @@ import Marker from '@editorjs/marker';
 import RawTool from '@editorjs/raw';
 
 import { uploadBlobToS3BucketAndGetUrl, uploadByUrlToS3BucketAndGetUrl } from '@lib/services/core/publish';
+import CodeMirrorTool from '@tltoulson/editorjs-codemirror';
 
 export const toolsConfig = {
     Marker: {
@@ -70,6 +71,7 @@ export const toolsConfig = {
         },
     },
     raw: RawTool,
+    code: CodeMirrorTool,
     delimiter: Delimiter,
 };
 

@@ -16,6 +16,10 @@ import { needConfirmation } from '@lib/content/dialog.directive';
     standalone: true,
     imports: [CommonModule, CdkMenuModule, CdkMenu, CdkAccordionModule],
     templateUrl: './artifact.component.html',
+    styles: `
+    ::ng-deep .cdx-block > :nth-child(2) {
+       display: none; 
+    }`,
 })
 export class ArtifactComponent implements OnInit {
     public post!: SecRecord | undefined;
