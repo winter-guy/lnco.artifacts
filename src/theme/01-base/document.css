@@ -46,3 +46,13 @@ input.mat-mdc-chip-input {
     background-color: #E5E5E5;
     color: #242424;
 }
+
+.cm-editor  {
+    height: unset;
+    padding: 1rem;
+    @apply rounded-md;
+}
+
+.cm-gutters {
+    display: none !important;
+}
