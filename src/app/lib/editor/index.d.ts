@@ -1,5 +1,8 @@
 /* eslint-disable */
-
+declare module '@tltoulson/editorjs-codemirror' {
+    const CodeMirrorTool: ToolConstructable | ToolSettings<any>;
+    export default CodeMirrorTool;
+}
 declare module '@editorjs/embed' {
     const DelimiterEmbed: ToolConstructable | ToolSettings<any>;
     export default DelimiterEmbed;
