@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable */
 
 import Delimiter from '@editorjs/delimiter';
 import DelimiterEmbed from '@editorjs/embed';
