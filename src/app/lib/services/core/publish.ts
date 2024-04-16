@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-
 import { environment } from '@env/environment';
 import axios from 'axios';
 

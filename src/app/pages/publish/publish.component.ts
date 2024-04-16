@@ -36,7 +36,6 @@ import { ArtifactService } from '@lib/services/artifacts/artifacts.service';
         CdkAccordionModule,
     ],
     templateUrl: './publish.component.html',
-    styleUrl: './publish.component.css',
 })
 export class PublishComponent implements OnInit {
     public editorForm!: FormGroup;

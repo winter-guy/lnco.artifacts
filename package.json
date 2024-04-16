@@ -36,17 +36,14 @@
   "dependencies": {
     "@angular/animations": "^17.3.0",
     "@angular/cdk": "17.3.1",
-    
     "@angular/common": "^17.3.2",
     "@angular/compiler": "^17.3.2",
     "@angular/core": "^17.3.2",
     "@angular/forms": "^17.3.2",
     "@angular/localize": "^17.3.2",
-
     "@angular/material": "17.3.1",
     "@angular/material-experimental": "17.3.1",
     "@angular/material-moment-adapter": "17.3.1",
-
     "@angular/platform-browser": "^17.3.2",
     "@angular/platform-browser-dynamic": "^17.3.2",
     "@angular/router": "^17.3.2",
@@ -80,11 +77,13 @@
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/typography": "^0.5.9",
+    "@types/chai": "^4.3.14",
     "@types/jasmine": "~4.3.0",
     "@types/node": "^20.11.27",
     "@typescript-eslint/eslint-plugin": "5.59.2",
     "@typescript-eslint/parser": "5.59.2",
     "autoprefixer": "^10.4.14",
+    "chai": "^5.1.0",
     "cypress": "^13.1.0",
     "eslint": "^8.39.0",
     "eslint-config-prettier": "^8.8.0",
