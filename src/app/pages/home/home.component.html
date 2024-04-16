@@ -1,5 +1,4 @@
-<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
-<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+
 <section class="container lg:px-8 px-0">
     <div class="flex flex-wrap justify-center gap-3 my-12">
         <div class="dark:bg-transparent">
@@ -51,8 +50,8 @@
                           </div>
                         </div>
                       </article>
-                        <ng-container *ngFor="let x of artifacts">
-                            <a (click)="onBtnActionClicked(x.id)" class="group block cursor-pointer">
+                        <ng-container *ngFor="let x of artifacts; let index">
+                            <article (click)="onBtnActionClicked(x.id)" (keypress)="onBtnActionClicked(x.id)" class="group block cursor-pointer" [tabindex]="index">
                                 <div class="relative h-[350px] sm:h-[250px]">
                                   <img
                                     src="{{x.forepart}}"
@@ -76,11 +75,7 @@
                                     {{x.details}}
                                   </p>
                                 </div>
-                                <!-- <div class="flex flex-wrap md:space-x-3 text-sm dark:text-gray-400">
-                                <a rel="noopener noreferrer" href="#" class="hover:underline" *ngFor="let item of x?.tags">#{{item.name}}</a>
-                              </div> -->
-                            </a>
-                            <!-- More products... -->
+                            </article>
                         </ng-container>
                     </div>
                     

@@ -13,7 +13,6 @@ import { ArtifactService } from '@lib/services/artifacts/artifacts.service';
     standalone: true,
     imports: [CommonModule, CdkMenuModule, CdkMenu, CdkAccordionModule],
     templateUrl: './journal.component.html',
-    styleUrl: './journal.component.css',
 })
 export class JournalComponent implements OnInit {
     public post!: SecRecord | undefined;

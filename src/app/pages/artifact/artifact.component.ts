@@ -8,7 +8,7 @@ import EditorJS from '@editorjs/editorjs';
 import { toolsConfig } from '@lib/editor/editor.config';
 import { SecRecord } from '@lib/interfaces/record';
 
-import { CdkMenu, CdkMenuModule, CdkMenuTrigger } from '@angular/cdk/menu';
+import { CdkMenu, CdkMenuModule } from '@angular/cdk/menu';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { needConfirmation } from '@lib/content/dialog.directive';
 

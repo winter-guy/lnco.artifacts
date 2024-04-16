@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable */
 
 declare module '@editorjs/embed' {
     const DelimiterEmbed: ToolConstructable | ToolSettings<any>;

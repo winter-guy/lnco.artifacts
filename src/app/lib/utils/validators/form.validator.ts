@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable no-prototype-builtins */
-/* eslint-disable @angular-eslint/directive-selector */
+/* eslint-disable */
 import { Directive, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, NG_VALIDATORS, Validator } from '@angular/forms';
 

@@ -16,7 +16,6 @@ export class ArticleComponent {
     public journal$ = this.artifactSrvc.getJournalForSignedInUser();
     public onBtnActionClicked(id: string): void {
         const NAV_URL = '/journal/edit';
-        console.log(id);
         this.router.navigate([NAV_URL], { queryParams: { page: id } });
     }
 }

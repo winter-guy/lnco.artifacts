@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 
-import { CdkMenu, CdkMenuModule } from '@angular/cdk/menu';
+import { CdkMenuModule } from '@angular/cdk/menu';
 import { AuthService } from '@auth0/auth0-angular';
 
 import { Observable, Subject, takeUntil } from 'rxjs';
@@ -21,7 +21,6 @@ import { LogoComponent } from '../logo/logo.component';
 export class NavbarComponent implements OnInit, OnDestroy {
     public currentTheme!: AppTheme | null;
     private readonly _destroy$ = new Subject();
-    @ViewChild('menu') profile!: CdkMenu;
 
     $navbarState!: Observable<boolean>;
 
@@ -45,12 +44,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this._destroy$.unsubscribe();
     }
 
-    cls(){
-        console.log(this.profile.closed)
-        this.profile.ngOnDestroy();
-    }
-
-    handleThemeChange(): void {
+    public handleThemeChange(): void {
         const themes = ['light', 'dark'];
         const currentIndex = themes.indexOf(this.themeService.currentTheme ?? 'light');
         this.themeService.setTheme(themes[(currentIndex + 1) % themes.length] as AppTheme);

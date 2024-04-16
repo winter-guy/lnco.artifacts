@@ -1,12 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @angular-eslint/directive-class-suffix */
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable @angular-eslint/directive-selector */
-/* eslint-disable @typescript-eslint/no-empty-function */
-
+/* eslint-disable */
 import { Directive, ElementRef, forwardRef, HostListener, Renderer2 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -41,20 +33,20 @@ export class ContenteditableValueAccessor implements ControlValueAccessor {
     }
 
     @HostListener('blur')
-    onBlur() {
+    onBlur(): void {
         this.onTouched();
     }
 
-    setDisabledState(disabled: boolean) {
+    setDisabledState(disabled: boolean): void {
         this.renderer.setAttribute(this.elementRef.nativeElement, 'contenteditable', String(!disabled));
     }
 
-    writeValue(value: string | null) {
-        const processedValue = ContenteditableValueAccessor.processValue(value);
+    writeValue(value: string | null): void {
+        const processedValue = ContenteditableValueAccessor._processValue(value);
         this.renderer.setProperty(this.elementRef.nativeElement, 'textContent', processedValue);
     }
 
-    private static processValue(value: string | null): string {
+    private static _processValue(value: string | null): string {
         const processed = value || '';
         return processed.trim() === '<br>' ? '' : processed;
     }
