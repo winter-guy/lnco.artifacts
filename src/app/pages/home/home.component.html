@@ -49,37 +49,41 @@
             <article class="group block cursor-pointer animate-pulse">
               <div class="relative h-[350px] bg-gray-200 rounded-md sm:h-[250px]"></div>
               <div class="mt-3">
-                <div class="text-base bg-gray-100 h-8 rounded-md w-full animate-pulse font-medium text-gray-700 dark:text-slate-50 group-hover:underline group-hover:underline-offset-4">
-              </div>
-                <p class="mt-1.5 max-w-[40ch] w-full h-16 bg-gray-50 rounded-md text-xs text-gray-500 dark:text-slate-300"></p>
+                <div
+                  class="text-base bg-gray-100 h-8 rounded-md w-full animate-pulse font-medium text-gray-700 dark:text-slate-50 group-hover:underline group-hover:underline-offset-4">
+                </div>
+                <p
+                  class="mt-1.5 max-w-[40ch] w-full h-16 bg-gray-50 rounded-md text-xs text-gray-500 dark:text-slate-300">
+                </p>
               </div>
             </article>
           </ng-template>
-          <ng-container *ngFor="let x of artifacts$ | async; let index"  else loading>
-            <article (click)="onBtnActionClicked(x.id)" (keypress)="onBtnActionClicked(x.id)"
-              class="group block cursor-pointer" [tabindex]="index">
+          <ng-container *ngIf="artifacts$ | async as artifacts; else loading">
+            @for (item of artifacts; track $index) {
+            <article (click)="onBtnActionClicked(item.id)" (keypress)="onBtnActionClicked(item.id)"
+              class="group block cursor-pointer" [tabindex]="$index">
               <div class="relative h-[350px] sm:h-[250px]">
-                <img src="{{x.forepart}}" alt="artwork"
+                <img src="{{item.forepart}}" alt="artwork"
                   class="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0 rounded" />
 
-                <img src="{{x?.backdrop ?? x.forepart}}" alt=""
+                <img src="{{item?.backdrop ?? item.forepart}}" alt=""
                   class="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100 rounded" />
               </div>
 
               <div class="mt-3">
                 <span
                   class="text-base font-medium text-gray-700 dark:text-slate-50 group-hover:underline group-hover:underline-offset-4">
-                  {{x.head}}
+                  {{item.head}}
                 </span>
 
                 <p class="mt-1.5 max-w-[40ch] text-xs text-gray-500 dark:text-slate-300">
-                  {{x.details}}
+                  {{item.details}}
                 </p>
               </div>
             </article>
+            }
           </ng-container>
         </div>
-
       </div>
     </div>
   </div>
