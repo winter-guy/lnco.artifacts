@@ -1,6 +1,6 @@
 html,
 body {
-    @apply h-full;
+    @apply h-full dark:selection:bg-indigo-800 selection:bg-black/10 dark:selection:text-slate-50;
 }
 
 body {
