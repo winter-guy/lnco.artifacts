@@ -6,6 +6,8 @@ import { BlocksEntity, Tag } from '@lib/interfaces/article';
 import { Document, InShort, Meta, Record, SecRecord } from '@lib/interfaces/record';
 import { Compose } from '@lib/interfaces/compose';
 
+const PREFIX = 'api/v2';
+
 @Injectable({
     providedIn: 'root',
 })
@@ -13,15 +15,15 @@ export class ArtifactService {
     constructor(protected httpService: HttpService) {}
 
     public getArtifacts(): Observable<Artifact[]> {
-        return this.httpService.get<Artifact[]>('/fetch');
+        return this.httpService.get<Artifact[]>(`${PREFIX}/fetch`);
     }
 
     public getJournalForSignedInUser(): Observable<Artifact[]> {
-        return this.httpService.get<Artifact[]>('/user/journal');
+        return this.httpService.get<Artifact[]>(`${PREFIX}/user/journal`);
     }
 
     public getArtifactsById(id: string): Observable<SecRecord> {
-        return this.httpService.get<SecRecord>(`/fetch/${id}`);
+        return this.httpService.get<SecRecord>(`${PREFIX}/fetch/${id}`);
     }
 
     public getImageFromPublication(blocks: BlocksEntity[]): Observable<string[]> {
@@ -52,15 +54,15 @@ export class ArtifactService {
 
     public postArtifact(record: Partial<Record>): Observable<Record> {
         console.log(record);
-        return this.httpService.post<Record, Partial<Record>>(`/publish`, record);
+        return this.httpService.post<Record, Partial<Record>>(`${PREFIX}/publish`, record);
     }
 
     public deleteArtifact(id: string): Observable<unknown> {
-        return this.httpService.delete(`/remove/${id}`);
+        return this.httpService.delete(`${PREFIX}/remove/${id}`);
     }
 
     public updateArtifact(id: string, payload: Partial<Record>): Observable<Record> {
-        return this.httpService.patch<Record, Partial<Record>>(`/update/${id}`, payload);
+        return this.httpService.patch<Record, Partial<Record>>(`${PREFIX}/update/${id}`, payload);
     }
 
     // eslint-disable-next-line prettier/prettier

@@ -17,7 +17,6 @@ const EXCEPTION_ENDPOINTS: string[] = ['/api/v2/fetch', '/api/v2/fetch/'];
  */
 export const jwtInterceptor: HttpInterceptorFn = (request, next) => {
     const authService = inject(AuthService);
-
     // Define your list of endpoints that don't require the access token
     const normalizedRequestUrl = request.url.trim().toLowerCase();
     const normalizedEndpoints = EXCEPTION_ENDPOINTS.map((endpoint) => endpoint.toLowerCase());
