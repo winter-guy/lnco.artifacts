@@ -1,16 +1,18 @@
-<section class="container">
+<section class="container select-none">
     <div class="md:mx-8 py-8 z-20 border-t border-dashed border-light">
         <footer class="mx-auto">
             <div class="flex flex-col items-center justify-center w-full max-w-2xl space-y-5 md:items-start">
               <nav
-                class="flex flex-wrap items-center justify-center space-x-4 text-xs font-medium text-gray-500 sm:flex-row">
-                <a routerLink="/behind-the-scene/developer" [routerLinkActive]="'underline underline-offset-4'" class="hover:text-black">About</a>
-                <a href="#" class="hover:text-black">Status</a>
-                <a href="#" class="hover:text-black">Docs</a>
-                <a href="#" class="hover:text-black">Privacy</a>
-                <a href="#" class="hover:text-black">Terms</a>
+                class="flex flex-wrap items-center justify-center space-x-4 text-xs font-medium text-slate-500 dark:text-gray-300 sm:flex-row">
+                <a routerLink="/behind-the-scene/developer" [routerLinkActive]="'underline underline-offset-4'" class="hover:text-black dark:hover:text-white">About</a>
+                <a href="#" class="hover:text-black dark:hover:text-white">Privacy</a>
+                <a href="#" class="hover:text-black dark:hover:text-white">Terms</a>
+                <a href="#" class="hover:text-black dark:hover:text-white flex items-center gap-1.5">Status 
+                  <span class="inline-flex h-1.5 w-1.5 rounded-full opacity-75" [ngClass]="this.state === 0 ? 'bg-green-500' : 'bg-red-500'"
+                  ></span>
+                </a>
               </nav>
-              <p class="text-xs leading-5 text-center text-gray-500 md:text-left">
+              <p class="text-xs leading-5 text-center text-slate-500 dark:text-gray-300 md:text-left">
                 l&co collects information about you when
                 you use our Website to access our services, and other online products
                 and services (collectively, the “Services”) and through other interactions and communications you have with us.
