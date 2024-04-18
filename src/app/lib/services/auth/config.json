@@ -4,7 +4,7 @@
   "authorizationParams": {
     "audience": "https://auth.lnco.in/"
   },
-  "apiUri": "http://lnco.in/",
+  "apiUri": "https://lnco.in/",
   "appUri": "https://lnco-artifacts.vercel.app",
   "errorPath": "/error"
 }
