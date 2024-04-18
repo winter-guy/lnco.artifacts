@@ -23,7 +23,6 @@ export class FooterComponent implements OnInit {
     ngOnInit(): void {
         this.health.status$.subscribe((res) => {
             this.state = res;
-            console.log(res);
         });
     }
 
