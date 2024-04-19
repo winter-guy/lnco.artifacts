@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Data, Router } from '@angular/router';
 
 import { ArtifactService } from '@lib/services/artifacts/artifacts.service';
 
@@ -29,19 +29,17 @@ export class ArtifactComponent implements OnInit {
     constructor(protected artifactService: ArtifactService, private _route: ActivatedRoute, private _router: Router) {}
 
     ngOnInit(): void {
-        const id = this._route.snapshot.queryParams['page'] as string;
-
-        this.artifactService.getArtifactsById(id).subscribe((res) => {
-            if (res) {
-                this.post = res;
-                this.editor = new EditorJS({
-                    holder: 'editorjs',
-                    autofocus: false,
-                    readOnly: true,
-                    tools: toolsConfig,
-                    data: res.record,
-                });
-            }
+        this._route.data.subscribe(({ data }: Data) => {
+            const fact = data as SecRecord;
+            // do something with your resolved data ...
+            this.post = fact;
+            this.editor = new EditorJS({
+                holder: 'editorjs',
+                autofocus: false,
+                readOnly: true,
+                tools: toolsConfig,
+                data: fact.record,
+            });
         });
     }
 
