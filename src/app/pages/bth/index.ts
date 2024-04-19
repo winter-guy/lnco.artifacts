@@ -8,7 +8,7 @@ export const routes: Routes = [
     },
     {
         path: 'developer',
-        title: 'dsgnr | behind the scene',
+        title: 'designer | behind the scene',
         loadComponent: async () => (await import('./about/about.component')).AboutComponent,
     },
 ];
