@@ -1,0 +1,32 @@
+<div class="flex w-full flex-col gap-4 rounded-sm bg-white p-4 shadow ring-1 ring-slate-950/5 sm:w-96">
+     
+    <div class="space-y-1">
+        <p class="font-medium text-slate-800">Server Health</p>
+        <p class="text-slate-600 text-xs">realtime server status.</p>
+    </div>
+    <div>
+        <div class="text-slate-600 text-xs flex gap-2 items-center">
+            <span class="inline-flex h-1.5 w-1.5 rounded-full opacity-75 bg-green-500" [ngClass]="data.status ?'bg-green-500' : 'bg-red-500'">
+            </span>
+            {{ data.status? 'online': 'offline' }}
+        </div>
+    </div>
+    <div class="grid grid-cols-3" *ngIf="false">
+        <div>
+            <p class="mb-2 text-sm font-extrabold">API</p>
+            <div class="text-slate-600 text-xs flex gap-2 items-center">
+                <span class="inline-flex h-1.5 w-1.5 rounded-full opacity-75 bg-green-500">
+                </span>
+                online
+            </div>
+        </div>
+        <div>
+            <p class="mb-2 text-sm font-extrabold ">Storage</p>
+            <p class="text-slate-600 text-xs flex gap-2 items-center">
+                <span class="inline-flex h-1.5 w-1.5 rounded-full opacity-75  bg-green-500" [ngClass]="0 === 0 ? 'bg-green-500' : 'bg-red-500'">
+                </span>
+                online
+            </p>
+        </div>
+    </div>
+</div>
