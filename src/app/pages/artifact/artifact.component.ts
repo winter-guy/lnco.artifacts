@@ -27,6 +27,8 @@ import { Observable, delay, map } from 'rxjs';
 export class ArtifactComponent implements OnInit {
     public post!: SecRecord | undefined;
     public editor!: EditorJS;
+    public secRecord!: Observable<SecRecord>;
+
     expandedIndex = 0;
 
     constructor(protected artifactService: ArtifactService, private _route: ActivatedRoute, private _router: Router) {}
@@ -34,6 +36,7 @@ export class ArtifactComponent implements OnInit {
     ngOnInit(): void {
         this._route.data.subscribe(({ data }: Data) => {
             const fact = data as { record: Observable<SecRecord>; loading: DialogRef<unknown, LoadingComponent> };
+            this.secRecord = fact.record;
             // do something with your resolved data ...
             fact.record
                 .pipe(
