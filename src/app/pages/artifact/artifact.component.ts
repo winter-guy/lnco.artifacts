@@ -11,6 +11,9 @@ import { SecRecord } from '@lib/interfaces/record';
 import { CdkMenu, CdkMenuModule } from '@angular/cdk/menu';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { needConfirmation } from '@lib/content/dialog.directive';
+import { DialogRef } from '@angular/cdk/dialog';
+import { LoadingComponent } from '@lib/components/loading/loading.component';
+import { Observable, delay, map } from 'rxjs';
 
 @Component({
     standalone: true,
@@ -30,16 +33,24 @@ export class ArtifactComponent implements OnInit {
 
     ngOnInit(): void {
         this._route.data.subscribe(({ data }: Data) => {
-            const fact = data as SecRecord;
+            const fact = data as { record: Observable<SecRecord>; loading: DialogRef<unknown, LoadingComponent> };
             // do something with your resolved data ...
-            this.post = fact;
-            this.editor = new EditorJS({
-                holder: 'editorjs',
-                autofocus: false,
-                readOnly: true,
-                tools: toolsConfig,
-                data: fact.record,
-            });
+            fact.record
+                .pipe(
+                    delay(3000),
+                    map((res) => {
+                        this.post = res;
+                        this.editor = new EditorJS({
+                            holder: 'editorjs',
+                            autofocus: false,
+                            readOnly: true,
+                            tools: toolsConfig,
+                            data: res.record,
+                        });
+                        fact.loading.close();
+                    }),
+                )
+                .subscribe();
         });
     }
 

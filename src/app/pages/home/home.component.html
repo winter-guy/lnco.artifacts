@@ -1,17 +1,8 @@
-<section class="container lg:px-8 px-0">
+<section class="container lg:px-8 px-0 ease-in-out">
   <div class="flex flex-wrap justify-center gap-3 my-12">
     <div class="dark:bg-transparent">
       <div class="mx-auto max-w-2xl lg:max-w-7xl">
         <ng-template #loading>
-          <div aria-label="Loading..." role="status" class="h-[60vh] w-full flex justify-center items-center">
-            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
-              stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"
-              class="animate-spin w-6 h-6 stroke-slate-500">
-              <path
-                d="M12 3v3m6.366-.366-2.12 2.12M21 12h-3m.366 6.366-2.12-2.12M12 21v-3m-6.366.366 2.12-2.12M3 12h3m-.366-6.366 2.12 2.12">
-              </path>
-            </svg>
-          </div>
         </ng-template>
 
         <ng-container *ngIf="artifacts$ | async as artifacts; else loading">
@@ -60,10 +51,10 @@
             </article>
             @for (item of artifacts; track $index) {
             <article (click)="onBtnActionClicked(item.id)" (keypress)="onBtnActionClicked(item.id)"
-              class="group block cursor-pointer" [tabindex]="$index">
+              class="group block cursor-pointer ease-in-out" [tabindex]="$index">
               <div class="relative h-[350px] sm:h-[250px]">
                 <img src="{{item.forepart}}" alt="artwork"
-                  class="absolute inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0 rounded" />
+                  class="absolute inset-0 ease-in-out h-full w-full object-cover opacity-100 group-hover:opacity-0 rounded" />
 
                 <img src="{{item?.backdrop ?? item.forepart}}" alt=""
                   class="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100 rounded" />
