@@ -40,7 +40,7 @@ export class ArtifactComponent implements OnInit {
             // do something with your resolved data ...
             fact.record
                 .pipe(
-                    delay(3000),
+                    delay(1000),
                     map((res) => {
                         this.post = res;
                         this.editor = new EditorJS({

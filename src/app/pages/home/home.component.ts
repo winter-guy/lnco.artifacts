@@ -39,11 +39,11 @@ export class HomeComponent implements OnInit, OnDestroy {
 
         this._route.data.subscribe(({ data }: Data) => {
             const fact = data as { record: Observable<Artifact[]>; loading: DialogRef<unknown, LoadingComponent> };
-            this.artifacts$ = fact.record.pipe(delay(3000));
+            this.artifacts$ = fact.record;
             // do something with your resolved data ...
             fact.record
                 .pipe(
-                    delay(3000),
+                    delay(1000),
                     map(() => {
                         fact.loading.close();
                     }),
