@@ -14,6 +14,7 @@ import { needConfirmation } from '@lib/content/dialog.directive';
 import { DialogRef } from '@angular/cdk/dialog';
 import { LoadingComponent } from '@lib/components/loading/loading.component';
 import { Observable, delay, map } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 
 @Component({
     standalone: true,
@@ -31,7 +32,12 @@ export class ArtifactComponent implements OnInit {
 
     expandedIndex = 0;
 
-    constructor(protected artifactService: ArtifactService, private _route: ActivatedRoute, private _router: Router) {}
+    constructor(
+        protected artifactService: ArtifactService,
+        private _route: ActivatedRoute,
+        private _router: Router,
+        private _title: Title,
+    ) {}
 
     ngOnInit(): void {
         this._route.data.subscribe(({ data }: Data) => {
@@ -50,6 +56,8 @@ export class ArtifactComponent implements OnInit {
                             tools: toolsConfig,
                             data: res.record,
                         });
+
+                        this._title.setTitle(res.meta.head);
                         fact.loading.close();
                     }),
                 )
