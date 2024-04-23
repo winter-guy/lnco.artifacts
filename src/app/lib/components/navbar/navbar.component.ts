@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ComponentFactoryResolver,
+    Inject,
+    OnDestroy,
+    OnInit,
+    ViewChild,
+    ViewContainerRef,
+} from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 
@@ -11,10 +20,11 @@ import { ThemeService } from '@lib/services';
 import { AppTheme } from '@lib/services/theme';
 import { needConfirmation } from '@lib/content/dialog.directive';
 import { LogoComponent } from '../logo/logo.component';
+import { FooterComponent } from '../footer/footer.component';
 @Component({
     selector: 'app-navbar',
     standalone: true,
-    imports: [CommonModule, RouterModule, LogoComponent, CdkMenuModule],
+    imports: [CommonModule, RouterModule, LogoComponent, CdkMenuModule, FooterComponent],
     templateUrl: './navbar.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -29,6 +39,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
         public themeService: ThemeService,
         public auth: AuthService,
         @Inject(DOCUMENT) private _doc: Document,
+
+        private _componentFactoryResolver: ComponentFactoryResolver,
     ) {}
 
     ngOnInit(): void {
@@ -37,6 +49,23 @@ export class NavbarComponent implements OnInit, OnDestroy {
             .subscribe((theme) => (this.currentTheme = theme));
 
         this.$navbarState = this.themeService.navState;
+    }
+
+    @ViewChild('dynamicComponentContainer', { read: ViewContainerRef }) dynamicComponentContainer!: ViewContainerRef;
+    dynamicComponentRef: unknown;
+    public toggleDynamicComponent(): void {
+        if (this.dynamicComponentRef) {
+            // If dynamic component is already added, remove it
+            this.dynamicComponentContainer.clear();
+            this.dynamicComponentRef = null;
+        } else {
+            // Create an instance of the dynamic component
+            const componentFactory = this._componentFactoryResolver.resolveComponentFactory(FooterComponent);
+            this.dynamicComponentRef = this.dynamicComponentContainer.createComponent(componentFactory);
+
+            // You can pass inputs to the component
+            // this.dynamicComponentRef.instance.inputProperty = value;
+        }
     }
 
     ngOnDestroy(): void {

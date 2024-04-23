@@ -9,13 +9,13 @@ import { Observable, delay, map } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class HomeResolver
-    implements Resolve<{ record: Observable<Artifact[]>; loading: DialogRef<unknown, LoadingComponent> }>
+    implements Resolve<{ record: Observable<Artifact[]>; loading?: DialogRef<unknown, LoadingComponent> }>
 {
     constructor(private _artifact: ArtifactService, private readonly _dialog: Dialog) {}
     resolve(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot,
-    ): { record: Observable<Artifact[]>; loading: DialogRef<unknown, LoadingComponent> } {
+    ): { record: Observable<Artifact[]>; loading?: DialogRef<unknown, LoadingComponent> } {
         state;
 
         const loadingDialog = this._dialog.open(LoadingComponent, {
