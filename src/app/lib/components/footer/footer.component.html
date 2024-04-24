@@ -5,12 +5,14 @@
               <nav
                 class="flex flex-wrap items-center justify-center space-x-4 text-xs font-medium text-slate-500 dark:text-gray-300 sm:flex-row">
                 <a routerLink="/behind-the-scene/developer" [routerLinkActive]="'underline underline-offset-4'" class="hover:text-black dark:hover:text-white">>> Behind the scene</a>
+                <a routerLink="/lnco/lodging" [routerLinkActive]="'underline underline-offset-4'" class="hover:text-black dark:hover:text-white">l&co*</a>
                 <!-- <a href="#" class="hover:text-black dark:hover:text-white">Privacy</a>
                 <a href="#" class="hover:text-black dark:hover:text-white">Terms</a> -->
                 <a *ngIf="false" tabindex="" class="hover:text-black dark:hover:text-white flex items-center gap-1.5">Server status 
                   <span class="inline-flex h-1.5 w-1.5 rounded-full opacity-75" [ngClass]="this.state === 0 ? 'bg-green-500' : 'bg-red-500'">
                 </span>
                 </a>
+                
               </nav>
               <p class="text-xs leading-5 text-center text-slate-500 dark:text-gray-300 md:text-left mb-4">
                 l&co collects information about you when

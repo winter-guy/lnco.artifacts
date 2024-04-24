@@ -12,6 +12,10 @@ export const routes: Routes = [
         loadChildren: async () => (await import('@pages/artifact')).routes,
     },
     {
+        path: 'lnco',
+        loadChildren: async () => (await import('@pages/lnco')).routes,
+    },
+    {
         path: 'compose',
         title: 'composer',
         loadChildren: async () => (await import('@pages/compose')).routes,
