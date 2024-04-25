@@ -7,3 +7,7 @@
   .container-without-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
+  ::ng-deep .mat-mdc-paginator-outer-container {
+    @apply bg-white dark:bg-black
+  }

@@ -18,10 +18,12 @@ import { ArtifactService } from '@lib/services/artifacts/artifacts.service';
 import { AppTheme } from '@lib/services/theme';
 import { Subject, Observable, takeUntil, delay, map } from 'rxjs';
 
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 @Component({
     selector: 'app-lnco',
     standalone: true,
-    imports: [CommonModule, RouterModule, LoadingComponent],
+    imports: [CommonModule, RouterModule, LoadingComponent, MatPaginatorModule],
     providers: [ArtifactService],
     templateUrl: './lnco.component.html',
     styleUrl: './lnco.component.css',
