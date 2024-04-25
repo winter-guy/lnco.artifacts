@@ -15,7 +15,7 @@
     <section class="container lg:px-8 px-0 py-8 ease-in-out">
         <div class="flex flex-wrap justify-center gap-3 my-12">
             <div class="dark:bg-transparent">
-                <div class="mx-auto max-w-2xl lg:max-w-7xl lg:overflow-visible">
+                <div class="mx-auto lg:max-w-7xl lg:overflow-visible">
                     <ng-template #loading>
                         <!-- <div class="h-[60vh]"></div> -->
                     </ng-template>
@@ -51,9 +51,7 @@
                                     </article>
                                     }
                                 </div>
-                                <mat-paginator [length]="100" [pageSize]="10"
-                                    aria-label="Select page">
-                                </mat-paginator>
+
                             </div>
                             <!-- Sticky div starts here -->
                             <div class="col-span-2 row-span-4 h-screen py-6 sticky top-0 z-50 ease-in-out"
@@ -66,5 +64,7 @@
                 </div>
             </div>
         </div>
+        <mat-paginator [length]="100" [pageSize]="10" aria-label="Select page">
+        </mat-paginator>
     </section>
 </section>

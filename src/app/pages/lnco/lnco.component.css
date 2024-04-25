@@ -9,5 +9,5 @@
   }
 
   ::ng-deep .mat-mdc-paginator-outer-container {
-    @apply bg-white dark:bg-black
+    @apply bg-white dark:bg-black dark:text-white
   }
