@@ -8,7 +8,7 @@ import { switchMap } from 'rxjs/operators';
 export const myValueSubject: BehaviorSubject<string> = new BehaviorSubject<string>('Bearer ');
 
 export function uploadBlobToS3BucketAndGetUrl(snapshot: Blob): Observable<{ success: number; file: { url: string } }> {
-    const url = `${environment.apiUri}/upload`;
+    const url = `${environment.apiUri}api/v2/upload`;
 
     return myValueSubject.pipe(
         switchMap((authToken: string) => {
@@ -36,7 +36,7 @@ export function uploadBlobToS3BucketAndGetUrl(snapshot: Blob): Observable<{ succ
 export function uploadByUrlToS3BucketAndGetUrl(
     snapshot: string,
 ): Observable<{ success: number; file: { url: string } }> {
-    const url = `${environment.apiUri}/upload/url`;
+    const url = `${environment.apiUri}api/v2/upload/url`;
     return myValueSubject.pipe(
         switchMap((authToken: string) => {
             const headers = {
