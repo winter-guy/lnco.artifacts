@@ -19,7 +19,7 @@ export const routes: Routes = [
     {
         path: 'settings',
         loadChildren: async () => (await import('@pages/settings')).routes,
-        canMatch: [authGuard()],
+        // canMatch: [authGuard()],
     },
     {
         path: '**',

@@ -1,60 +1,185 @@
-<section class="container select-none h-40">
-  <div class=" py-8 z-20">
-    <footer class="mx-auto">
-      <div class="flex flex-col items-center justify-center w-full max-w-2xl space-y-5 md:items-start">
-        <nav
-          class="flex flex-wrap items-center justify-center space-x-4 text-xs font-medium text-slate-500 dark:text-gray-300 sm:flex-row">
-          <a routerLink="/behind-the-scene/developer" [routerLinkActive]="'underline underline-offset-4 decoration-orange-500'"
-            class="hover:text-black dark:hover:text-white">>> Behind the scene</a>
-          <a routerLink="/lnco/lodging" [routerLinkActive]="'underline underline-offset-4 decoration-orange-500'"
-            class="hover:text-black dark:hover:text-white">housing corner</a>
-          <!-- <a href="#" class="hover:text-black dark:hover:text-white">Privacy</a>
-                <a href="#" class="hover:text-black dark:hover:text-white">Terms</a> -->
-          <a *ngIf="false" tabindex="" class="hover:text-black dark:hover:text-white flex items-center gap-1.5">Server
-            status
-            <span class="inline-flex h-1.5 w-1.5 rounded-full opacity-75"
-              [ngClass]="this.state === 0 ? 'bg-green-500' : 'bg-red-500'">
-            </span>
-          </a>
-          <a routerLink="/journal" [routerLinkActive]="'underline underline-offset-4 decoration-orange-500'"
-            class="hover:text-black dark:hover:text-white">journal</a>
-
-        </nav>
-        <p class="text-xs leading-5 text-center text-slate-500 dark:text-gray-300 md:text-left mb-4">
-          l&co collects information about you when
-          you use our Website to access our services, and other online products
-          and services (collectively, the “Services”) and through other interactions and communications you have with
-          us.
-        </p>
+<!-- eslint-disable @angular-eslint/template/label-has-associated-control -->
+<div data-state="open" data-orientation="horizontal"
+  class="origin-top-center dark:text-white relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden text-popover-foreground  data-[state=open]:animate-in data-[state=open]:fade-in data-[state=open]:slide-in-from-right-10 data-[state=open]:duration-100 data-[state=open]:ease-out data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=closed]:duration-75  bg-background"
+  style="--radix-navigation-menu-viewport-width: 550px; --radix-navigation-menu-viewport-height: 447px;">
+  <div id="radix-:R9b9kq6:-content-radix-:R9pb9kq6:" aria-labelledby="radix-:R9b9kq6:-trigger-radix-:R9pb9kq6:"
+    data-orientation="horizontal"
+    class="left-0 top-0 w-full data-[motion^=from-]:animate-fade-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 md:absolute md:w-auto rounded-xl"
+    dir="ltr">
+    <div class="flex flex-col xl:flex-row">
+      <div class="py-8 px-8 bg-background grid gap-3 grid-cols-2">
+        <div class="p-0 flex flex-col gap-6">
+          <label class="text-foreground-lighter text-xs uppercase tracking-widest font-mono">Developers</label>
+          <ul class="flex flex-col gap-4">
+            <li><a
+                class="flex group items-center gap-2 text-foreground-light text-sm hover:text-foreground focus-visible:text-foreground focus-visible:ring-2 focus-visible:outline-none focus-visible:rounded focus-visible:ring-foreground-lighter"
+                href="/docs" data-tabindex="" tabindex="-1">
+                <div class="relative" style="width: 16px; height: 16px;"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16" color="currentColor" fill="none" stroke="currentColor" class="sbui-icon"
+                    width="100%" height="100%" stroke-width="1.2">
+                    <path
+                      d="M4.20351 9.85778H11.7038M4.20351 7.35767H11.7038M4.20351 12.3579H9.20372M14.2498 5.00126V13C14.2498 14.3807 13.1305 15.5001 11.7497 15.5001H4.2499C2.86913 15.5001 1.74979 14.3807 1.74979 13V3.00018C1.74979 1.61941 2.86912 0.500076 4.24989 0.500076H9.72709L14.2498 5.00126ZM14.2058 4.98025L9.72549 0.500076L9.72526 3.73011C9.72522 4.42053 10.2849 4.98025 10.9753 4.98025L14.2058 4.98025Z"
+                      stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg></div><span>Documentation</span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="sbui-icon w-3 -ml-1 transition-all will-change-transform -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a></li>
+            <li><a
+                class="flex group items-center gap-2 text-foreground-light text-sm hover:text-foreground focus-visible:text-foreground focus-visible:ring-2 focus-visible:outline-none focus-visible:rounded focus-visible:ring-foreground-lighter"
+                href="/partners/integrations" data-tabindex="" tabindex="-1">
+                <div class="relative" style="width: 16px; height: 16px;"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16" color="currentColor" fill="none" stroke="currentColor" class="sbui-icon"
+                    width="100%" height="100%" stroke-width="1.2">
+                    <path
+                      d="M12.3806 0.619116V6.85795M9.26117 3.73884L15.5 3.73884M7.20065 12.0306C7.20065 13.8809 5.70066 15.3809 3.85032 15.3809C1.99999 15.3809 0.5 13.8809 0.5 12.0306C0.5 10.1802 1.99999 8.68023 3.85032 8.68023C5.70066 8.68023 7.20065 10.1802 7.20065 12.0306ZM15.5 14.032V10.2887C15.5 9.59957 14.9414 9.04093 14.2522 9.04093H10.5089C9.81981 9.04093 9.26117 9.59957 9.26117 10.2887V14.032C9.26117 14.7211 9.81981 15.2798 10.5089 15.2798H14.2522C14.9414 15.2798 15.5 14.7211 15.5 14.032ZM1.97929 6.85795H5.72258C6.41171 6.85795 6.97035 6.2993 6.97035 5.61018V1.86688C6.97035 1.17776 6.41171 0.619116 5.72258 0.619116H1.97929C1.29016 0.619116 0.731519 1.17776 0.731519 1.86688V5.61018C0.731519 6.2993 1.29016 6.85795 1.97929 6.85795Z"
+                      stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg></div><span>Integrations</span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="sbui-icon w-3 -ml-1 transition-all will-change-transform -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a></li>
+            <li><a
+                class="flex group items-center gap-2 text-foreground-light text-sm hover:text-foreground focus-visible:text-foreground focus-visible:ring-2 focus-visible:outline-none focus-visible:rounded focus-visible:ring-foreground-lighter"
+                href="/changelog" data-tabindex="" tabindex="-1">
+                <div class="relative" style="width: 16px; height: 16px;"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16" color="currentColor" fill="none" stroke="currentColor" class="sbui-icon"
+                    width="100%" height="100%" stroke-width="1.2">
+                    <path
+                      d="M2.51764 2.98721C3.87588 1.50256 5.8292 0.571428 8 0.571428C12.1027 0.571428 15.4286 3.89731 15.4286 8C15.4286 12.1027 12.1027 15.4286 8 15.4286C3.89731 15.4286 0.571426 12.1027 0.571426 8C0.571426 7.09365 0.733741 6.22522 1.03089 5.42218C1.09155 5.25824 1.15783 5.09703 1.22949 4.93878M2.29352 1.15904L2.29352 2.62254C2.29352 2.93814 2.54936 3.19398 2.86496 3.19398L4.32846 3.19398M4 5.5H12M3 7.98383H13M4 10.5H12"
+                      stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg></div><span>Changelog</span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="sbui-icon w-3 -ml-1 transition-all will-change-transform -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a></li>
+            <li><a
+                class="flex group items-center gap-2 text-foreground-light text-sm hover:text-foreground focus-visible:text-foreground focus-visible:ring-2 focus-visible:outline-none focus-visible:rounded focus-visible:ring-foreground-lighter"
+                href="/support" data-tabindex="" tabindex="-1">
+                <div class="relative" style="width: 16px; height: 16px;"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16" color="currentColor" fill="none" stroke="currentColor" class="sbui-icon"
+                    width="100%" height="100%" stroke-width="1.2">
+                    <path
+                      d="M2.69727 2.69852L5.87727 5.87852M10.1225 10.1228L13.3025 13.3028M13.3025 2.69852L10.1225 5.87852L12.77 3.23088M2.69727 13.3028L5.87727 10.1228M15.5 8C15.5 12.1421 12.1421 15.5 8 15.5C3.85786 15.5 0.5 12.1421 0.5 8C0.5 3.85786 3.85786 0.499992 8 0.499992C12.1421 0.499992 15.5 3.85786 15.5 8ZM11 8C11 9.65685 9.65685 11 8 11C6.34315 11 5 9.65685 5 8C5 6.34314 6.34315 5 8 5C9.65685 5 11 6.34314 11 8Z">
+                    </path>
+                  </svg></div><span>Support</span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="sbui-icon w-3 -ml-1 transition-all will-change-transform -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a></li>
+          </ul>
+        </div>
+        <div class="p-0 flex flex-col gap-6"><label
+            class="text-foreground-lighter text-xs uppercase tracking-widest font-mono">Resources</label>
+          <ul class="flex flex-col gap-4">
+            <li><a
+                class="flex group items-center gap-2 text-foreground-light text-sm hover:text-foreground focus-visible:text-foreground focus-visible:ring-2 focus-visible:outline-none focus-visible:rounded focus-visible:ring-foreground-lighter"
+                href="/open-source" data-tabindex="" tabindex="-1">
+                <div class="relative" style="width: 16px; height: 16px;"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16" fill="none" stroke="none" class="sbui-icon" width="100%" height="100%"
+                    stroke-width="1.2">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M8 0C3.5816 0 0 3.58719 0 8.01357C0 11.5535 2.292 14.5575 5.4712 15.6167C5.8712 15.6903 6.0168 15.4431 6.0168 15.2303C6.0168 15.0407 6.0104 14.5359 6.0064 13.8679C3.7808 14.3519 3.3112 12.7935 3.3112 12.7935C2.948 11.8671 2.4232 11.6207 2.4232 11.6207C1.6968 11.1247 2.4784 11.1343 2.4784 11.1343C3.2808 11.1903 3.7032 11.9599 3.7032 11.9599C4.4168 13.1839 5.576 12.8303 6.0312 12.6255C6.1048 12.1079 6.3112 11.7551 6.54 11.5551C4.764 11.3527 2.896 10.6647 2.896 7.59438C2.896 6.71998 3.208 6.00398 3.7192 5.44398C3.6368 5.24158 3.3624 4.42639 3.7976 3.32399C3.7976 3.32399 4.4696 3.10799 5.9976 4.14479C6.65022 3.9668 7.32355 3.87614 8 3.87519C8.68 3.87839 9.364 3.96719 10.0032 4.14479C11.5304 3.10799 12.2008 3.32319 12.2008 3.32319C12.6376 4.42639 12.3624 5.24158 12.2808 5.44398C12.7928 6.00398 13.1032 6.71998 13.1032 7.59438C13.1032 10.6727 11.232 11.3503 9.4504 11.5487C9.73762 11.7959 9.99282 12.2847 9.99282 13.0327C9.99282 14.1031 9.98322 14.9679 9.98322 15.2303C9.98322 15.4447 10.1272 15.6943 10.5336 15.6159C12.1266 15.0816 13.5115 14.0602 14.4924 12.696C15.4733 11.3318 16.0007 9.69382 16 8.01357C16 3.58719 12.4176 0 8 0Z"
+                      fill="currentColor"></path>
+                  </svg></div><span>Open Source</span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="sbui-icon w-3 -ml-1 transition-all will-change-transform -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a></li>
+            <li><a
+                class="flex group items-center gap-2 text-foreground-light text-sm hover:text-foreground focus-visible:text-foreground focus-visible:ring-2 focus-visible:outline-none focus-visible:rounded focus-visible:ring-foreground-lighter"
+                href="https://github.com/orgs/supabase/discussions" data-tabindex="" tabindex="-1">
+                <div class="relative" style="width: 16px; height: 16px;"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16" fill="none" stroke="none" class="sbui-icon" width="100%" height="100%"
+                    stroke-width="1.2">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M0 3.07692C0 1.37759 1.37759 0 3.07693 0H12.9231C14.6224 0 16 1.37758 16 3.07692V9.69032C16 11.3897 14.6224 12.7672 12.9231 12.7672H7.65829L4.73596 15.8108C4.562 15.992 4.29538 16.0493 4.06236 15.9555C3.82934 15.8617 3.67669 15.6358 3.67669 15.3846V12.7672H3.07693C1.37759 12.7672 0 11.3897 0 9.69032V3.07692ZM3.07693 1.23077C2.05732 1.23077 1.23077 2.05732 1.23077 3.07692V9.69032C1.23077 10.7099 2.05732 11.5365 3.07693 11.5365H4.29207C4.63194 11.5365 4.90745 11.812 4.90745 12.1519V13.8552L6.95214 11.7256C7.06819 11.6048 7.22849 11.5365 7.39604 11.5365H12.9231C13.9427 11.5365 14.7692 10.7099 14.7692 9.69032V3.07692C14.7692 2.05732 13.9427 1.23077 12.9231 1.23077H3.07693ZM5.53846 5.86479C5.87833 5.86479 6.15385 6.14031 6.15385 6.48017C6.15385 6.82004 5.87833 7.09556 5.53846 7.09556C5.1986 7.09556 4.92308 6.82004 4.92308 6.48017C4.92308 6.14031 5.1986 5.86479 5.53846 5.86479ZM8 5.86479C8.33987 5.86479 8.61539 6.14031 8.61539 6.48017C8.61539 6.82004 8.33987 7.09556 8 7.09556C7.66014 7.09556 7.38462 6.82004 7.38462 6.48017C7.38462 6.14031 7.66014 5.86479 8 5.86479ZM10.4615 5.86479C10.8014 5.86479 11.0769 6.14031 11.0769 6.48017C11.0769 6.82004 10.8014 7.09556 10.4615 7.09556C10.1217 7.09556 9.84612 6.82004 9.84612 6.48017C9.84612 6.14031 10.1217 5.86479 10.4615 5.86479Z"
+                      fill="currentColor"></path>
+                  </svg></div><span>GitHub Discussions</span><svg xmlns="http://www.w3.org/2000/svg" width="18"
+                  height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"
+                  class="sbui-icon w-3 -ml-1 transition-all will-change-transform -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a></li>
+            <li><a
+                class="flex group items-center gap-2 text-foreground-light text-sm hover:text-foreground focus-visible:text-foreground focus-visible:ring-2 focus-visible:outline-none focus-visible:rounded focus-visible:ring-foreground-lighter"
+                href="/partners" data-tabindex="" tabindex="-1">
+                <div class="relative" style="width: 16px; height: 16px;"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16" fill="none" stroke="none" class="sbui-icon" width="100%" height="100%"
+                    stroke-width="1.2">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M6.74428 3.14663C5.46222 1.86458 3.3836 1.86458 2.10154 3.14663C0.819584 4.42859 0.819484 6.50699 2.10124 7.78907L2.27149 7.95907L7.14537 12.8713L7.14694 12.8729L7.87634 13.6023C8.15986 13.8858 8.61955 13.8858 8.90307 13.6023C9.15745 13.3479 9.16915 12.8682 8.88697 12.5604L8.03584 11.7092C7.81328 11.4866 7.81331 11.1257 8.0359 10.9032C8.25849 10.6806 8.61936 10.6806 8.84191 10.9032L9.22841 11.2898C9.23606 11.2967 9.24357 11.3038 9.25093 11.3111L9.70923 11.7697L9.71224 11.7727L9.7147 11.7752L9.71692 11.7774L9.72114 11.7818L9.72525 11.7862L9.73059 11.792L9.96864 12.0301C10.2521 12.3137 10.7118 12.3137 10.9953 12.0302C11.2788 11.7467 11.2788 11.2871 10.9954 11.0036L9.82969 9.83772C9.60713 9.61513 9.60716 9.25426 9.82975 9.03171C9.95005 8.91142 10.1107 8.85615 10.2682 8.8659C10.4081 8.87019 10.5468 8.92575 10.6536 9.03256L11.8391 10.2181C12.1226 10.5016 12.5823 10.5016 12.8658 10.2181C13.1493 9.93462 13.1493 9.47498 12.8658 9.19148L11.6615 7.98724C11.439 7.76466 11.439 7.4038 11.6615 7.18122C11.8841 6.95865 12.245 6.95865 12.4676 7.18122L13.4872 8.2009L13.8987 7.78942C15.1808 6.50737 15.1808 4.42874 13.8987 3.14668C12.6166 1.86463 10.538 1.86463 9.25596 3.14668L7.88518 4.51747L7.25122 5.15138C7.25122 5.15138 7.25123 5.15137 7.25122 5.15138C6.77862 5.624 6.77861 6.39027 7.25122 6.86288C7.72384 7.3355 8.4901 7.3355 8.96272 6.86288L11.0491 4.77648C11.2717 4.5539 11.6326 4.5539 11.8551 4.77648C12.0777 4.99905 12.0777 5.35992 11.8551 5.58249L9.76874 7.6689C8.85097 8.58666 7.36298 8.58666 6.44521 7.6689C5.52744 6.75113 5.52744 5.26313 6.44521 4.34536L7.07916 3.71146L7.19413 3.59648L6.74428 3.14663ZM8.00014 2.79047L7.55029 2.34062C5.82309 0.613413 3.02273 0.613415 1.29553 2.34062C-0.431679 4.06783 -0.431679 6.86818 1.29553 8.59539L1.46232 8.76193L1.4642 8.76381L6.33777 13.6757L6.33934 13.6773L7.07032 14.4083C7.799 15.137 8.98041 15.137 9.70909 14.4083C10.0042 14.1131 10.1701 13.745 10.22 13.3643C10.7806 13.4433 11.3702 13.2673 11.8013 12.8362C12.152 12.4855 12.3339 12.03 12.3471 11.5706C12.8264 11.572 13.3061 11.3898 13.6718 11.0241C14.1758 10.5202 14.3312 9.79966 14.138 9.16214L14.7047 8.59544C16.4319 6.86823 16.4319 4.06788 14.7047 2.34067C12.9775 0.613465 10.1772 0.613464 8.44994 2.34067L8.00014 2.79047Z"
+                      fill="currentColor"></path>
+                  </svg></div><span>Become a Partner</span><svg xmlns="http://www.w3.org/2000/svg" width="18"
+                  height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round"
+                  class="sbui-icon w-3 -ml-1 transition-all will-change-transform -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a></li>
+            <li><a
+                class="flex group items-center gap-2 text-foreground-light text-sm hover:text-foreground focus-visible:text-foreground focus-visible:ring-2 focus-visible:outline-none focus-visible:rounded focus-visible:ring-foreground-lighter"
+                href="/careers" data-tabindex="" tabindex="-1">
+                <div class="relative" style="width: 16px; height: 16px;"><svg xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16" fill="none" stroke="none" class="sbui-icon" width="100%" height="100%"
+                    stroke-width="1.2">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M5.96967 2.7894C5.96967 1.84071 6.73873 1.07164 7.68743 1.07164H8.26001C9.20871 1.07164 9.97777 1.84071 9.97777 2.7894V3.36199H13.4881C14.8754 3.36199 16 4.48659 16 5.87385C16 6.42608 15.819 6.95031 15.5012 7.37618V12.0654C15.5012 13.6466 14.2194 14.9284 12.6383 14.9284H3.36171C1.78056 14.9284 0.498777 13.6466 0.498777 12.0654V7.37618C0.181033 6.95031 0 6.42608 0 5.87385C0 4.48659 1.1246 3.36199 2.51186 3.36199H5.96967V2.7894ZM2.51186 4.50716C1.75706 4.50716 1.14517 5.11905 1.14517 5.87385C1.14517 6.39998 1.44719 6.8794 1.92175 7.10657L5.17109 8.66205C5.45633 8.79859 5.57686 9.14051 5.44032 9.42574C5.30378 9.71098 4.96186 9.83152 4.67663 9.69497L1.64395 8.24321V12.0654C1.64395 13.0141 2.41302 13.7832 3.36171 13.7832H12.6383C13.587 13.7832 14.356 13.0141 14.356 12.0654V8.24321L11.3234 9.69497C11.0381 9.83152 10.6962 9.71098 10.5597 9.42574C10.4231 9.14051 10.5437 8.79859 10.8289 8.66205L14.0783 7.10657C14.5528 6.8794 14.8548 6.39998 14.8548 5.87385C14.8548 5.11905 14.2429 4.50716 13.4881 4.50716H2.51186ZM8.8326 3.36199H7.11484V2.7894C7.11484 2.47317 7.37119 2.21682 7.68743 2.21682H8.26001C8.57624 2.21682 8.8326 2.47317 8.8326 2.7894V3.36199ZM7.68743 9.00594C7.37119 9.00594 7.11484 9.2623 7.11484 9.57853V10.1511C7.11484 10.4673 7.37119 10.7237 7.68743 10.7237H8.26001C8.57624 10.7237 8.8326 10.4673 8.8326 10.1511V9.57853C8.8326 9.2623 8.57624 9.00594 8.26001 9.00594H7.68743ZM5.96967 9.57853C5.96967 8.62984 6.73873 7.86077 7.68743 7.86077H8.26001C9.20871 7.86077 9.97777 8.62984 9.97777 9.57853V10.1511C9.97777 11.0998 9.20871 11.8689 8.26001 11.8689H7.68743C6.73873 11.8689 5.96967 11.0998 5.96967 10.1511V9.57853Z"
+                      fill="currentColor"></path>
+                  </svg></div><span>Careers</span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="sbui-icon w-3 -ml-1 transition-all will-change-transform -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a></li>
+          </ul>
+        </div>
       </div>
-
-    </footer>
-
-  </div>
-  <nav
-    class="flex mt-6 flex-wrap w-full items-center justify-between space-x-4 text-xs font-medium text-slate-500 dark:text-gray-300 sm:flex-row">
-   
-    <div class="flex gap-4">
-      <a [routerLinkActive]="'underline underline-offset-4'"
-      class="hover:text-black dark:hover:text-white gap-2 flex">Signed in as {{(auth.user$ | async)?.name}}
-    </a>
-    <a tabindex="" class="hover:text-black dark:hover:text-white flex items-center gap-1.5">Server
-      status
-      <span class="inline-flex h-1.5 w-1.5 rounded-full opacity-75"
-        [ngClass]="this.state === 0 ? 'bg-green-500' : 'bg-red-500'">
-      </span>
-    </a>
-
-      
+      <div class="bg-overlay flex flex-col w-[550px] xl:w-[480px] border-t xl:border-t-0 xl:border-l">
+        <div class="flex-col gap-2 py-8 px-10"><a
+            class="group flex items-center gap-1 text-foreground-lighter hover:text-foreground text-xs uppercase tracking-widest font-mono mb-5 focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-foreground-lighter focus-visible:ring-offset-4 focus-visible:ring-offset-background-alternative focus-visible:rounded-sm focus-visible:text-foreground"
+            href="/blog" data-tabindex="" tabindex="-1"><span>Blog</span><svg xmlns="http://www.w3.org/2000/svg"
+              width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+              stroke-linejoin="round"
+              class="sbui-icon h-3 w-3 transition-transform will-change-transform -translate-x-1 group-hover:translate-x-0">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg></a>
+          <ul class="flex flex-col gap-5">
+            <li><a
+                class="group flex flex-col focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-foreground-lighter focus-visible:ring-offset-4 focus-visible:ring-offset-background-alternative focus-visible:rounded"
+                href="/blog/edge-functions-node-npm" data-tabindex="" tabindex="-1">
+                <p
+                  class="text-foreground-light mb-0 line-clamp-2 group-hover:text-foreground group-focus-visible:text-foreground">
+                  Edge Functions: Node and native npm compatibility</p>
+                <p
+                  class="text-sm line-clamp-2 text-foreground-lighter leading-relaxed !mb-0 group-hover:text-foreground-light group-focus-visible:text-foreground-light">
+                  We're adding Node and native npm compatibility for Edge Functions</p>
+              </a></li>
+            <li><a
+                class="group flex flex-col focus-visible:ring-2 focus-visible:outline-none focus-visible:ring-foreground-lighter focus-visible:ring-offset-4 focus-visible:ring-offset-background-alternative focus-visible:rounded"
+                href="/blog/supabase-hackathon-lwx" data-tabindex="" tabindex="-1">
+                <p
+                  class="text-foreground-light mb-0 line-clamp-2 group-hover:text-foreground group-focus-visible:text-foreground">
+                  Supabase Launch Week X Hackathon</p>
+                <p
+                  class="text-sm line-clamp-2 text-foreground-lighter leading-relaxed !mb-0 group-hover:text-foreground-light group-focus-visible:text-foreground-light">
+                  Build an Open Source Project over 10 days. 5 prize categories</p>
+              </a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <button [routerLinkActive]="'underline underline-offset-4'" (click)="logout()" *ngIf="auth.isAuthenticated$ | async"
-        class="hover:text-black text-red-500 dark:hover:text-white gap-2 flex">sign out
-
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
-          <path fill-rule="evenodd"
-            d="M2 8c0 .414.336.75.75.75h8.69l-1.22 1.22a.75.75 0 1 0 1.06 1.06l2.5-2.5a.75.75 0 0 0 0-1.06l-2.5-2.5a.75.75 0 1 0-1.06 1.06l1.22 1.22H2.75A.75.75 0 0 0 2 8Z"
-            clip-rule="evenodd" />
-        </svg>
-      </button>
-  </nav>
-</section>
+  </div>
+</div>

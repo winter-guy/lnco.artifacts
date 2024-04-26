@@ -4,14 +4,15 @@
             id="headlessui-popover-panel-:rd:" tabindex="-1" data-headlessui-state="open">
             <div
                 class="flex flex-col h-full dark:bg-black bg-white dark:text-white text-slate-800 rounded-lg justify-between p-6">
-                
+
                 <div class="flex justify-end items-start gap-8 text-xs" id="xmark">
-                    <p>
+                    <p class="text-gray-400">
                         l&co collects information about you when
                         you use our Website
                         <span *ngIf="showMore">
                             to access our services, and other online products
-                            and services (collectively, the “Services”) and through other interactions and communications you
+                            and services (collectively, the “Services”) and through other interactions and
+                            communications you
                             have with
                             us.
                         </span>
@@ -26,7 +27,7 @@
                         </svg>
                     </button>
                 </div>
-                
+
                 <ul class="flex flex-col gap-6 items-start justify-start">
                     <li><a class="text-3xl leading-10 hover:text-ui-fg-disabled" routerLink="/">Home</a></li>
                     <li>
@@ -49,12 +50,16 @@
                 </ul>
                 <div class="flex gap-y-6 justify-between items-center">
                     <div class="flex gap-2 items-center">
-                        <div
+                        <!-- <div
                             class="relative flex cursor-pointer shrink-0 select-none items-center justify-center bg-slate-200 font-semibold uppercase text-slate-800 h-8 w-8 text-xs rounded-full">
                             <span>{{ (auth.user$ | async)?.name?.[0] || 'L' }}</span>
-                            <!-- <img [src]="(auth.user$ | async)?.picture" class="rounded-full" alt=""> -->
 
-                        </div>
+                        </div> -->
+                        <a
+                        routerLink="/settings/account"
+                        [routerLinkActive]="'underline underline-offset-4 decoration-orange-500'"
+                            class="hover:text-black dark:hover:text-white gap-2 flex text-xs">{{(auth.user$ | async)?.name}}
+                        </a>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
                         class="w-4 h-4 fill-red-500" (click)="logout()" *ngIf="auth.isAuthenticated$ | async">

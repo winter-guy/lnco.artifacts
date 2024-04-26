@@ -35,7 +35,7 @@
 		</div>
 		<div
 			class="-ml-12 -mt-12 p-12 lg:sticky lg:top-4 lg:col-start-3 lg:row-span-2 lg:row-start-1 lg:overflow-hidden">
-			<span class="pl-3 font-light flex gap-2 items-center" *ngIf="post?.inShort && post?.inShort?.length">
+			<span class="pl-3 font-light underline underline-offset-4 decoration-orange-500 flex gap-2 items-center" *ngIf="post?.inShort && post?.inShort?.length">
 				in short
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 fill-slate-500">
 					<path fill-rule="evenodd" d="M2 8c0 .414.336.75.75.75h8.69l-1.22 1.22a.75.75 0 1 0 1.06 1.06l2.5-2.5a.75.75 0 0 0 0-1.06l-2.5-2.5a.75.75 0 1 0-1.06 1.06l1.22 1.22H2.75A.75.75 0 0 0 2 8Z" clip-rule="evenodd" />
@@ -43,7 +43,7 @@
 			</span>
 			<cdk-accordion>
 				@for (item of post?.inShort; track item; let index = $index) {
-				<cdk-accordion-item [expanded]="index == 0" #accordionItem="cdkAccordionItem" class="" role="button"
+				<cdk-accordion-item #accordionItem="cdkAccordionItem" class="" role="button"
 					tabindex="0" [attr.id]="'accordion-header-' + index" [attr.aria-expanded]="accordionItem.expanded"
 					[attr.aria-controls]="'accordion-body-' + index">
 					<div class="flex w-full items-center space-x-2 p-2" (click)="accordionItem.toggle()">
@@ -98,4 +98,40 @@
 			</div>
 		</div>
 	</div>
+
+	<article class="mb-32" *ngIf="false">
+		<h1
+			class="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight md:leading-none mb-12 text-center md:text-left">
+			Preview Mode for Static Generation</h1>
+		<div class="hidden md:block md:mb-12">
+			<div class="flex items-center">
+				<div class="text-xl font-bold">Joe Haddad</div>
+			</div>
+		</div>
+		<div class="mb-8 md:mb-16 sm:mx-0">
+			<div class="sm:mx-0">
+				<div style="display: block; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;">
+					
+					<img
+						alt="Cover Image for Preview Mode for Static Generation"
+						src="{{post?.meta?.imgs}}"
+						decoding="async" class="shadow-sm object-cover h-80 w-full">
+				</div>
+			</div>
+		</div>
+		<div class="max-w-2xl mx-auto">
+			<div class="block md:hidden mb-6">
+				<div class="flex items-center"><img src="/assets/blog/authors/joe.jpeg"
+						class="w-12 h-12 rounded-full mr-4" alt="Joe Haddad">
+					<div class="text-xl font-bold">Joe Haddad</div>
+				</div>
+			</div>
+			<div class="mb-6 text-lg"><time datetime="2020-03-16T05:35:07.322Z">March 16, 2020</time></div>
+		</div>
+		<div class="max-w-2xl mx-auto">
+			<div class="text-base leading-7 text-gray-700 dark:text-gray-100">
+				<div id="editorjs" class="text-sm"></div>
+			</div>
+		</div>
+	</article>
 </div>
