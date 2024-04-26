@@ -32,7 +32,7 @@
                         (click)="onBtnActionClicked()">
                         <span>contribute</span>
                     </button>
-                    <div cdkMenuItem [cdkMenuTriggerFor]="profile"
+                    <div
                         class="relative flex cursor-pointer shrink-0 select-none items-center justify-center bg-slate-200 font-semibold uppercase text-slate-800 h-8 w-8 text-xs rounded-full">
                         <span>{{ (auth.user$ | async)?.name?.[0] || 'L' }}</span>
                         <!-- <img [src]="(auth.user$ | async)?.picture" class="rounded-full" alt=""> -->
@@ -49,55 +49,18 @@
             </nav>
         </div>
         <ng-template #dynamicComponentContainer></ng-template>
-    
+
         <div class="w-full flex justify-center relative">
             <button title="details"
                 class="absolute -bottom-12 disabled:opacity-50 border border-base border-light transition inline-flex items-center justify-center space-x-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white dark:bg-black focus:z-10 shrink-0 saturate-[110%] focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 p-1.5 text-sm font-medium rounded-full dark:text-slate-50"
                 (click)="toggleDynamicComponent()">
-                <svg xmlns="http://www.w3.org/2000/svg" [ngClass]="{'rotate-180': this.dynamicComponentRef}" viewBox="0 0 16 16"
-                    fill="currentColor" class="w-4 h-4">
+                <svg xmlns="http://www.w3.org/2000/svg" [ngClass]="{'rotate-180': this.dynamicComponentRef}"
+                    viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
                     <path fill-rule="evenodd"
                         d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
                         clip-rule="evenodd" />
                 </svg>
             </button>
         </div>
-</div>
-</header>
-
-<ng-template #profile>
-    <div class="relative cursor-pointer" role="menubar" cdkMenu>
-        <div class="z-10 mt-2 w-56 border border-base border-light bg-white dark:bg-black group rounded-lg">
-            <div class="p-2 group-hover:text-gray-700">
-                <a class="block rounded px-4 py-2 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-200"
-                    role="menuitem">
-
-                    <span class="lowercase flex items-center gap-1">
-                        as <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
-                            class="w-4 h-4">
-                            <path fill-rule="evenodd"
-                                d="M2 8c0 .414.336.75.75.75h8.69l-1.22 1.22a.75.75 0 1 0 1.06 1.06l2.5-2.5a.75.75 0 0 0 0-1.06l-2.5-2.5a.75.75 0 1 0-1.06 1.06l1.22 1.22H2.75A.75.75 0 0 0 2 8Z"
-                                clip-rule="evenodd" />
-                        </svg>
-
-                        {{(auth.user$ | async)?.name}}
-                    </span>
-                </a>
-                <a routerLink="/journal" [routerLinkActive]="'underline underline-offset-4'"
-                    class="block cursor-pointer rounded px-4 py-2 text-sm text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-200"
-                    role="menuitem">
-                    Journal >
-                </a>
-            </div>
-
-            <div class="border-t border-dashed border-light p-2">
-                <button (click)="logout()"
-                    class="block cursor-pointer rounded px-4 py-2 text-sm text-gray-500 h-9 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-200"
-                    role="menuitem">
-                    sign out
-                </button>
-
-            </div>
-        </div>
     </div>
-</ng-template>
+</header>

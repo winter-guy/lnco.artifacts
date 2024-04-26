@@ -1,0 +1,13 @@
+/* Hide scrollbar for all containers */
+::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Optionally, you can hide the scrollbar for specific containers */
+  .container-without-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  ::ng-deep .mat-mdc-paginator-outer-container {
+    @apply bg-white dark:bg-black dark:text-white
+  }

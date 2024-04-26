@@ -1,0 +1,12 @@
+::ng-deep .mat-drawer {
+    @apply bg-transparent !important;
+    border-top-right-radius: 0 !important;
+  }
+  
+  ::ng-deep mat-drawer-content {
+    @apply bg-white dark:bg-black;
+  }
+
+  ::ng-deep .mat-drawer {
+    @apply w-auto;
+  }
