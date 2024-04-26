@@ -18,6 +18,7 @@ export class LayoutHorizontalComponent {
     showFiller = false;
     windowWidth!: number;
     windowHeight!: number;
+    showMore = false;
 
     constructor(public auth: AuthService, @Inject(DOCUMENT) private _doc: Document) {
         this.getWindowSize();

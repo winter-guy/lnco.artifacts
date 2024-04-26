@@ -4,7 +4,21 @@
             id="headlessui-popover-panel-:rd:" tabindex="-1" data-headlessui-state="open">
             <div
                 class="flex flex-col h-full dark:bg-black bg-white dark:text-white text-slate-800 rounded-lg justify-between p-6">
-                <div class="flex justify-end" id="xmark">
+                
+                <div class="flex justify-end items-start gap-8 text-xs" id="xmark">
+                    <p>
+                        l&co collects information about you when
+                        you use our Website
+                        <span *ngIf="showMore">
+                            to access our services, and other online products
+                            and services (collectively, the “Services”) and through other interactions and communications you
+                            have with
+                            us.
+                        </span>
+                        <button (click)="showMore = !showMore" class="text-orange-500">
+                            {{ showMore ? 'show less' : 'show more' }}
+                        </button>
+                    </p>
                     <button (click)="drawer.toggle()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -12,13 +26,7 @@
                         </svg>
                     </button>
                 </div>
-                <p class="text-xs leading-5 text-center text-slate-500 dark:text-gray-300 md:text-left mb-4">
-                    l&co collects information about you when
-                    you use our Website to access our services, and other online products
-                    and services (collectively, the “Services”) and through other interactions and communications you
-                    have with
-                    us.
-                </p>
+                
                 <ul class="flex flex-col gap-6 items-start justify-start">
                     <li><a class="text-3xl leading-10 hover:text-ui-fg-disabled" routerLink="/">Home</a></li>
                     <li>
