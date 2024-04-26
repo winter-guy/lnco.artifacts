@@ -1,6 +1,82 @@
-<main>
-    <app-navbar></app-navbar>
-    <main class="container">
-        <ng-content></ng-content>
-    </main>
-</main>
+<mat-drawer-container class="h-screen w-screen bg-white dark:bg-black" autosize>
+    <mat-drawer #drawer class="bg-transparent" mode="push">
+        <div class="flex flex-col rounded-md absolute w-full sm:pr-0 2xl:w-1/4 sm:min-w-min h-screen p-2 z-30 inset-x-0 text-sm opacity-100"
+            id="headlessui-popover-panel-:rd:" tabindex="-1" data-headlessui-state="open">
+            <div
+                class="flex flex-col h-full dark:bg-black bg-white dark:text-white text-slate-800 rounded-lg justify-between p-6">
+                <div class="flex justify-end" id="xmark">
+                    <button (click)="drawer.toggle()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="1.5" d="M5 15 15 5M5 5l10 10"></path>
+                        </svg>
+                    </button>
+                </div>
+                <p class="text-xs leading-5 text-center text-slate-500 dark:text-gray-300 md:text-left mb-4">
+                    l&co collects information about you when
+                    you use our Website to access our services, and other online products
+                    and services (collectively, the “Services”) and through other interactions and communications you
+                    have with
+                    us.
+                </p>
+                <ul class="flex flex-col gap-6 items-start justify-start">
+                    <li><a class="text-3xl leading-10 hover:text-ui-fg-disabled" routerLink="/">Home</a></li>
+                    <li>
+                        <a class="text-3xl leading-10 hover:text-ui-fg-disabled" routerLink="/in/store"
+                            [routerLinkActive]="'underline underline-offset-4 decoration-orange-500'">Store</a>
+                    </li>
+                    <!-- <li><a class="text-3xl leading-10 hover:text-ui-fg-disabled" href="/in/search">Search</a></li> -->
+                    <li>
+                        <a routerLink="/journal"
+                            [routerLinkActive]="'underline underline-offset-4 decoration-orange-500'"
+                            class="text-3xl leading-10 hover:text-ui-fg-disabled">Journal</a>
+                    </li>
+                    <!-- <li><a class="text-3xl leading-10 hover:text-ui-fg-disabled" href="/in/account">Account</a></li> -->
+                    <li>
+                        <a class="text-3xl leading-10 hover:text-ui-fg-disabled"
+                            routerLink="/behind-the-scene/developer"
+                            [routerLinkActive]="'underline underline-offset-4 decoration-orange-500'">behind the
+                            scene</a>
+                    </li>
+                </ul>
+                <div class="flex gap-y-6 justify-between items-center">
+                    <div class="flex gap-2 items-center">
+                        <div
+                            class="relative flex cursor-pointer shrink-0 select-none items-center justify-center bg-slate-200 font-semibold uppercase text-slate-800 h-8 w-8 text-xs rounded-full">
+                            <span>{{ (auth.user$ | async)?.name?.[0] || 'L' }}</span>
+                            <!-- <img [src]="(auth.user$ | async)?.picture" class="rounded-full" alt=""> -->
+
+                        </div>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+                        class="w-4 h-4 fill-red-500" (click)="logout()" *ngIf="auth.isAuthenticated$ | async">
+                        <path fill-rule="evenodd"
+                            d="M2 8c0 .414.336.75.75.75h8.69l-1.22 1.22a.75.75 0 1 0 1.06 1.06l2.5-2.5a.75.75 0 0 0 0-1.06l-2.5-2.5a.75.75 0 1 0-1.06 1.06l1.22 1.22H2.75A.75.75 0 0 0 2 8Z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </mat-drawer>
+
+    <div class="h-auto w-screen">
+        <main>
+            <app-navbar></app-navbar>
+            <main class="container bg-white dark:bg-black">
+                <ng-content></ng-content>
+            </main>
+        </main>
+    </div>
+
+    <button title="details"
+        class="-rotate-90 fixed top-[50%] disabled:opacity-50 border rounded-t-none border-base border-light transition inline-flex items-center justify-center space-x-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white dark:bg-black focus:z-10 shrink-0 saturate-[110%] focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 p-1.5 text-sm font-medium rounded-full dark:text-slate-50"
+        (click)="drawer.toggle()">
+        <svg xmlns="http://www.w3.org/2000/svg" [ngClass]="{'rotate-180': showFiller}" viewBox="0 0 16 16"
+            fill="currentColor" class="w-4 h-4">
+            <path fill-rule="evenodd"
+                d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
+                clip-rule="evenodd" />
+        </svg>
+    </button>
+
+</mat-drawer-container>

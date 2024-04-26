@@ -1,7 +1,7 @@
 <ng-template #loader>
 	<!-- <div class="h-[60vh]"></div> -->
 </ng-template>
-<div class="relative isolate overflow-hidden bg-transparent py-24 sm:py-32 lg:overflow-visible" *ngIf="(secRecord | async)?.record ; loader">
+<div class="relative isolate dark:text-white text-slate-800 overflow-hidden bg-transparent py-24 sm:py-32 lg:overflow-visible" *ngIf="(secRecord | async)?.record ; loader">
 	<div class="absolute inset-0 -z-10 overflow-hidden">
 		<svg class="absolute hidden left-[max(50%,25rem)] top-0 h-[64rem] w-[128rem] -translate-x-1/2 stroke-gray-200 dark:stroke-[#454545] [mask-image:radial-gradient(64rem_64rem_at_top,white,transparent)]" aria-hidden="true">
 		<defs>
