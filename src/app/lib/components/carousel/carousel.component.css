@@ -1,0 +1,49 @@
+
+
+
+.carousel-container {
+    position: relative;
+    width: 300px;
+    
+    overflow: hidden;
+    @apply  h-64 my-8
+  }
+  
+  .carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease;
+    @apply h-full
+  }
+  
+  .carousel-item {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .carousel-caption {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+  
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+    z-index: 1;
+    @apply rounded-full border shadow-sm
+  }
+  
+  .prev {
+    left: 0;
+  }
+  
+  .next {
+    right: 0;
+  }
+  

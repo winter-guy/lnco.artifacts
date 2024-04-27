@@ -1,5 +1,5 @@
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { Component, Inject, OnInit, inject } from '@angular/core';
+import { Component, Inject, OnInit, Renderer2, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { PACKAGE_JSON, providePackageJson } from '@lib/providers';
 import { LogoComponent } from '../logo/logo.component';
@@ -9,11 +9,12 @@ import { StatusComponent } from './status/status';
 import { HealthService } from '@lib/services/health/health.service';
 import { AuthService } from '@auth0/auth0-angular';
 import { needConfirmation } from '@lib/content/dialog.directive';
+import { CarouselComponent } from '../carousel/carousel.component';
 
 @Component({
     selector: 'app-footer',
     standalone: true,
-    imports: [CommonModule, RouterModule, LogoComponent, MatDialogModule],
+    imports: [CommonModule, RouterModule, LogoComponent, MatDialogModule, CarouselComponent],
     providers: [providePackageJson()],
     templateUrl: './footer.component.html',
     // changeDetection: ChangeDetectionStrategy.OnPush,
@@ -23,7 +24,8 @@ export class FooterComponent implements OnInit {
     readonly health = inject(HttpService);
     readonly matDialog = inject(MatDialog);
     readonly hs = inject(HealthService);
-    constructor(public auth: AuthService, @Inject(DOCUMENT) private _doc: Document) {}
+
+    constructor(public auth: AuthService, @Inject(DOCUMENT) private _doc: Document, private _renderer: Renderer2) {}
 
     readonly currentYear = new Date().getFullYear();
 
@@ -52,5 +54,4 @@ export class FooterComponent implements OnInit {
     public logout(): void {
         this.auth.logout({ logoutParams: { returnTo: this._doc.location.origin } });
     }
-    //create it through behaviour subject
 }
