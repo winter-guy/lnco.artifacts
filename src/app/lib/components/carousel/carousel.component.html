@@ -1,6 +1,6 @@
-<div class="relative flex justify-center">
+<div class="relative flex justify-center w-96">
 
-    <div class="carousel-container" class="carousel-container"
+    <div class="carousel-container rounded-xl" class="carousel-container"
     (wheel)="onScroll($event)"
     (touchstart)="onTouchStart($event)"
     (touchmove)="onTouchMove($event)"
@@ -9,30 +9,25 @@
             <div class="carousel-item h-full" *ngFor="let slide of slides; let index = index">
                 <div role="group" aria-roledescription="slide" class="h-full">
                     <div class="p-1 h-full">
-                        <div class="rounded-xl border bg-card text-card-foreground h-full">
-                            <div class="flex aspect-square items-center justify-center p-6 h-full">
-                                <span
-                                    class="text-4xl font-semibold">{{index}}</span>
-                                </div>
+                        <div class="rounded-xl bg-card text-card-foreground h-full">
+                            <div class="flex aspect-square items-center justify-center h-full">
+                                <img src="{{slide?.image}}" alt="artwork"
+                                        class="inset-0 h-full w-full object-cover opacity-100 group-hover:opacity-0 rounded-xl" />
+                            </div>    
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <button (click)="prevSlide()" class="prev">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+                <path fill-rule="evenodd" d="M9.78 4.22a.75.75 0 0 1 0 1.06L7.06 8l2.72 2.72a.75.75 0 1 1-1.06 1.06L5.47 8.53a.75.75 0 0 1 0-1.06l3.25-3.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
+              </svg>
+        </button>
+        <button (click)="nextSlide()" class="next">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+                <path fill-rule="evenodd" d="M6.22 4.22a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06L8.94 8 6.22 5.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+              </svg>              
+        </button>
     </div>
-    <button (click)="prevSlide()" class="prev">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
-            <path fill-rule="evenodd"
-                d="M14 8a.75.75 0 0 1-.75.75H4.56l1.22 1.22a.75.75 0 1 1-1.06 1.06l-2.5-2.5a.75.75 0 0 1 0-1.06l2.5-2.5a.75.75 0 0 1 1.06 1.06L4.56 7.25h8.69A.75.75 0 0 1 14 8Z"
-                clip-rule="evenodd" />
-        </svg>
-    </button>
-    <button (click)="nextSlide()" class="next">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-3 h-3">
-            <path fill-rule="evenodd"
-                d="M2 8c0 .414.336.75.75.75h8.69l-1.22 1.22a.75.75 0 1 0 1.06 1.06l2.5-2.5a.75.75 0 0 0 0-1.06l-2.5-2.5a.75.75 0 1 0-1.06 1.06l1.22 1.22H2.75A.75.75 0 0 0 2 8Z"
-                clip-rule="evenodd" />
-        </svg>
-    </button>
-
 </div>
