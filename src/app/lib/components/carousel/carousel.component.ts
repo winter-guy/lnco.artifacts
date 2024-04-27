@@ -62,4 +62,28 @@ export class CarouselComponent implements OnInit {
         const transformValue = `translateX(-${this.currentSlideIndex * 100}%)`;
         this.renderer.setStyle(slideContainer, 'transform', transformValue);
     }
+
+    touchStartX!: number;
+    touchMoveX!: number;
+
+    onTouchStart(event: TouchEvent): void {
+        this.touchStartX = event.touches[0].clientX;
+    }
+
+    onTouchMove(event: TouchEvent): void {
+        this.touchMoveX = event.touches[0].clientX;
+    }
+
+    onTouchEnd(event: TouchEvent): void {
+        event;
+        const diffX = this.touchMoveX - this.touchStartX;
+        if (Math.abs(diffX) > 50) {
+            // Adjust the threshold as needed
+            if (diffX > 0) {
+                this.prevSlide();
+            } else {
+                this.nextSlide();
+            }
+        }
+    }
 }
