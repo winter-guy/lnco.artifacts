@@ -9,4 +9,8 @@ export const routes: Routes = [
             data: HomeResolver,
         },
     },
+    {
+        path: 'rooms',
+        loadComponent: async () => (await import('./rooms/rooms.component')).RoomsComponent,
+    },
 ];

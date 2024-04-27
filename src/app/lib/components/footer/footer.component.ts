@@ -9,12 +9,11 @@ import { StatusComponent } from './status/status';
 import { HealthService } from '@lib/services/health/health.service';
 import { AuthService } from '@auth0/auth0-angular';
 import { needConfirmation } from '@lib/content/dialog.directive';
-import { CarouselComponent } from '../carousel/carousel.component';
 
 @Component({
     selector: 'app-footer',
     standalone: true,
-    imports: [CommonModule, RouterModule, LogoComponent, MatDialogModule, CarouselComponent],
+    imports: [CommonModule, RouterModule, LogoComponent, MatDialogModule],
     providers: [providePackageJson()],
     templateUrl: './footer.component.html',
     // changeDetection: ChangeDetectionStrategy.OnPush,

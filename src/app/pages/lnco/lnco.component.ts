@@ -19,11 +19,12 @@ import { AppTheme } from '@lib/services/theme';
 import { Subject, Observable, takeUntil, delay, map } from 'rxjs';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { CarouselComponent } from '@lib/components/carousel/carousel.component';
 
 @Component({
     selector: 'app-lnco',
     standalone: true,
-    imports: [CommonModule, RouterModule, LoadingComponent, MatPaginatorModule],
+    imports: [CommonModule, RouterModule, LoadingComponent, MatPaginatorModule, CarouselComponent],
     providers: [ArtifactService],
     templateUrl: './lnco.component.html',
     styleUrl: './lnco.component.css',
@@ -95,10 +96,5 @@ export class LncoComponent implements OnInit, OnDestroy {
 
     get randomNum(): number {
         return Math.floor(Math.random() * 200) + 1;
-    }
-
-    public onBtnActionClicked(id: string): void {
-        const NAV_URL = '/artifact';
-        this.router.navigate([NAV_URL], { queryParams: { page: id } });
     }
 }
