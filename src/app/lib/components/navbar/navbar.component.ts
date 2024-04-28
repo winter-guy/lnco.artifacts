@@ -31,6 +31,7 @@ import { FooterComponent } from '../footer/footer.component';
 export class NavbarComponent implements OnInit, OnDestroy {
     public currentTheme!: AppTheme | null;
     private readonly _destroy$ = new Subject();
+    public inSearch = false;
 
     $navbarState!: Observable<boolean>;
 
@@ -51,6 +52,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.$navbarState = this.themeService.navState;
     }
 
+    toggleSearch(): void {
+        this.inSearch = !this.inSearch;
+    }
+
     @ViewChild('dynamicComponentContainer', { read: ViewContainerRef }) dynamicComponentContainer!: ViewContainerRef;
     dynamicComponentRef: unknown;
     public toggleDynamicComponent(): void {
@@ -62,10 +67,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
             // Create an instance of the dynamic component
             const componentFactory = this._componentFactoryResolver.resolveComponentFactory(FooterComponent);
             this.dynamicComponentRef = this.dynamicComponentContainer.createComponent(componentFactory);
-
             // You can pass inputs to the component
             // this.dynamicComponentRef.instance.inputProperty = value;
         }
+
+        this.toggleSearch();
     }
 
     ngOnDestroy(): void {

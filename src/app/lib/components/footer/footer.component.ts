@@ -9,11 +9,12 @@ import { StatusComponent } from './status/status';
 import { HealthService } from '@lib/services/health/health.service';
 import { AuthService } from '@auth0/auth0-angular';
 import { needConfirmation } from '@lib/content/dialog.directive';
+import {MatChipsModule} from '@angular/material/chips';
 
 @Component({
     selector: 'app-footer',
     standalone: true,
-    imports: [CommonModule, RouterModule, LogoComponent, MatDialogModule],
+    imports: [CommonModule, RouterModule, LogoComponent, MatDialogModule, MatChipsModule],
     providers: [providePackageJson()],
     templateUrl: './footer.component.html',
     // changeDetection: ChangeDetectionStrategy.OnPush,

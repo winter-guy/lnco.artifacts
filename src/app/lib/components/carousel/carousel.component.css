@@ -36,7 +36,7 @@
     transform: translateY(-50%);
     z-index: 1;
     display: none; /* Hide buttons by default */
-    @apply rounded-full border shadow-sm bg-white text-slate-700 p-1 opacity-90
+    @apply rounded-full border shadow-sm bg-white text-slate-700 p-1.5 opacity-90
   }
   
   .prev {

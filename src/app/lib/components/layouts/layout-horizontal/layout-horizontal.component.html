@@ -16,7 +16,7 @@
                             have with
                             us.
                         </span>
-                        <button (click)="showMore = !showMore" class="text-orange-500">
+                        <button (click)="showMore = !showMore" class="text-red-500">
                             {{ showMore ? 'show less' : 'show more' }}
                         </button>
                     </p>
@@ -32,19 +32,19 @@
                     <li><a class="text-3xl leading-10 hover:text-ui-fg-disabled" routerLink="/">Home</a></li>
                     <li>
                         <a class="text-3xl leading-10 hover:text-ui-fg-disabled" routerLink="/lnco/lodging"
-                            [routerLinkActive]="'underline underline-offset-4 decoration-orange-500'">Corner</a>
+                            [routerLinkActive]="'underline underline-offset-4 decoration-red-500'">Corner</a>
                     </li>
                     <!-- <li><a class="text-3xl leading-10 hover:text-ui-fg-disabled" href="/in/search">Search</a></li> -->
                     <li>
                         <a routerLink="/journal"
-                            [routerLinkActive]="'underline underline-offset-4 decoration-orange-500'"
+                            [routerLinkActive]="'underline underline-offset-4 decoration-red-500'"
                             class="text-3xl leading-10 hover:text-ui-fg-disabled">Journal</a>
                     </li>
                     <!-- <li><a class="text-3xl leading-10 hover:text-ui-fg-disabled" href="/in/account">Account</a></li> -->
                     <li>
                         <a class="text-3xl leading-10 hover:text-ui-fg-disabled"
                             routerLink="/behind-the-scene/developer"
-                            [routerLinkActive]="'underline underline-offset-4 decoration-orange-500'">behind the
+                            [routerLinkActive]="'underline underline-offset-4 decoration-red-500'">behind the
                             scene</a>
                     </li>
                 </ul>
@@ -57,7 +57,7 @@
                         </div> -->
                         <a
                         routerLink="/settings/account"
-                        [routerLinkActive]="'underline underline-offset-4 decoration-orange-500'"
+                        [routerLinkActive]="'underline underline-offset-4 decoration-red-500'"
                             class="hover:text-black dark:hover:text-white gap-2 flex text-xs">{{(auth.user$ | async)?.name}}
                         </a>
                     </div>
@@ -73,7 +73,7 @@
     </mat-drawer>
 
     <main>
-        <app-navbar></app-navbar>
+        <app-navbar class="h-screen sticky top-0 z-30"></app-navbar>
         <main class="container bg-white dark:bg-black">
             <ng-content></ng-content>
         </main>
