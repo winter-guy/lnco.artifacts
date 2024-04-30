@@ -73,14 +73,15 @@
     </mat-drawer>
 
     <main>
-        <app-navbar class="h-screen sticky top-0 z-30"></app-navbar>
-        <main class="container bg-white dark:bg-black">
+        <!-- <app-navbar class="h-screen sticky top-0 z-30"></app-navbar> -->
+        <app-navbar class=" top-0 z-30"></app-navbar>
+        <main class="container bg-white dark:bg-black mt-28">
             <ng-content></ng-content>
         </main>
     </main>
 
-    <button title="details"
-        class="-rotate-90 fixed top-[50%] h-5 disabled:opacity-50 border rounded-t-none border-base border-light transition inline-flex items-center justify-center space-x-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white dark:bg-black focus:z-10 shrink-0 saturate-[110%] focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 p-1.5 text-sm font-medium rounded-full dark:text-slate-50"
+    <button title="menu"
+        class="-rotate-90 fixed z-50 top-[20%] h-5 disabled:opacity-50 rounded-t-none transition inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-transparent dark:bg-white focus:z-10 shrink-0 saturate-[110%] focus:ring-slate-500 bg-black text-white p-1.5 text-sm font-medium rounded-b-sm dark:text-black"
         (click)="drawer.toggle()">
         <svg xmlns="http://www.w3.org/2000/svg" [ngClass]="{'rotate-180': showFiller}" viewBox="0 0 16 16"
             fill="currentColor" class="w-4 h-4">

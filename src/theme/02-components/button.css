@@ -30,3 +30,7 @@
 .btn-primary {
     @apply bg-blue-500 text-white;
 }
+
+button {
+    font-size: small;
+}

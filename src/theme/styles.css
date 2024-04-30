@@ -25,7 +25,6 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif !important;
   scroll-behavior: smooth;
 }
 
@@ -34,4 +33,4 @@ body {
   outline: 0 !important;
 }
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; }

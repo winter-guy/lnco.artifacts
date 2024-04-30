@@ -1,68 +1,151 @@
 <!-- eslint-disable @angular-eslint/template/label-has-associated-control -->
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
-<header class="relative h-48" *ngIf="$navbarState | async as state">
-    <div (click)="toggleDynamicComponent()"
-    class="absolute z-20 h-screen w-screen bg-black/40 hidden" [class.!block]="inSearch"></div>
-    <div class="w-full relative flex justify-center z-30 ">
-        <div class="md:px-8 py-8 absolute w-[-webkit-fill-available] z-50 bg-white dark:bg-black">
+<header class="relative  dark:text-white" *ngIf="$navbarState | async as state">
+    <!-- <div (click)="toggleDynamicComponent()" class="absolute z-20 h-screen w-screen bg-black/40 hidden"
+        [class.!block]="inSearch"></div> -->
+    <div class="w-full relative flex justify-center z-30">
+        <div
+            class="md:px-8 py-8 absolute w-[-webkit-fill-available] z-50 bg-white dark:bg-black">
             <div class="h-auto flex justify-between items-start">
-                <app-logo class="flex-1"></app-logo>
-                <nav class="flex items-center !transition-all !duration-300 !ease-in-out select-none cursor-pointer">
-                    <ul mat-typography
-                        [ngClass]="{'w-auto h-auto': !inSearch, 'w-[500px] text-xs h-16': inSearch}"
-                        class="flex rounded-full bg-white/90 text-sm items-center justify-between font-normal hover:shadow-sm shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
-                        <li class="flex-1 flex items-center h-full rounded-full ml-4"
+                <!-- <app-logo class="flex-1"></app-logo> -->
+              
+                <div class="flex-1"></div>
+                <nav class="flex items-center select-none cursor-pointer"
+                    [class.!flex-col]="inSearch">
+                    <ul mat-typography (click)="openSearch()"
+                        class="flex rounded-full px-2 w-full bg-white/90 text-sm items-center justify-between font-normal hover:shadow-md shadow-sm shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10"
+                        [class.hidden]="inSearch">
+                        <li class="flex-1 flex items-center h-full rounded-full"
                             [ngClass]="{'flex-col !justify-center !items-start pl-4 ml-0 hover:bg-gray-100 dark:hover:bg-zinc-900': inSearch}">
-                            <a class="relative block px-3"
-                            [class.py-3]="!inSearch" [class.hidden]="inSearch">Where?</a>
+                            <a class="relative block px-3" [class.py-3]="!inSearch" [class.hidden]="inSearch">Where?</a>
                             <div class="relative w-full h-10" [class.hidden]="!inSearch">
-                                <input aria-label="Where" class=" focus:border-transparent outline-transparent border-transparent focus:ring-transparent peer h-full bg-transparent text-blue-gray-700 font-sans font-normal transition-all text-sm rounded-full"
-                                  placeholder="" />
+                                <input aria-label="Where"
+                                    class=" focus:border-transparent outline-transparent border-transparent focus:ring-transparent peer h-full bg-transparent text-blue-gray-700 font-sans font-normal transition-all text-sm rounded-full"
+                                    placeholder="" />
                                 <label
-                                  class="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 before:rounded-tl-md before:pointer-events-none before:transition-all after:content[' '] after:block after:flex-grow after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 after:rounded-tr-md after:pointer-events-none after:transition-all peer-placeholder-shown:leading-[3.75]">
-                                  Search city
+                                    class="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 before:rounded-tl-md before:pointer-events-none before:transition-all after:content[' '] after:block after:flex-grow after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 after:rounded-tr-md after:pointer-events-none after:transition-all peer-placeholder-shown:leading-[3.75]">
+                                    Search city
                                 </label>
-                            </div> 
+                            </div>
                         </li>
-                        <li class="flex-1 flex items-center h-full rounded-full ml-4"
-                        [ngClass]="{'flex-col !justify-center !items-start pl-4 ml-0  hover:bg-gray-100 dark:hover:bg-zinc-900': inSearch}">
-                            <a class="relative block px-3"
-                            [class.py-3]="!inSearch" [class.hidden]="inSearch">Span</a>
-                            <div class="relative w-full h-10" [class.hidden]="!inSearch">
-                                <input aria-label="stay" class=" focus:border-transparent outline-transparent border-transparent focus:ring-transparent peer h-full bg-transparent text-blue-gray-700 font-sans font-normal transition-all text-sm rounded-full"
-                                  placeholder="" />
-                                <label
-                                  class="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 before:rounded-tl-md before:pointer-events-none before:transition-all after:content[' '] after:block after:flex-grow after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 after:rounded-tr-md after:pointer-events-none after:transition-all peer-placeholder-shown:leading-[3.75]">
-                                  Duration
-                                </label>
-                            </div> 
+                        <li class="flex-1 flex items-center h-full justify-center rounded-full">
+                            <a class="relative px-3 flex gap-1 whitespace-nowrap items-center" [class.py-3]="!inSearch"
+                                [class.hidden]="inSearch">
+                            in 
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd" d="M2 8c0 .414.336.75.75.75h8.69l-1.22 1.22a.75.75 0 1 0 1.06 1.06l2.5-2.5a.75.75 0 0 0 0-1.06l-2.5-2.5a.75.75 0 1 0-1.06 1.06l1.22 1.22H2.75A.75.75 0 0 0 2 8Z" clip-rule="evenodd" />
+                            </svg>
+                              
+                              <p>out duration</p>
+                            </a>
                         </li>
-                        <li class="flex-1 flex items-center h-full justify-between hover:bg-gray-100 min-w-28 rounded-full dark:hover:bg-zinc-900">
+                        <li class="flex-1 flex justify-center items-center h-full rounded">
                             <a class="relative block px-3">Guests</a>
-                            <button [ngClass]="{'!w-14 !m-2': inSearch}"
-                                class="disabled:opacity-50 w-9 m-1 bg-red-500 text-white h-9 p-2.5 inline-flex items-center justify-center space-x-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white focus:z-10 shrink-0 saturate-[110%] focus:ring-slate-500 hover:bg-red-600 text-sm font-medium rounded-full dark:text-slate-50"
-                                title="light">
-                                <span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                        class="w-5 h-5">
-                                        <path fill-rule="evenodd"
-                                            d="M9 3.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11ZM2 9a7 7 0 1 1 12.452 4.391l3.328 3.329a.75.75 0 1 1-1.06 1.06l-3.329-3.328A7 7 0 0 1 2 9Z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </span>
-                            </button>
                         </li>
-            
+
                     </ul>
+                    <button [class.hidden]="!inSearch"
+                        class="inline-flex mb-2 items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground px-4 rounded-full h-8 py-0 focus-visible:ring-0"
+                        type="button" id="radix-:R2qfija:" aria-haspopup="menu" aria-expanded="false"
+                        data-state="closed">
+
+                        <section class="py-1 pt-2 pb-0 font-normal">
+                            <div
+                                class="inline-flex items-center mr-1 rounded-full border px-2.5 py-0.5 text-xs transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-zinc-100 dark:bg-zinc-800 text-secondary-foreground hover:bg-secondary/80">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-search ">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.3-4.3"></path>
+                                </svg>
+                                <span class="ml-1">Reasons for Nvidia's rapid growth</span>
+                            </div>
+                            <div
+                                class="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs  transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-zinc-100 dark:bg-zinc-800 text-secondary-foreground hover:bg-secondary/80">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-search ">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <path d="m21 21-4.3-4.3"></path>
+                                </svg>
+                                <span class="ml-1">something diffrent</span>
+                            </div>
+                        </section>
+                    </button>
+                    
+                    <div class="flex gap-2 items-center" [class.hidden]="!inSearch">
+                        <ul class="flex rounded-full w-auto text-xs h-16 bg-white/90 items-center justify-between font-normal hover:shadow-sm shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10"
+                        >
+                        <li class="flex-1 flex items-center h-full rounded-full pl-4 flex-col !justify-center hover:bg-gray-100 dark:hover:bg-zinc-900"
+                            [ngClass]="{'': inSearch}">
+                            <a class="relative block px-3" [class.py-3]="!inSearch" [class.hidden]="inSearch">Where?</a>
+                            <div class="relative w-full h-10" [class.hidden]="!inSearch">
+                                <input aria-label="Where"
+                                    class=" focus:border-transparent outline-transparent border-transparent focus:ring-transparent peer h-full bg-transparent text-blue-gray-700 font-sans font-normal transition-all text-sm rounded-full"
+                                    placeholder="" />
+                                <label
+                                    class="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 before:rounded-tl-md before:pointer-events-none before:transition-all after:content[' '] after:block after:flex-grow after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 after:rounded-tr-md after:pointer-events-none after:transition-all peer-placeholder-shown:leading-[3.75]">
+                                    Search city
+                                </label>
+                            </div>
+                        </li>
+                        <li class="flex-1 flex h-full rounded-full flex-col !justify-center !items-start px-6 mx-4 hover:rounded-full hover:bg-gray-100 dark:hover:bg-zinc-900"
+                            (click)="rangePicker.open()">
+
+                            <mat-date-range-input [rangePicker]="rangePicker">
+                                <input matStartDate placeholder="Start date">
+                                <input matEndDate placeholder="End date">
+                            </mat-date-range-input>
+
+                            <mat-date-range-picker #rangePicker>
+                                <mat-date-range-picker-actions>
+                                    <button mat-button matDateRangePickerCancel>Cancel</button>
+                                    <button mat-flat-button matDateRangePickerApply>Apply</button>
+                                </mat-date-range-picker-actions>
+                            </mat-date-range-picker>
+                        </li>
+                        <li
+                            class="flex-1 flex items-center h-full justify-between hover:bg-gray-100 rounded-full dark:hover:bg-zinc-900">
+                         <div class="flex mr-4 justify-between items-center">
+                            <a class="relative block px-3">Guests</a>
+
+                            <button
+                                class="inline-flex hidden px-4 items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-red-300 hover:text-accent-foreground">
+                                <svg
+                                    width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"
+                                    xmlns="http://www.w3.org/2000/svg" class="size-6">
+                                    <path
+                                        d="m16.893 16.92 3.08 3.08m-.889-8.419c0 4.187-3.383 7.581-7.555 7.581-4.173 0-7.556-3.394-7.556-7.58C3.973 7.393 7.356 4 11.528 4c4.173 0 7.556 3.394 7.556 7.581">
+                                    </path>
+                                </svg>
+                            </button>
+                         </div>
+                        </li>
+
+                       
+                        </ul>
+                        <button title="collapse"
+                        class="-bottom-12 disabled:opacity-50 border border-base border-light transition inline-flex items-center justify-center space-x-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white dark:bg-black focus:z-10 shrink-0 saturate-[110%] focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 p-1.5 text-sm font-medium rounded-full dark:text-slate-50"
+                        (click)="toggleDynamicComponent()">
+                            <svg xmlns="http://www.w3.org/2000/svg" [ngClass]="{'rotate-180': this.dynamicComponentRef}"
+                                viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
+                                <path fill-rule="evenodd"
+                                    d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                   
                 </nav>
                 <nav class="flex items-center space-x-2 flex-1 justify-end">
                     <button data-cy="light-button"
                         class="disabled:opacity-50 border border-base border-light transition inline-flex items-center justify-center space-x-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white focus:z-10 shrink-0 saturate-[110%] focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 p-1.5 text-sm font-medium rounded-full dark:bg-transparent dark:text-slate-50"
                         (click)="handleThemeChange()" title="light">
                         <span>
-                            <svg data-testid="geist-icon" height="16" stroke-linejoin="round" viewBox="0 0 16 16" width="16"
-                                *ngIf="currentTheme === 'light'; else dark"
+                            <svg data-testid="geist-icon" height="16" stroke-linejoin="round" viewBox="0 0 16 16"
+                                width="16" *ngIf="currentTheme === 'light'; else dark"
                                 style="width: 16px; height: 16px; color: currentcolor;">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
                                     d="M5.82804 1.8717C3.30641 2.76542 1.5 5.17204 1.5 8.0001C1.5 11.5899 4.41015 14.5001 8 14.5001C10.8282 14.5001 13.2348 12.6936 14.1285 10.1718C13.3293 10.5427 12.4386 10.7499 11.5 10.7499C8.04822 10.7499 5.25 7.95172 5.25 4.49994C5.25 3.56144 5.45718 2.67078 5.82804 1.8717ZM0 8.0001C0 3.78268 3.26298 0.328073 7.40265 0.0220947L8.009 1.27881C7.22684 2.12601 6.75 3.25644 6.75 4.49994C6.75 7.12329 8.87665 9.24994 11.5 9.24994C12.7436 9.24994 13.8741 8.77304 14.7213 7.99079L15.978 8.59708C15.6722 12.7369 12.2175 16.0001 8 16.0001C3.58172 16.0001 0 12.4184 0 8.0001Z"
@@ -96,11 +179,11 @@
                     </ng-template>
                 </nav>
             </div>
-            
+
             <ng-template #dynamicComponentContainer class=" transition duration-300 ease-in-out"></ng-template>
-    
+
             <div class="w-full flex justify-center relative">
-                <button title="details"
+                <!-- <button title="details"
                     class="absolute -bottom-12 disabled:opacity-50 border border-base border-light transition inline-flex items-center justify-center space-x-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-white dark:bg-black focus:z-10 shrink-0 saturate-[110%] focus:ring-slate-500 bg-white text-slate-900 hover:bg-slate-50 p-1.5 text-sm font-medium rounded-full dark:text-slate-50"
                     (click)="toggleDynamicComponent()">
                     <svg xmlns="http://www.w3.org/2000/svg" [ngClass]="{'rotate-180': this.dynamicComponentRef}"
@@ -109,7 +192,7 @@
                             d="M4.22 6.22a.75.75 0 0 1 1.06 0L8 8.94l2.72-2.72a.75.75 0 1 1 1.06 1.06l-3.25 3.25a.75.75 0 0 1-1.06 0L4.22 7.28a.75.75 0 0 1 0-1.06Z"
                             clip-rule="evenodd" />
                     </svg>
-                </button>
+                </button> -->
             </div>
         </div>
     </div>

@@ -9,7 +9,7 @@ import { StatusComponent } from './status/status';
 import { HealthService } from '@lib/services/health/health.service';
 import { AuthService } from '@auth0/auth0-angular';
 import { needConfirmation } from '@lib/content/dialog.directive';
-import {MatChipsModule} from '@angular/material/chips';
+import { MatChipsModule } from '@angular/material/chips';
 
 @Component({
     selector: 'app-footer',

@@ -11,7 +11,6 @@ import {
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 
-import { CdkMenuModule } from '@angular/cdk/menu';
 import { AuthService } from '@auth0/auth0-angular';
 
 import { Observable, Subject, takeUntil } from 'rxjs';
@@ -21,10 +20,14 @@ import { AppTheme } from '@lib/services/theme';
 import { needConfirmation } from '@lib/content/dialog.directive';
 import { LogoComponent } from '../logo/logo.component';
 import { FooterComponent } from '../footer/footer.component';
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatButtonModule } from '@angular/material/button';
+
 @Component({
     selector: 'app-navbar',
     standalone: true,
-    imports: [CommonModule, RouterModule, LogoComponent, CdkMenuModule, FooterComponent],
+    imports: [CommonModule, RouterModule, LogoComponent, FooterComponent, MatDatepickerModule, MatButtonModule],
     templateUrl: './navbar.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -54,6 +57,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     toggleSearch(): void {
         this.inSearch = !this.inSearch;
+    }
+
+    openSearch(): void {
+        this.toggleDynamicComponent();
     }
 
     @ViewChild('dynamicComponentContainer', { read: ViewContainerRef }) dynamicComponentContainer!: ViewContainerRef;
