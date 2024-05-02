@@ -61,7 +61,7 @@ export class LncoComponent implements OnInit, OnDestroy {
                 .pipe(
                     delay(1000),
                     map(() => {
-                        fact.loading.close();
+                        // fact.loading.close();
                     }),
                 )
                 .subscribe();
