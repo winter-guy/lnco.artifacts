@@ -58,7 +58,7 @@ export class CarouselComponent {
     onScroll(event: WheelEvent): void {
         if (!this.isScrolling) {
             this.isScrolling = true;
-            if (event.deltaY > 0) {
+            if (event.deltaX > 0) {
                 this.nextSlide(); // Scroll down, move to the next slide
             } else {
                 this.prevSlide(); // Scroll up, move to the previous slide

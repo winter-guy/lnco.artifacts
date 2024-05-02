@@ -8,18 +8,18 @@ import { Observable, delay, map } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class FactResolver
-    implements Resolve<{ record: Observable<SecRecord>; loading: DialogRef<unknown, LoadingComponent> }>
+    implements Resolve<{ record: Observable<SecRecord>; loading?: DialogRef<unknown, LoadingComponent> }>
 {
     constructor(private _artifact: ArtifactService, private readonly _dialog: Dialog) {}
     resolve(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot,
-    ): { record: Observable<SecRecord>; loading: DialogRef<unknown, LoadingComponent> } {
+    ): { record: Observable<SecRecord>; loading?: DialogRef<unknown, LoadingComponent> } {
         state;
 
-        const loadingDialog = this._dialog.open(LoadingComponent, {
-            disableClose: true,
-        });
+        // const loadingDialog = this._dialog.open(LoadingComponent, {
+        //     disableClose: true,
+        // });
         const id = route.queryParams['page'] as string;
         return {
             record: this._artifact.getArtifactsById(id).pipe(
@@ -28,7 +28,7 @@ export class FactResolver
                 }),
                 delay(1000),
             ),
-            loading: loadingDialog,
+            // loading: loadingDialog,
         };
     }
 }

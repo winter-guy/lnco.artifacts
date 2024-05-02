@@ -6,13 +6,13 @@
     width: 300px;
     
     overflow: hidden;
-    @apply  h-64 w-64 my-8
+    @apply  h-full w-full
   }
   
   .carousel-slide {
     display: flex;
     transition: transform 0.5s ease;
-    @apply h-full;
+    @apply h-full w-full;
   }
   
   .carousel-item {
@@ -35,14 +35,19 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: 1;
-    @apply rounded-full border shadow-sm bg-white text-slate-700 p-2
+    display: none; /* Hide buttons by default */
+    @apply rounded-full border shadow-sm bg-white text-slate-700 p-1.5 opacity-90
   }
   
   .prev {
-    left: 12px;
+    left: 20px;
   }
   
   .next {
-    right: 12px;
+    right: 20px;
   }
   
+  .carousel-container:hover .prev,
+.carousel-container:hover .next {
+  display: block; /* Show buttons on hover */
+}

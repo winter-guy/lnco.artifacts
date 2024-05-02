@@ -18,9 +18,9 @@ export class HomeResolver
     ): { record: Observable<Artifact[]>; loading?: DialogRef<unknown, LoadingComponent> } {
         state;
 
-        const loadingDialog = this._dialog.open(LoadingComponent, {
-            disableClose: true,
-        });
+        // const loadingDialog = this._dialog.open(LoadingComponent, {
+        //     disableClose: true,
+        // });
 
         return {
             record: this._artifact.getArtifacts().pipe(
@@ -29,7 +29,7 @@ export class HomeResolver
                 }),
                 delay(1000),
             ),
-            loading: loadingDialog,
+            // loading: loadingDialog,
         };
     }
 }

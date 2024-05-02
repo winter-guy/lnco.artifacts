@@ -16,29 +16,27 @@
         <div class="flex flex-wrap justify-center gap-3 my-12">
             <div class="dark:bg-transparent">
                 <div class="mx-auto lg:max-w-7xl lg:overflow-visible">
-                    <ng-template #loading>
-                        <!-- <div class="h-[60vh]"></div> -->
-                    </ng-template>
-
-                    <ng-container *ngIf="artifacts$ | async as artifacts; else loading">
-                        <div class="grid grid-cols-4 gap-x-8">
+                    <ng-container *ngIf="artifacts$ | async as artifacts;">
+                        <div class="grid grid-cols-4 gap-x-4">
                             <div class="col-span-2 container-without-scrollbar py-6"
                                 [ngClass]="{'lg:col-span-4 col-span-4 h-full': !this.dynamicComponentRef}">
                                 <div [ngClass]="{'xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2': !this.dynamicComponentRef}"
-                                    class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-2 xl:gap-x-8">
+                                    class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-2 xl:gap-x-4">
                                     @for (item of artifacts; track $index) {
-                                    <article (click)="onBtnActionClicked(item.id)"
-                                        (keypress)="onBtnActionClicked(item.id)"
-                                        class="group block cursor-pointer ease-in-out" [tabindex]="$index">
-                                        <div class="relative h-[350px] sm:h-[250px]">
+                                    <a
+                                        class="block cursor-pointer ease-in-out" [tabindex]="$index">
+                                        <!-- <div class="relative h-[350px] sm:h-[250px]">
+
                                             <img src="{{item.forepart}}" alt="artwork"
                                                 class="absolute inset-0 ease-in-out h-full w-full object-cover opacity-100 group-hover:opacity-0 rounded" />
 
                                             <img src="{{item?.backdrop ?? item.forepart}}" alt=""
                                                 class="absolute inset-0 h-full w-full object-cover opacity-0 group-hover:opacity-100 rounded" />
+                                        </div> -->
+                                        <div class="flex-col h-[350px] sm:h-[250px]">
+                                            <app-carousel></app-carousel>
                                         </div>
-
-                                        <div class="mt-3">
+                                        <div class="mt-3"  routerLink="/lnco/rooms">
                                             <span
                                                 class="text-base font-medium text-gray-700 dark:text-slate-50 group-hover:underline group-hover:underline-offset-4">
                                                 {{item.head}}
@@ -48,13 +46,13 @@
                                                 {{item.details}}
                                             </p>
                                         </div>
-                                    </article>
+                                    </a>
                                     }
                                 </div>
 
                             </div>
                             <!-- Sticky div starts here -->
-                            <div class="col-span-2 row-span-4 h-screen py-6 sticky top-0 z-50 ease-in-out"
+                            <div class="col-span-2 row-span-4 h-screen py-6 sticky top-0 z-10 ease-in-out"
                                 [ngClass]="{'hidden': !this.dynamicComponentRef}">
                                 <ng-template #mapComponentContainer></ng-template>
                             </div>

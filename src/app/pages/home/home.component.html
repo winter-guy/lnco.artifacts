@@ -7,6 +7,14 @@
         </ng-template>
 
         <ng-container *ngIf="artifacts$ | async as artifacts; else loading">
+          <header class=" mb-10">
+            <h2 class="text-xl font-thin sm:text-6xl text-gray-700 dark:text-slate-100">Blog.</h2>
+
+            <p class="mt-4 text-sm max-w-md text-gray-500 font-extralight dark:text-slate-200">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque praesentium cumque iure
+                dicta incidunt est ipsam, officia dolor fugit natus?
+            </p>
+        </header>
           <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             <article
               class="flex bg-white transition rounded md:col-span-2 dark:bg-black backdrop-blur-sm hover:dark:bg-white/10 hover:bg-black/5">

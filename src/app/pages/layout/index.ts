@@ -4,7 +4,12 @@ import { AuthGuard } from '@auth0/auth0-angular';
 export const routes: Routes = [
     {
         path: '',
-        title: '',
+        redirectTo: 'posts',
+        pathMatch: 'full',
+    },
+    {
+        path: 'posts',
+        title: 'Posts',
         loadChildren: async () => (await import('@pages/home')).routes,
     },
     {
