@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Renderer2, ViewChild, ElementRef } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { CommonModule } from '@angular/common';
@@ -16,22 +16,35 @@ import { CommonModule } from '@angular/common';
         ]),
     ],
 })
-export class CarouselComponent implements OnInit {
+export class CarouselComponent {
     @ViewChild('carouselSlide') carouselSlide!: ElementRef;
 
     slides = [
-        { id: 1, image: 'path/to/image1.jpg', caption: 'Slide 1', description: 'Description for Slide 1' },
-        { id: 2, image: 'path/to/image2.jpg', caption: 'Slide 2', description: 'Description for Slide 2' },
-        { id: 3, image: 'path/to/image3.jpg', caption: 'Slide 3', description: 'Description for Slide 3' },
+        {
+            id: 1,
+            image: 'https://storage.googleapis.com/lnco-artifacts.appspot.com/images/1db5b6db-5b93-40eb-912c-f1c97e0f124f.png',
+            caption: 'Slide 1',
+            description: 'Description for Slide 1',
+        },
+        {
+            id: 2,
+            image: 'https://storage.googleapis.com/lnco-artifacts.appspot.com/images/a3b9c8d7e6f5a4b3c2d1e0f/7021b435-40e1-49d2-bf46-eb78a025117f',
+            caption: 'Slide 2',
+            description: 'Description for Slide 2',
+        },
+        {
+            id: 3,
+            image: 'https://storage.googleapis.com/lnco-artifacts.appspot.com/images/6c043e44-3b5a-4fde-899b-275f821aad83.png',
+            caption: 'Slide 3',
+            description: 'Description for Slide 3',
+        },
     ];
 
     currentSlideIndex = 0;
 
     // eslint-disable-next-line @typescript-eslint/naming-convention
     constructor(private renderer: Renderer2) {}
-    ngOnInit(): void {
-        throw new Error('Method not implemented.');
-    }
+
     isScrolling = false;
 
     nextSlide(): void {
