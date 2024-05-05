@@ -1,9 +1,5 @@
 <div class="relative flex justify-center">
-
-    <div class="carousel-container h-full rounded" class="carousel-container"
-    (touchstart)="onTouchStart($event)"
-    (touchmove)="onTouchMove($event)"
-    (touchend)="onTouchEnd($event)">
+    <div class="carousel-container h-full rounded" class="carousel-container">
 
         <div class="carousel-slide" [style.transform]="'translateX(-' + currentSlideIndex * 100 + '%)'" [routerLink]="['/artifact']" [queryParams]="{ page: urlId }" >
             <div class="carousel-item" *ngFor="let slide of imgs; let index = index">

@@ -1,5 +1,8 @@
-/* eslint-disable @angular-eslint/component-selector */
-import { Component, Input } from '@angular/core';
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Renderer2, ViewChild, ElementRef } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { CommonModule } from '@angular/common';
@@ -7,6 +10,7 @@ import { RouterModule } from '@angular/router';
 
 @Component({
     standalone: true,
+    // eslint-disable-next-line @angular-eslint/component-selector
     selector: 'carousel',
     imports: [CommonModule, RouterModule],
     templateUrl: './carousel.component.html',
@@ -18,7 +22,7 @@ import { RouterModule } from '@angular/router';
         ]),
     ],
 })
-export class CarouselComponent {
+export class CarouselComponent implements OnInit, OnDestroy {
     @ViewChild('carouselSlide') carouselSlide!: ElementRef;
     @Input() imgs!: string[];
     @Input() urlId!: string;
@@ -26,7 +30,16 @@ export class CarouselComponent {
     currentSlideIndex = 0;
 
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    constructor(private renderer: Renderer2) {}
+    constructor(private renderer: Renderer2, private elementRef: ElementRef) {}
+
+    ngOnInit(): void {
+        const carouselContainer = this.elementRef.nativeElement.querySelector('.carousel-container');
+        if (carouselContainer) {
+            carouselContainer.addEventListener('touchstart', this.onTouchStart.bind(this));
+            carouselContainer.addEventListener('touchmove', this.onTouchMove.bind(this));
+            carouselContainer.addEventListener('touchend', this.onTouchEnd.bind(this));
+        }
+    }
 
     isScrolling = false;
 
@@ -80,6 +93,15 @@ export class CarouselComponent {
             } else {
                 this.nextSlide();
             }
+        }
+    }
+
+    ngOnDestroy(): void {
+        const carouselContainer = this.elementRef.nativeElement.querySelector('.carousel-container');
+        if (carouselContainer) {
+            carouselContainer.addEventListener('touchstart', this.onTouchStart.bind(this));
+            carouselContainer.addEventListener('touchmove', this.onTouchMove.bind(this));
+            carouselContainer.removeEventListener('touchend', this.onTouchEnd.bind(this));
         }
     }
 }
