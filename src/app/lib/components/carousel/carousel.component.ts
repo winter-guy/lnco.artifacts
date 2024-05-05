@@ -104,4 +104,8 @@ export class CarouselComponent implements OnInit, OnDestroy {
             carouselContainer.removeEventListener('touchend', this.onTouchEnd.bind(this));
         }
     }
+
+    goToSlide(index: number): void {
+        this.currentSlideIndex = index;
+    }
 }

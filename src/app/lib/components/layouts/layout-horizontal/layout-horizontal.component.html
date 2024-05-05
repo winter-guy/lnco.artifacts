@@ -81,6 +81,7 @@
     </mat-drawer>
 
     <main>
+        
         <app-navbar></app-navbar>
         <main class="container bg-white dark:bg-black">
             <ng-content></ng-content>
@@ -88,7 +89,7 @@
     </main>
 
     <button title="menu"
-        class=" fixed z-50 top-[30%] h-20 w-2 rounded-r hover:w-6 transition-width ease-in-out duration-300 rounded-t-none inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-transparent focus:z-10 shrink-0 saturate-[110%] focus:ring-transparent bg-yellow-300 p-1.5 text-sm font-medium rounded-b-sm text-black"
+        class=" fixed z-50 top-[30%] h-20 w-2 rounded-r hover:w-6 transition-width ease-in-out duration-300 inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-black dark:focus:ring-transparent focus:z-10 shrink-0 saturate-[110%] focus:ring-transparent bg-yellow-300 p-1.5 text-sm font-medium rounded-b-sm text-black"
         (click)="drawer.toggle()">
         <svg xmlns="http://www.w3.org/2000/svg" [ngClass]="{'rotate-180': showFiller}" viewBox="0 0 16 16"
             fill="currentColor" class="w-4 h-4 -rotate-90">

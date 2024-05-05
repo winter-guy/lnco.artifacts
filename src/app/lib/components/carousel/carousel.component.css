@@ -35,7 +35,7 @@
   z-index: 1;
   display: none;
   /* Hide buttons by default */
-  @apply rounded-full border shadow-sm bg-white text-slate-700 p-1.5 opacity-90
+  @apply rounded-full border shadow-sm bg-white/80 text-slate-700 p-1.5 backdrop-blur-sm hover:bg-white/90
 }
 
 .prev {
@@ -50,4 +50,19 @@
 .carousel-container:hover .next {
   display: block;
   /* Show buttons on hover */
+}
+
+
+/* CSS for the dots */
+.dot {
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+
+  @apply h-1 w-1 m-0.5
+}
+
+.dot.active {
+  background-color: #717171;
 }
