@@ -5,24 +5,24 @@
     (touchmove)="onTouchMove($event)"
     (touchend)="onTouchEnd($event)">
 
-        <div class="carousel-slide" [style.transform]="'translateX(-' + currentSlideIndex * 100 + '%)'">
-            <div class="carousel-item" *ngFor="let slide of slides; let index = index">
+        <div class="carousel-slide" [style.transform]="'translateX(-' + currentSlideIndex * 100 + '%)'" [routerLink]="['/artifact']" [queryParams]="{ page: urlId }" >
+            <div class="carousel-item" *ngFor="let slide of imgs; let index = index">
                 <div role="group" aria-roledescription="slide">
                     <div class="rounded bg-card">
                         <div class="flex aspect-square items-center justify-center px-1">
-                            <img src="{{slide?.image}}" alt="artwork"
+                            <img src="{{slide}}" alt="artwork"
                                     class="inset-0 w-full object-cover opacity-100 rounded h-[350px] sm:h-[250px]" />
                         </div>    
                     </div>
                 </div>
             </div>
         </div>
-        <button (click)="prevSlide()" class="prev">
+        <button (click)="prevSlide()" class="prev" *ngIf="currentSlideIndex >= 1">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
                 <path fill-rule="evenodd" d="M9.78 4.22a.75.75 0 0 1 0 1.06L7.06 8l2.72 2.72a.75.75 0 1 1-1.06 1.06L5.47 8.53a.75.75 0 0 1 0-1.06l3.25-3.25a.75.75 0 0 1 1.06 0Z" clip-rule="evenodd" />
               </svg>
         </button>
-        <button (click)="nextSlide()" class="next">
+        <button (click)="nextSlide()" class="next" *ngIf="currentSlideIndex < (imgs.length -1)">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4">
                 <path fill-rule="evenodd" d="M6.22 4.22a.75.75 0 0 1 1.06 0l3.25 3.25a.75.75 0 0 1 0 1.06l-3.25 3.25a.75.75 0 0 1-1.06-1.06L8.94 8 6.22 5.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
               </svg>              

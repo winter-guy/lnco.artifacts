@@ -9,6 +9,8 @@ export interface Artifact {
     meta: string;
     details: string;
 
+    shots: string[];
+
     tags: Tag[];
     author: string;
     forepart: string;

@@ -2,6 +2,7 @@ import { DialogRef } from '@angular/cdk/dialog';
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Data, Router, RouterModule } from '@angular/router';
+import { CarouselComponent } from '@lib/components/carousel/carousel.component';
 import { LoadingComponent } from '@lib/components/loading/loading.component';
 import { Artifact } from '@lib/interfaces/artifact';
 
@@ -11,7 +12,7 @@ import { Subject, takeUntil, delay, Observable, map } from 'rxjs';
 
 @Component({
     standalone: true,
-    imports: [CommonModule, RouterModule, LoadingComponent],
+    imports: [CommonModule, RouterModule, LoadingComponent, CarouselComponent],
     providers: [ArtifactService],
     templateUrl: './home.component.html',
 })
@@ -45,7 +46,7 @@ export class HomeComponent implements OnInit, OnDestroy {
                 .pipe(
                     delay(1000),
                     map(() => {
-                        fact.loading.close();
+                        // add loader logic
                     }),
                 )
                 .subscribe();

@@ -58,7 +58,6 @@ export class ArtifactComponent implements OnInit {
                         });
 
                         this._title.setTitle(res.meta.head);
-                        fact.loading.close();
                     }),
                 )
                 .subscribe();

@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+/* eslint-disable @angular-eslint/component-selector */
+import { Component, Input } from '@angular/core';
 import { Renderer2, ViewChild, ElementRef } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
     standalone: true,
-    selector: 'app-carousel',
-    imports: [CommonModule],
+    selector: 'carousel',
+    imports: [CommonModule, RouterModule],
     templateUrl: './carousel.component.html',
     styleUrls: ['./carousel.component.css'],
     animations: [
@@ -18,27 +20,8 @@ import { CommonModule } from '@angular/common';
 })
 export class CarouselComponent {
     @ViewChild('carouselSlide') carouselSlide!: ElementRef;
-
-    slides = [
-        {
-            id: 1,
-            image: 'https://storage.googleapis.com/lnco-artifacts.appspot.com/images/1db5b6db-5b93-40eb-912c-f1c97e0f124f.png',
-            caption: 'Slide 1',
-            description: 'Description for Slide 1',
-        },
-        {
-            id: 2,
-            image: 'https://storage.googleapis.com/lnco-artifacts.appspot.com/images/a3b9c8d7e6f5a4b3c2d1e0f/7021b435-40e1-49d2-bf46-eb78a025117f',
-            caption: 'Slide 2',
-            description: 'Description for Slide 2',
-        },
-        {
-            id: 3,
-            image: 'https://storage.googleapis.com/lnco-artifacts.appspot.com/images/6c043e44-3b5a-4fde-899b-275f821aad83.png',
-            caption: 'Slide 3',
-            description: 'Description for Slide 3',
-        },
-    ];
+    @Input() imgs!: string[];
+    @Input() urlId!: string;
 
     currentSlideIndex = 0;
 
@@ -48,11 +31,11 @@ export class CarouselComponent {
     isScrolling = false;
 
     nextSlide(): void {
-        this.currentSlideIndex = (this.currentSlideIndex + 1) % this.slides.length;
+        this.currentSlideIndex = (this.currentSlideIndex + 1) % this.imgs.length;
     }
 
     prevSlide(): void {
-        this.currentSlideIndex = (this.currentSlideIndex - 1 + this.slides.length) % this.slides.length;
+        this.currentSlideIndex = (this.currentSlideIndex - 1 + this.imgs.length) % this.imgs.length;
     }
 
     onScroll(event: WheelEvent): void {
