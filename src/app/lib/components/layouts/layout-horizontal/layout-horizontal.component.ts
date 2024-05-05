@@ -1,6 +1,6 @@
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, HostListener, Inject } from '@angular/core';
-import { FooterComponent, NavbarComponent } from '@lib/components';
+import { NavbarComponent } from '@lib/components';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { RouterModule } from '@angular/router';
@@ -9,7 +9,7 @@ import { needConfirmation } from '@lib/content/dialog.directive';
 @Component({
     selector: 'app-layout-horizontal',
     standalone: true,
-    imports: [CommonModule, NavbarComponent, FooterComponent, MatSidenavModule, RouterModule],
+    imports: [CommonModule, NavbarComponent, MatSidenavModule, RouterModule],
     templateUrl: './layout-horizontal.component.html',
     styleUrls: ['./layout.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
