@@ -1,5 +1,5 @@
 <mat-drawer-container class="w-screen h-full bg-white dark:bg-black" autosize>
-    <mat-drawer #drawer class="bg-transparent" mode="push">
+    <mat-drawer #drawer class="bg-transparent" mode="over">
         <div class="flex flex-col rounded-md sm:pr-0 sm:min-w-min h-full p-2 z-30 inset-x-0 text-sm opacity-100"
             id="headlessui-popover-panel-:rd:" tabindex="-1" data-headlessui-state="open">
             <div
@@ -30,7 +30,7 @@
 
                 <ul class="flex flex-col gap-6 items-start justify-start">
                     <li>
-                        <a class="text-3xl leading-10 hover:text-ui-fg-disabled" routerLink="/posts"
+                        <a class="text-3xl leading-10 hover:text-ui-fg-disabled" routerLink="/posts" routerLinkClick
                         [routerLinkActive]="'underline underline-offset-4 decoration-red-500'">Talks</a>
                     </li>
                     <!-- <li>
@@ -39,19 +39,19 @@
                     </li> -->
                     <!-- <li><a class="text-3xl leading-10 hover:text-ui-fg-disabled" href="/in/search">Search</a></li> -->
                     <li>
-                        <a routerLink="/journal"
+                        <a routerLink="/journal" routerLinkClick
                             [routerLinkActive]="'underline underline-offset-4 decoration-red-500'"
                             class="text-3xl leading-10 hover:text-ui-fg-disabled">Journal</a>
                     </li>
                     <li>
-                        <a routerLink="/darfts"
+                        <a routerLink="/darfts" routerLinkClick
                             [routerLinkActive]="'underline underline-offset-4 decoration-red-500'"
                             class="text-3xl leading-10 hover:text-ui-fg-disabled">Drafts</a>
                     </li>
                     <!-- <li><a class="text-3xl leading-10 hover:text-ui-fg-disabled" href="/in/account">Account</a></li> -->
                     <li>
                         <a class="text-3xl leading-10 hover:text-ui-fg-disabled"
-                            routerLink="/behind-the-scene/developer"
+                            routerLink="/behind-the-scene/developer" routerLinkClick
                             [routerLinkActive]="'underline underline-offset-4 decoration-red-500'">behind the
                             scene</a>
                     </li>

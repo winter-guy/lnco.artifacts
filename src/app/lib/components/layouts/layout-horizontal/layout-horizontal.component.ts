@@ -1,9 +1,9 @@
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { ChangeDetectionStrategy, Component, HostListener, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, Inject, OnInit, ViewChild } from '@angular/core';
 import { NavbarComponent } from '@lib/components';
 
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { RouterModule } from '@angular/router';
+import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { needConfirmation } from '@lib/content/dialog.directive';
 @Component({
@@ -14,14 +14,24 @@ import { needConfirmation } from '@lib/content/dialog.directive';
     styleUrls: ['./layout.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LayoutHorizontalComponent {
+export class LayoutHorizontalComponent implements OnInit {
     showFiller = false;
     windowWidth!: number;
     windowHeight!: number;
     showMore = false;
+    @ViewChild('drawer') drawer!: MatDrawer;
 
-    constructor(public auth: AuthService, @Inject(DOCUMENT) private _doc: Document) {
+    constructor(public auth: AuthService, @Inject(DOCUMENT) private _doc: Document, public router: Router) {
         this.getWindowSize();
+    }
+
+    ngOnInit(): void {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
+        this.router.events.subscribe((event) => {
+            if (event instanceof NavigationEnd) {
+                this.drawer.close();
+            }
+        });
     }
 
     @HostListener('window:resize', ['$event'])
