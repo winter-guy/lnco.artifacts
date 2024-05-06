@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../http/http-client-wrapper.service';
 import { Artifact } from '@lib/interfaces/artifact';
-import { Observable, filter, from, map, take } from 'rxjs';
+import { Observable, combineLatest, filter, from, map, take } from 'rxjs';
 import { BlocksEntity, Tag } from '@lib/interfaces/article';
 import { Document, InShort, Meta, Record, SecRecord } from '@lib/interfaces/record';
 import { Compose } from '@lib/interfaces/compose';
@@ -42,6 +42,21 @@ export class ArtifactService {
             observer.next(imageUrls || []);
             observer.complete();
         });
+    }
+
+    public janyHC(_old: BlocksEntity[], _new: BlocksEntity[]): void {
+        this.getImageFromPublication(_old).subscribe((imgs) => {
+            console.log(imgs);
+        });
+
+        combineLatest([this.getImageFromPublication(_old), this.getImageFromPublication(_new)]).subscribe(
+            ([_old, _new]) => {
+                const difference = [
+                    ...new Set([..._old, ..._new].filter((item) => !_old.includes(item) || !_new.includes(item))),
+                ];
+                console.log(difference); // how to know which one is deleted and added when content replace?
+            },
+        );
     }
 
     public getContentFromPublication(blocks: BlocksEntity[]): Observable<string> {

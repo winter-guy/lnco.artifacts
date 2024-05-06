@@ -74,6 +74,10 @@ export class ComposeComponent implements OnInit, OnDestroy {
                     this.editor.save().then((outputData) => {
                         JSON.stringify(outputData, null, 2);
                         Object.create(<Article>{});
+                        this.artifactService.janyHC(
+                            this.article.record.blocks as BlocksEntity[],
+                            outputData.blocks as BlocksEntity[],
+                        );
                         /* put draft creation logic here */
                     });
                 },
@@ -97,8 +101,10 @@ export class ComposeComponent implements OnInit, OnDestroy {
     }
 
     postDataBlock!: SecRecord;
+    article!: Record;
     public buildEditorWithBlocks(_artifactId: string): void {
         this.artifactService.getArtifactsById(_artifactId).subscribe((article) => {
+            this.article = article;
             this.postDataBlock = article;
             this.editor = new EditorJS({
                 holder: 'editorjs',

@@ -16,6 +16,11 @@ export const routes: Routes = [
         canActivate: [AuthGuard],
     },
     {
+        path: 'drafts',
+        loadChildren: async () => (await import('@pages/draft')).routes,
+        canActivate: [AuthGuard],
+    },
+    {
         path: 'settings',
         loadChildren: async () => (await import('@pages/settings')).routes,
         // canMatch: [authGuard()],
