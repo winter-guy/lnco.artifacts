@@ -27,11 +27,11 @@ export class LayoutHorizontalComponent implements OnInit {
 
     ngOnInit(): void {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-        this.router.events.subscribe((event) => {
-            if (event instanceof NavigationEnd) {
-                this.drawer.close();
-            }
-        });
+        // this.router.events.subscribe((event) => {
+        //     if (event instanceof NavigationEnd) {
+        //         this.drawer.close();
+        //     }
+        // });
     }
 
     @HostListener('window:resize', ['$event'])

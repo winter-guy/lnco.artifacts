@@ -13,11 +13,11 @@ import { LogoComponent } from '../logo/logo.component';
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatTabsModule } from '@angular/material/tabs';
 @Component({
     selector: 'app-navbar',
     standalone: true,
-    imports: [CommonModule, RouterModule, LogoComponent, MatDatepickerModule, MatButtonModule],
+    imports: [CommonModule, RouterModule, LogoComponent, MatDatepickerModule, MatButtonModule, MatTabsModule],
     templateUrl: './navbar.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -35,7 +35,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         @Inject(DOCUMENT) private _doc: Document,
 
         private _componentFactoryResolver: ComponentFactoryResolver,
-    ) {}
+    ) { }
 
     ngOnInit(): void {
         this.themeService.currentTheme$
