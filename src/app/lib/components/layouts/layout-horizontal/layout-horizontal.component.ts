@@ -22,7 +22,6 @@ export class LayoutHorizontalComponent implements OnInit {
     showMore = false;
     @ViewChild('drawer') drawer!: MatDrawer;
 
-
     ngOnInit(): void {
         this.router.events.subscribe((event) => {
             if (event instanceof NavigationEnd) {

@@ -44,7 +44,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         @Inject(DOCUMENT) private _doc: Document,
 
         private _componentFactoryResolver: ComponentFactoryResolver,
-    ) { }
+    ) {}
 
     ngOnInit(): void {
         this.themeService.currentTheme$
