@@ -13,7 +13,7 @@ import { LogoComponent } from '../logo/logo.component';
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
-import { MatTabsModule } from '@angular/material/tabs';
+import { MatTabChangeEvent, MatTabsModule } from '@angular/material/tabs';
 @Component({
     selector: 'app-navbar',
     standalone: true,
@@ -91,6 +91,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.auth.loginWithRedirect();
     }
 
+    public tabClick(event: MatTabChangeEvent): void {
+        console.log(event.tab.textLabel);
+    }
+ 
     @needConfirmation({
         message: `Are you sure you want to log out?`,
         description: `Logging out will terminate your current session and require you to 

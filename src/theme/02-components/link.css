@@ -9,7 +9,7 @@ a.link {
 }
 
 a.link:hover {
-    @apply bg-[#f1f3e8] text-[#386a20] dark:bg-zinc-800 dark:text-white
+    @apply bg-[#fdfdf5] text-[#386a20] dark:bg-zinc-800 dark:text-white
 }
 
 a.link:focus {
