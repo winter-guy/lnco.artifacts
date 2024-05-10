@@ -6,10 +6,11 @@ import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
 import { needConfirmation } from '@lib/content/dialog.directive';
+import { RouterLinkClickDirective } from '@lib/content/router-link-click.directive';
 @Component({
     selector: 'app-layout-horizontal',
     standalone: true,
-    imports: [CommonModule, NavbarComponent, MatSidenavModule, RouterModule],
+    imports: [CommonModule, NavbarComponent, MatSidenavModule, RouterModule, RouterLinkClickDirective],
     templateUrl: './layout-horizontal.component.html',
     styleUrls: ['./layout.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -21,17 +22,17 @@ export class LayoutHorizontalComponent implements OnInit {
     showMore = false;
     @ViewChild('drawer') drawer!: MatDrawer;
 
-    constructor(public auth: AuthService, @Inject(DOCUMENT) private _doc: Document, public router: Router) {
-        this.getWindowSize();
-    }
 
     ngOnInit(): void {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
-        // this.router.events.subscribe((event) => {
-        //     if (event instanceof NavigationEnd) {
-        //         this.drawer.close();
-        //     }
-        // });
+        this.router.events.subscribe((event) => {
+            if (event instanceof NavigationEnd) {
+                this.drawer.close();
+            }
+        });
+    }
+
+    constructor(public auth: AuthService, @Inject(DOCUMENT) private _doc: Document, public router: Router) {
+        this.getWindowSize();
     }
 
     @HostListener('window:resize', ['$event'])

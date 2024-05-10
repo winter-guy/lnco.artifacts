@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, ComponentFactoryResolver, Inject, OnDestroy, OnInit } from '@angular/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    ComponentFactoryResolver,
+    EventEmitter,
+    Inject,
+    OnDestroy,
+    OnInit,
+    Output,
+} from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 
@@ -8,7 +17,6 @@ import { Observable, Subject, takeUntil } from 'rxjs';
 
 import { ThemeService } from '@lib/services';
 import { AppTheme } from '@lib/services/theme';
-import { needConfirmation } from '@lib/content/dialog.directive';
 import { LogoComponent } from '../logo/logo.component';
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -27,6 +35,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     public inSearch = false;
 
     $navbarState!: Observable<boolean>;
+    @Output() drawer = new EventEmitter<boolean>();
 
     constructor(
         public router: Router,
@@ -94,15 +103,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     public tabClick(event: MatTabChangeEvent): void {
         console.log(event.tab.textLabel);
     }
- 
-    @needConfirmation({
-        message: `Are you sure you want to log out?`,
-        description: `Logging out will terminate your current session and require you to 
-                        sign in again to access your account and modify artifacts. `,
-        label: 'sign out',
-        disableCloseBtn: true,
-    })
-    public logout(): void {
-        this.auth.logout({ logoutParams: { returnTo: this._doc.location.origin } });
+
+    public openDrawer(): void {
+        this.drawer.emit(true);
     }
 }
