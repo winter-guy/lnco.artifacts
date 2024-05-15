@@ -1,13 +1,4 @@
-import {
-    ChangeDetectionStrategy,
-    Component,
-    ComponentFactoryResolver,
-    EventEmitter,
-    Inject,
-    OnDestroy,
-    OnInit,
-    Output,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Inject, OnDestroy, OnInit, Output } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 
@@ -32,7 +23,6 @@ import { MatTabChangeEvent, MatTabsModule } from '@angular/material/tabs';
 export class NavbarComponent implements OnInit, OnDestroy {
     public currentTheme!: AppTheme | null;
     private readonly _destroy$ = new Subject();
-    public inSearch = false;
 
     $navbarState!: Observable<boolean>;
     @Output() drawer = new EventEmitter<boolean>();
@@ -42,8 +32,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
         public themeService: ThemeService,
         public auth: AuthService,
         @Inject(DOCUMENT) private _doc: Document,
-
-        private _componentFactoryResolver: ComponentFactoryResolver,
     ) {}
 
     ngOnInit(): void {
@@ -53,32 +41,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
         this.$navbarState = this.themeService.navState;
     }
-
-    toggleSearch(): void {
-        this.inSearch = !this.inSearch;
-    }
-
-    // openSearch(): void {
-    //     this.toggleDynamicComponent();
-    // }
-
-    // @ViewChild('dynamicComponentContainer', { read: ViewContainerRef }) dynamicComponentContainer!: ViewContainerRef;
-    // dynamicComponentRef: unknown;
-    // public toggleDynamicComponent(): void {
-    //     if (this.dynamicComponentRef) {
-    //         // If dynamic component is already added, remove it
-    //         this.dynamicComponentContainer.clear();
-    //         this.dynamicComponentRef = null;
-    //     } else {
-    //         // Create an instance of the dynamic component
-    //         const componentFactory = this._componentFactoryResolver.resolveComponentFactory(FooterComponent);
-    //         this.dynamicComponentRef = this.dynamicComponentContainer.createComponent(componentFactory);
-    //         // You can pass inputs to the component
-    //         // this.dynamicComponentRef.instance.inputProperty = value;
-    //     }
-
-    //     this.toggleSearch();
-    // }
 
     ngOnDestroy(): void {
         this._destroy$.complete();
